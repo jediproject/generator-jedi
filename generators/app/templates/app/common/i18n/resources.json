@@ -1,0 +1,7 @@
+{
+	"resources": {
+		"<%= props.appTitle.toLowerCase()%>": "<%= props.appTitle%>"
+	},
+	"regexResources": {
+	}
+}
