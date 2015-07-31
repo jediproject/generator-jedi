@@ -25,7 +25,7 @@ define([
     // store envSettings as a constant
     app.constant('envSettings', envSettings);
 
-    app.config(['$routeProvider', '$httpProvider', 'authServiceProvider', <% if (props.useRestangular) {%>'RestangularProvider', <%}%>'$provide', 'ngMaskConfig', 'ng.jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'ng.jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, authServiceProvider, <% if (props.useRestangular) {%>RestangularProvider, <%}%>$provide, ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
+    app.config(['$routeProvider', '$httpProvider', 'authServiceProvider', <% if (props.useRestangular) {%>'RestangularProvider', <%}%>'$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, authServiceProvider, <% if (props.useRestangular) {%>RestangularProvider, <%}%>$provide, ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -59,7 +59,7 @@ define([
         });<%}%>
     }]);
 
-    app.run(['$http', '$route', '$rootScope', '$location', 'authService', 'ng.jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log'<% if (props.useI18n) {%>, 'ng.jedi.i18n.Localize'<%}%>, function ($http, $route, $rootScope, $location, authService, alertHelper, $timeout, $injector, $log<% if (props.useI18n) {%>, localize<%}%>) {
+    app.run(['$http', '$route', '$rootScope', '$location', 'authService', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log'<% if (props.useI18n) {%>, 'jedi.i18n.Localize'<%}%>, function ($http, $route, $rootScope, $location, authService, alertHelper, $timeout, $injector, $log<% if (props.useI18n) {%>, localize<%}%>) {
         <% if (props.useI18n) {%>$log.info('Configure i18n');
         localize.addResource('app/common/i18n/resources_{lang}.json');
 
@@ -178,7 +178,7 @@ define([
     }]);
 
     // AppCtrl: possui controles gerais da aplicação, como a parte de locale e também de deslogar
-    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"ng.jedi.i18n.Localize", <%}%>'authService', function (<% if (props.useI18n) {%>localize, <%}%>authService) {
+    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"jedi.i18n.Localize", <%}%>'authService', function (<% if (props.useI18n) {%>localize, <%}%>authService) {
         var vm = this;<% if (props.useI18n) {%>
 
         vm.setLanguage = function (language) {
