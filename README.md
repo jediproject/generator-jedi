@@ -1,6 +1,6 @@
 # generator-ng-jedi-ref-arch
 
-O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](https://github.com/ng-jedi/generator).
+O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://ng-jedi.github.io/ref-arch).
 
 O gerador é composto por um rotina de geração principal, que gera toda estruturação v0 de um projeto, e sub geradores para criação de controllers, modais, módulos e funcionalidades.
 
