@@ -1,6 +1,6 @@
 {
   "name": "generator-ng-jedi-ref-arch",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Angular Jedi Project Reference Architecture Generator",
   "license": "LGPL",
   "main": ["app/index.js", "controller/index.js", "modal/index.js", "controller/module.js"],
