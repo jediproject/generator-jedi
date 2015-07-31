@@ -139,4 +139,4 @@ npm run start
 
 ## License
 
-LGPL
+MIT
