@@ -133,10 +133,6 @@ Para utilizar o gerador, siga os passos:
 
 Aprecie o [demo](https://github.com/ng-jedi/ref-arch/tree/master/demo) criado utilizando este gerador.
 
-```bash
-npm run start
-```
-
 ## License
 
 MIT
