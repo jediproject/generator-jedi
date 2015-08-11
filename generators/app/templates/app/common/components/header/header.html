@@ -14,6 +14,7 @@
         <ul class="nav navbar-nav">
             <li><a href="#/<%= props.moduleName%>/mysubmodule/myfeature1" jd-i18n>My Feature 1</a></li>
             <li><a href="#/<%= props.moduleName%>/mysubmodule/myfeature2" jd-i18n>My Feature 2</a></li>
+            <!--#===== yeoman menu hook =====#-->
         </ul>
         <ul class="nav navbar-nav navbar-right"><% if (props.useI18n) {%>
             <li><a href="javascript:;" alt="Português" ng-disabled="appCtrl.getLanguage() == 'pt'"><img src="assets/img/pt-BR.png" ng-click="appCtrl.setLanguage('pt')" /></a></li>

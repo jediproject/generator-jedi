@@ -131,6 +131,91 @@ Para utilizar o gerador, siga os passos:
 	- informe o nome do módulo, linguagem padrão e se deve utilizar i18n
 	- ao final será criado um módulo com estrutura base no caminho: app//[nome do módulo]
 
+6. Execução do gerador de feature
+
+	```bash
+	yo ng-jedi-ref-arch:feature
+	```
+    - Informe o caminho do arquivo de config.
+    - Exemplo genérico do arquivo de config:
+    
+    
+	```json
+	{
+		  "moduleName": "<nome do módulo>",
+		  "submodule": "<nome do sub módulo (opcional)>",
+		  "featureName": "<nome da funcionalidade>",
+		  "featureTitle": {
+		    "pt": "<título da funcionalidade em português>",
+		    "en": "<título da funcionalidade em inglês>"
+		  },
+		  "APIAddress": "<Endereço da API>",
+		  "feature": {
+		    "type": "<tipo da feature:  crud|modal>",
+		    "filters": [
+		      {
+		        "navigationOrder": 0,
+		        "fieldName": "<Nome do campo>",
+		        "fieldLabel": {
+		          "pt": "<nome do campo em português>",
+		          "en": "<nome do campo em inglês>"
+		        },
+				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+		        "fieldHint": {
+		          "pt": "<hint para o campo em português (opcional)>",
+		          "en": "<hint para o campo em inglês (opcional)>"
+		        },
+		        "requiredField": true,
+		        "messageRequired": {
+				          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+				          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+		        },
+		        "maxCharacter": 10,
+		        "minCharacter": 0
+		      }
+		    ],
+		    "results": [
+		      {
+		        "navigationOrder": 0,
+		        "fieldName": "<Nome do campo>",
+		        "fieldLabel": {
+		          "pt": "<nome do campo em português>",
+		          "en": "<nome do campo em inglês>"
+		        }
+		      }
+		    ],
+		    "domains": [
+		      {
+		        "navigationOrder": 0,
+		        "fieldName": "<Nome do campo>",
+		        "fieldLabel": {
+		          "pt": "<nome do campo em português>",
+		          "en": "<nome do campo em inglês>"
+		        },
+				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+		        "fieldHint": {
+		          "pt": "<hint para o campo em português (opcional)>",
+		          "en": "<hint para o campo em inglês (opcional)>"
+		        },
+		        "requiredField": true,
+		        "messageRequired": {
+		          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+		          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+		        },
+		        "maxCharacter": 10,
+		        "minCharacter": 0,
+		        "fieldEditableFor": [
+		          "create",
+		          "update"
+		        ],
+		        "visibleToTheUser": true,
+		        "key": false
+		      }
+		    ]
+		  }
+	}		
+	```    
+
 Aprecie o [demo](https://github.com/ng-jedi/ref-arch/tree/master/demo) criado utilizando este gerador.
 
 ## License

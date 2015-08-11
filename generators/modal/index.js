@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
+var baseutil = require('../base-util.js');
 
 String.prototype.capitalize = function() {
     return s(this).capitalize().value();
@@ -61,13 +62,9 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    var dest = 'app/' + this.props.module.toLowerCase() + '/features/';
-	if (this.props.submodule) {
-		dest += this.props.submodule.toLowerCase() + '/';
-	}
-	dest += this.props.controller.toLowerCase();
-	mkdirp(dest);
-    
+     // Cria a estrutura básica de diretórios   
+    var dest = baseutil.createStructure(this.props.module, this.props.submodule, this.props.controller);
+      
 	// controller
 	this.fs.copyTpl(
       this.templatePath('ctrl.js'),

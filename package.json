@@ -3,7 +3,13 @@
   "version": "0.0.1",
   "description": "Angular Jedi Project Reference Architecture Generator",
   "license": "LGPL",
-  "main": ["app/index.js", "controller/index.js", "modal/index.js", "controller/module.js"],
+  "main": [
+    "app/index.js",
+    "controller/index.js",
+    "modal/index.js",
+    "controller/index.js",
+    "feature/index.js"
+  ],
   "repository": "https://github.com/ng-jedi/generator-ng-jedi-ref-arch",
   "author": {
     "name": "Fábio Henrique da Silva Viana",
@@ -18,18 +24,22 @@
   ],
   "keywords": [
     "yeoman-generator",
-	"angular",
-	"generator",
-	"architecture",
-	"reference",
-	"scaffold"
+    "angular",
+    "generator",
+    "architecture",
+    "reference",  
+    "scaffold",
+    "crud-generator"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
+    "fs-json": "^0.1.2",
     "mkdirp": "^0.5.1",
+    "path": "^0.11.14",
     "underscore.string": "^3.1.1",
     "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.2"
+    "yosay": "^1.0.2",
+    "html-wiring": "1.2.0"
   },
   "devDependencies": {
     "mocha": "*"

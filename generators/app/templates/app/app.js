@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 define([
     //## environment settings
@@ -93,6 +93,7 @@ define([
                 $log.info('Load routes');
 
                 $routeProviderReference
+                    //#===== yeoman route hook =====#
                     .when('/<%= props.moduleName%>/mysubmodule/myfeature1', angularAMD.route({
                         breadcrumb: ['<%= props.moduleName.capitalize()%>', 'My Submodule', 'My Feature 1'],
                         templateUrl: jd.factory.getFileVersion('app/<%= props.moduleName%>/features/mysubmodule/myfeature1/myfeature1.html'),

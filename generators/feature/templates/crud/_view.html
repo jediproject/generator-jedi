@@ -1,0 +1,54 @@
+<form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.submodule) {%><%= config.submodule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
+    <div class="padding-bottom">
+        <% if(config.feature.filters)  {%>
+            <% config.feature.filters.forEach(function(filter){ %>
+                <% if (filter.fieldType === 'text'){%>
+                    <input jd-input="3" jd-label="<%= filter.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= filter.fieldName%>Filter" />            
+                <% }%>       
+            <% }) %>
+        <% }%>
+    </div>
+    <div class="buttons">
+        <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.filter()" jd-i18n>Filtrar</button>
+        <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.clear()" jd-i18n>Limpar</button>
+        <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.openCreateModal()" jd-i18n>Novo</button>
+    </div>
+    <table at-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" at-paginated>
+        <tbody>
+            <tr>
+                <% if (config.feature.results) {%>
+                    <% config.feature.results.forEach(function(result){ %>
+                        <td at-sortable at-attribute="<%= result.fieldName%>" at-title="<%= result.fieldLabel.pt%>"></td>
+                    <% }) %>        
+                <% }%>        
+                <td at-sortable at-attribute="isMenuItem" at-filter="jdBoolToText" at-title="Visível no menu"></td>                
+                <td at-title="Ações" class="text-center">
+                    <a href="javascript:;" jd-i18n title="Editar" ng-click="<%= config.featureName%>Ctrl.openEditModal(item)"><i class="glyphicon glyphicon-edit"></i></a>
+                    &nbsp;
+                    <a href="javascript:;" jd-i18n title="Excluir" ng-click="<%= config.featureName%>Ctrl.remove(item)"><i class=" glyphicon glyphicon-remove"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/ng-template" id="<%= config.featureName%>Edit.html">
+        <form jd-modal name="form_<%= config.featureName%>" jd-title="{{<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.action == 'edit' ? 'Edição' : 'Inclusão'}}">
+        <% if(config.feature.domains)  {%>
+            <% config.feature.domains.forEach(function(domain){ %>
+                <% if (domain.visibleToTheUser){%>
+                    <% if (domain.fieldType === 'text'){%>
+                           <input jd-input="5" required jd-label="<%= domain.fieldLabel.pt%>" type="text" ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= domain.fieldName%>" />   
+                    <% }%>
+                <% }%>            
+            <% }) %>
+        <% }%> 
+            
+           
+           
+                
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-disabled="!form_<%= config.featureName%>.$valid" ng-click="<%= config.featureName%>EditCtrl.save()" jd-i18n>Salvar</button>
+                <button class="btn btn-primary" type="button" jd-dismiss-modal jd-i18n>Cancelar</button>
+            </div>
+        </form>
+    </script>
+</form>

@@ -3,6 +3,7 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
+var baseutil = require('../base-util.js');
 
 module.exports = yeoman.generators.Base.extend({
   initializing: function (args, options) {
