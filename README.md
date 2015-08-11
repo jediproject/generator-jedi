@@ -154,7 +154,6 @@ Para utilizar o gerador, siga os passos:
 		    "type": "<tipo da feature:  crud|modal>",
 		    "filters": [
 		      {
-		        "navigationOrder": 0,
 		        "fieldName": "<Nome do campo>",
 		        "fieldLabel": {
 		          "pt": "<nome do campo em português>",
@@ -176,7 +175,6 @@ Para utilizar o gerador, siga os passos:
 		    ],
 		    "results": [
 		      {
-		        "navigationOrder": 0,
 		        "fieldName": "<Nome do campo>",
 		        "fieldLabel": {
 		          "pt": "<nome do campo em português>",
@@ -186,7 +184,6 @@ Para utilizar o gerador, siga os passos:
 		    ],
 		    "domains": [
 		      {
-		        "navigationOrder": 0,
 		        "fieldName": "<Nome do campo>",
 		        "fieldLabel": {
 		          "pt": "<nome do campo em português>",
