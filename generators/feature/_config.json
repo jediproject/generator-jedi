@@ -9,61 +9,64 @@
   "APIAddress": "<Endereço da API>",
   "feature": {
     "type": "<tipo da feature:  crud|modal>",
+    "domains": [
+      {
+        "entity": {
+          "fieldName": "<Nome do campo>",
+          "fieldType": "<string|int|dobule|boolean|date|date-time|object|list>",
+          "reference": "<objectName|nativeType  (preenchido se o fieldType for object ou list)>"
+        },
+        "validator": {
+          "requiredField": true,
+          "maxCharacter": 10,
+          "minCharacter": 0
+        },
+        "userInterface": {
+          "fieldMask": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+          "staticSelect":[{
+                
+          }],
+          "dinamicSelect":{
+            
+          },
+          "modalSelect":{
+            
+          },
+          "autoCompleteSelect":{
+            
+          },
+          "dependsOn":["<fieldName>", "<fieldName>", "<fieldName>"],
+          "fieldLabel": {
+            "pt": "<nome do campo em português>",
+            "en": "<nome do campo em inglês>"
+          },
+          "fieldHint": {
+            "pt": "<hint para o campo em português (opcional)>",
+            "en": "<hint para o campo em inglês (opcional)>"
+          },
+          "messageRequired": {
+            "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+            "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+          },
+          "fieldEditableFor": [
+            "create",
+            "update"
+          ],
+          "visibleToTheUser": true,
+          "usedToDelete": false, 
+          "newLine": false,
+          "Sizexxxx": "<col-md-1|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2>"
+        }
+      }
+    ],
     "filters": [
       {
-        "fieldName": "<Nome do campo>",
-        "fieldLabel": {
-          "pt": "<nome do campo em português>",
-          "en": "<nome do campo em inglês>"
-        },
-        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-        "fieldHint": {
-          "pt": "<hint para o campo em português (opcional)>",
-          "en": "<hint para o campo em inglês (opcional)>"
-        },
-        "requiredField": true,
-        "messageRequired": {
-          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-        },
-        "maxCharacter": 10,
-        "minCharacter": 0
+        "fieldName": "<Nome do campo>"
       }
     ],
     "results": [
       {
-        "fieldName": "<Nome do campo>",
-        "fieldLabel": {
-          "pt": "<nome do campo em português>",
-          "en": "<nome do campo em inglês>"
-        }
-      }
-    ],
-    "domains": [
-      {
-        "fieldName": "<Nome do campo>",
-        "fieldLabel": {
-          "pt": "<nome do campo em português>",
-          "en": "<nome do campo em inglês>"
-        },
-        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-        "fieldHint": {
-          "pt": "<hint para o campo em português (opcional)>",
-          "en": "<hint para o campo em inglês (opcional)>"
-        },
-        "requiredField": true,
-        "messageRequired": {
-          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-        },
-        "maxCharacter": 10,
-        "minCharacter": 0,
-        "fieldEditableFor": [
-          "create",
-          "update"
-        ],
-        "visibleToTheUser": true,
-        "key": false
+        "fieldName": "<Nome do campo>"
       }
     ]
   }
