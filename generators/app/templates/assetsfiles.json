@@ -273,6 +273,10 @@
 			"dest": "assets/libs/ng-jedi-layout/modal.js"
 		},
 		{
+			"src": "bower_components/ng-jedi-layout/modal.html",
+			"dest": "assets/libs/ng-jedi-layout/modal.html"
+		},
+		{
 			"src": "bower_components/ng-jedi-layout/treeview.js",
 			"dest": "assets/libs/ng-jedi-layout/treeview.js"
 		},
