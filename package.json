@@ -8,7 +8,8 @@
     "controller/index.js",
     "modal/index.js",
     "controller/index.js",
-    "feature/index.js"
+    "feature/index.js",
+    "test/index.js"
   ],
   "repository": "https://github.com/ng-jedi/generator-ng-jedi-ref-arch",
   "author": {
@@ -27,19 +28,22 @@
     "angular",
     "generator",
     "architecture",
-    "reference",  
+    "reference",
     "scaffold",
     "crud-generator"
   ],
   "dependencies": {
+    "body-parser": "^1.13.3",
     "chalk": "^1.0.0",
     "fs-json": "^0.1.2",
+    "html-wiring": "1.2.0",
+    "lodash": "^3.10.1",
     "mkdirp": "^0.5.1",
     "path": "^0.11.14",
     "underscore.string": "^3.1.1",
     "yeoman-generator": "^0.19.0",
-    "yosay": "^1.0.2",
-    "html-wiring": "1.2.0"
+    "yeoman-option-or-prompt": "^1.0.2",
+    "yosay": "^1.0.2"
   },
   "devDependencies": {
     "mocha": "*"

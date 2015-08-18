@@ -1,0 +1,10 @@
+{
+  "mockDirectory": "mocks",
+  "staticDirectory": "mocks",
+  "staticPath": "mocks",
+  "port": "3000",
+  "allowedDomains": ["*"],
+  "allowedHeaders": ["accept", "access-control-allow-credendtials", "access-control-allow-headers", "access-control-allow-methods", "access-control-allow-origin", "content-type", "if-modified-since"],
+  "webServices": {
+  }
+}

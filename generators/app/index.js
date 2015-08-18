@@ -4,6 +4,8 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
+var _ = require('lodash');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 String.prototype.capitalize = function() {
 	return s(this).capitalize().value();
@@ -14,13 +16,20 @@ String.prototype.decapitalize = function() {
 }
 
 module.exports = yeoman.generators.Base.extend({
+    
+    _optionOrPrompt: optionOrPrompt,
+
+    
+
 	prompting: function () {
+        
 		var done = this.async();
 
 		// Have Yeoman greet the user.
 		this.log(yosay(
 			'Welcome to the CI&T Angular Reference Architecture generator!'
 		));
+    
 
 		var prompts = [{
 				name: 'appName',
@@ -63,44 +72,52 @@ module.exports = yeoman.generators.Base.extend({
 				name: 'generateAuth',
 				message: 'Would you like to generate auth pages?',
 				default: true
+			},
+            {
+				name: 'destinationRoot',
+				message: 'What\'s the destination root?',
+				default: '.'
 			}
 		];
-
-		this.prompt(prompts, function (props) {
+           // Instead of calling prompt, call _optionOrPrompt to allow parameters to be passed as command line or composeWith options.
+		this._optionOrPrompt(prompts, function (props) {
 			this.props = props;
 			this.props.useRestangular = true;
 			done();
 		}.bind(this));
 	},
 
+    
 	writing: function () {
 		//----
 		// structure
+        this.destinationRoot(this.props.destinationRoot);
+        console.log('destinationRoot ' + this.destinationRoot());
 
-		mkdirp('mocks');
+		mkdirp(this.props.destinationRoot + 'mocks');
 
-		mkdirp('assets');
-		mkdirp('assets/fonts');
-		mkdirp('assets/css');
-		mkdirp('assets/js');
-		mkdirp('assets/img');
+		mkdirp(this.props.destinationRoot + 'assets');
+		mkdirp(this.props.destinationRoot + 'assets/fonts');
+		mkdirp(this.props.destinationRoot + 'assets/css');
+		mkdirp(this.props.destinationRoot + 'assets/js');
+		mkdirp(this.props.destinationRoot + 'assets/img');
 
-		mkdirp('app');
-		mkdirp('app/common');
-		mkdirp('app/common/components');
-		mkdirp('app/common/components/exceptions');
-		mkdirp('app/common/components/header');
-		mkdirp('app/common/env');
+		mkdirp(this.props.destinationRoot + 'app');
+		mkdirp(this.props.destinationRoot + 'app/common');
+		mkdirp(this.props.destinationRoot + 'app/common/components');
+		mkdirp(this.props.destinationRoot + 'app/common/components/exceptions');
+		mkdirp(this.props.destinationRoot + 'app/common/components/header');
+		mkdirp(this.props.destinationRoot + 'app/common/env');
 
 		if (this.props.generateAuth) {
-			mkdirp('app/common/features');
-			mkdirp('app/common/features/auth');
-			mkdirp('app/common/features/auth/signin');
-			mkdirp('app/common/features/auth/signup');
+			mkdirp(this.props.destinationRoot + 'app/common/features');
+			mkdirp(this.props.destinationRoot + 'app/common/features/auth');
+			mkdirp(this.props.destinationRoot + 'app/common/features/auth/signin');
+			mkdirp(this.props.destinationRoot + 'app/common/features/auth/signup');
 		}
 		
 		if (this.props.useI18n) {
-			mkdirp('app/common/i18n');
+			mkdirp(this.props.destinationRoot + 'app/common/i18n');
 		}
 
 		//----
@@ -114,19 +131,19 @@ module.exports = yeoman.generators.Base.extend({
 
 		this.fs.copyTpl(
 			this.templatePath('index.html'),
-			this.destinationPath('index.html'),
+			this.destinationPath( 'index.html'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('assetsfiles.json'),
-			this.destinationPath('assetsfiles.json'),
+			this.destinationPath( 'assetsfiles.json'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('app/app.js'),
-			this.destinationPath('app/app.js'),
+			this.destinationPath( 'app/app.js'),
 			this
 		);
 
@@ -139,38 +156,38 @@ module.exports = yeoman.generators.Base.extend({
 		if (this.props.useI18n) {
 			this.fs.copyTpl(
 				this.templatePath('app/common/i18n/resources.json'),
-				this.destinationPath('app/common/i18n/resources_' + (this.props.defaultLang != 'en' ? 'en' : 'pt') + '.json'),
+				this.destinationPath( 'app/common/i18n/resources_' + (this.props.defaultLang != 'en' ? 'en' : 'pt') + '.json'),
 				this
 			);
 		}
 
 		this.fs.copyTpl(
 			this.templatePath('app/common/components/components.js'),
-			this.destinationPath('app/common/components/components.js'),
+			this.destinationPath( 'app/common/components/components.js'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('app/common/components/header/header.html'),
-			this.destinationPath('app/common/components/header/header.html'),
+			this.destinationPath( 'app/common/components/header/header.html'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('_package.json'),
-			this.destinationPath('package.json'),
+			this.destinationPath( 'package.json'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('_bower.json'),
-			this.destinationPath('bower.json'),
+			this.destinationPath( 'bower.json'),
 			this
 		);
 
 		this.fs.copyTpl(
 			this.templatePath('mocks/config.json'),
-			this.destinationPath('mocks/config.json'),
+			this.destinationPath( 'mocks/config.json'),
 			this
 		);
 
@@ -179,7 +196,7 @@ module.exports = yeoman.generators.Base.extend({
 		
 		this.fs.copy(
 			this.templatePath('version.tpl.json'),
-			this.destinationPath('version.tpl.json')
+			this.destinationPath( 'version.tpl.json')
 		);
 		
 		if (this.props.generateAuth) {
@@ -195,7 +212,7 @@ module.exports = yeoman.generators.Base.extend({
 			
 			this.fs.copy(
 				this.templatePath('app/common/features/auth/signup/signup-ctrl.js'),
-				this.destinationPath('app/common/features/auth/signup/signup-ctrl.js')
+				this.destinationPath( 'app/common/features/auth/signup/signup-ctrl.js')
 			);
 			this.fs.copyTpl(
 				this.templatePath('app/common/features/auth/signup/signup.html'),
@@ -206,21 +223,21 @@ module.exports = yeoman.generators.Base.extend({
 			// mocks
 			this.fs.copy(
 				this.templatePath('mocks/auth/admin.json'),
-				this.destinationPath('mocks/auth/admin.json')
+				this.destinationPath( 'mocks/auth/admin.json')
 			);
 			this.fs.copy(
 				this.templatePath('mocks/auth/fail.json'),
-				this.destinationPath('mocks/auth/fail.json')
+				this.destinationPath( 'mocks/auth/fail.json')
 			);
 			this.fs.copy(
 				this.templatePath('mocks/auth/user.json'),
-				this.destinationPath('mocks/auth/user.json')
+				this.destinationPath( 'mocks/auth/user.json')
 			);
 		}
 
 		this.fs.copy(
 			this.templatePath('app/common/env/common-env.develop.json'),
-			this.destinationPath('app/common/env/common-env.develop.json')
+			this.destinationPath( 'app/common/env/common-env.develop.json')
 		);
 		this.fs.copy(
 			this.templatePath('app/common/env/common-env.release.json'),
@@ -228,16 +245,16 @@ module.exports = yeoman.generators.Base.extend({
 		);
 		this.fs.copy(
 			this.templatePath('app/common/env/common-env.master.json'),
-			this.destinationPath('app/common/env/common-env.master.json')
+			this.destinationPath( 'app/common/env/common-env.master.json')
 		);
 		this.fs.copy(
 			this.templatePath('app/common/env/common-env.tpl.json'),
-			this.destinationPath('app/common/env/common-env.tpl.json')
+			this.destinationPath( 'app/common/env/common-env.tpl.json')
 		);
 
 		this.fs.copy(
 			this.templatePath('app/common/components/exceptions/exceptions.js'),
-			this.destinationPath('app/common/components/exceptions/exceptions.js')
+			this.destinationPath( 'app/common/components/exceptions/exceptions.js')
 		);
 
 		this.fs.copy(
@@ -257,12 +274,12 @@ module.exports = yeoman.generators.Base.extend({
 
 		this.fs.copy(
 			this.templatePath('gitignore'),
-			this.destinationPath('.gitignore')
+			this.destinationPath( '.gitignore')
 		);
 
 		this.fs.copy(
 			this.templatePath('_Gruntfile.js'),
-			this.destinationPath('Gruntfile.js')
+			this.destinationPath( 'Gruntfile.js')
 		);
 	},
 

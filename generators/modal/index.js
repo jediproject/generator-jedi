@@ -4,6 +4,7 @@ var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
 var baseutil = require('../base-util.js');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 String.prototype.capitalize = function() {
     return s(this).capitalize().value();
@@ -14,6 +15,9 @@ String.prototype.decapitalize = function() {
 }
 
 module.exports = yeoman.generators.Base.extend({
+    
+  _optionOrPrompt: optionOrPrompt,
+    
   prompting: function () {
     var done = this.async();
 
@@ -41,12 +45,17 @@ module.exports = yeoman.generators.Base.extend({
         message: 'What\'s the controller name (e.g.: SelectCustomer)?'
       },
 	   {
-      name: 'params',
-      message: 'What are the parameters (*, e.g.: name, group)?',
-	  default: ''
-    }];
+        name: 'params',
+        message: 'What are the parameters (*, e.g.: name, group)?',
+        default: ''
+      },
+      {
+	    name: 'destinationRoot',
+		message: 'What\'s the destination root?',
+		default: '.'
+       }];
 
-    this.prompt(prompts, function (props) {
+    this._optionOrPrompt(prompts, function (props) {
       this.s = s;
 	  this.props = props;
 	  this.props.directiveName = 'app' + this.props.module.toLowerCase().capitalize();

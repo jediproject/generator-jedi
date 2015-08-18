@@ -4,6 +4,7 @@ var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
 var baseutil = require('../base-util.js');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 String.prototype.capitalize = function() {
     return s(this).capitalize().value();
@@ -14,6 +15,8 @@ String.prototype.decapitalize = function() {
 }
 
 module.exports = yeoman.generators.Base.extend({
+    _optionOrPrompt: optionOrPrompt,
+    
   initializing: function (args, options) {
     this.argument('arguments', {
       required: false,
@@ -55,9 +58,14 @@ module.exports = yeoman.generators.Base.extend({
   	  {
         name: 'controller',
         message: 'What\'s the controller name (e.g.: OrderManager)?'
-      }];
+      },
+      {
+	    name: 'destinationRoot',
+		message: 'What\'s the destination root?',
+		default: '.'
+       }];
 
-      this.prompt(prompts, function (props) {
+      this._optionOrPrompt(prompts, function (props) {
         this.props = props;
         done();
       }.bind(this));

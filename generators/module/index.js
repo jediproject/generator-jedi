@@ -4,8 +4,11 @@ var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
 var baseutil = require('../base-util.js');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 module.exports = yeoman.generators.Base.extend({
+  _optionOrPrompt: optionOrPrompt,    
+    
   initializing: function (args, options) {
     this.argument('moduleName', {
       required: false,
@@ -44,10 +47,15 @@ module.exports = yeoman.generators.Base.extend({
           name: 'useI18n',
           message: 'Would you like to use the i18n component?',
           default: true
-        }
+        },
+      {
+	    name: 'destinationRoot',
+		message: 'What\'s the destination root?',
+		default: '.'
+       }
       ];
 
-      this.prompt(prompts, function (props) {
+      this._optionOrPrompt(prompts, function (props) {
         this.props = props;
         done();
       }.bind(this));
