@@ -1,9 +1,9 @@
 {
-  "name": "generator-ng-jedi-ref-arch",
-  "version": "0.0.1",
-  "description": "Angular Jedi Project Reference Architecture Generator",
-  "license": "LGPL",
-  "main": [
+    "name": "generator-ng-jedi-ref-arch",
+    "version": "0.0.1",
+    "description": "Angular Jedi Project Reference Architecture Generator",
+    "license": "LGPL",
+    "main": [
     "app/index.js",
     "controller/index.js",
     "modal/index.js",
@@ -11,19 +11,26 @@
     "feature/index.js",
     "test/index.js"
   ],
-  "repository": "https://github.com/ng-jedi/generator-ng-jedi-ref-arch",
-  "author": {
-    "name": "Fábio Henrique da Silva Viana",
-    "email": "fabioviana.bh@gmail.com",
-    "url": "http://ng-jedi.github.io/ref-arch/"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "files": [
+    "repository": {
+        "type":"git",
+        "url":"https://github.com/ng-jedi/generator-ng-jedi-ref-arch"
+    },
+    "author": {
+        "name": "Fábio Henrique da Silva Viana",
+        "email": "fabioviana.bh@gmail.com",
+        "url": "http://ng-jedi.github.io/ref-arch/"
+    },
+    "engines": {
+        "node": "0.12.2"
+    },
+    "scripts": {
+        "test": "mocha",
+        "start": "node server.js"
+    },
+    "files": [
     "generators"
   ],
-  "keywords": [
+    "keywords": [
     "yeoman-generator",
     "angular",
     "generator",
@@ -32,21 +39,21 @@
     "scaffold",
     "crud-generator"
   ],
-  "dependencies": {
-    "body-parser": "^1.13.3",
-    "chalk": "^1.0.0",
-    "express": "^4.13.3",
-    "fs-json": "^0.1.2",
-    "html-wiring": "1.2.0",
-    "lodash": "^3.10.1",
-    "mkdirp": "^0.5.1",
-    "path": "^0.11.14",
-    "underscore.string": "^3.1.1",
-    "yeoman-generator": "^0.19.0",
-    "yeoman-option-or-prompt": "^1.0.2",
-    "yosay": "^1.0.2"
-  },
-  "devDependencies": {
-    "mocha": "*"
-  }
+    "dependencies": {
+        "body-parser": "^1.13.3",
+        "chalk": "^1.0.0",
+        "express": "^4.13.3",
+        "fs-json": "^0.1.2",
+        "html-wiring": "1.2.0",
+        "lodash": "^3.10.1",
+        "mkdirp": "^0.5.1",
+        "path": "^0.11.14",
+        "underscore.string": "^3.1.1",
+        "yeoman-generator": "^0.19.0",
+        "yeoman-option-or-prompt": "^1.0.2",
+        "yosay": "^1.0.2"
+    },
+    "devDependencies": {
+        "mocha": "*"
+    }
 }
