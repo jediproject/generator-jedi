@@ -14,24 +14,7 @@ jd.factory.newController('app.generator.controllerCtrl', ['$scope', 'jedi.dialog
     vm.controllerModel = {};
     //#endregion
 
-    vm.controllerModel.languages = [{
-        id: 1,
-        value: 'pt'
-            }, {
-        id: 2,
-        value: 'en'
-            }
-        ];
-    
-    vm.controllerModel.yesno = [{
-        id: 1,
-        value: 'true'
-            }, {
-        id: 2,
-        value: 'false'
-            }
-        ];
-    
+  
 
     //#region Events binds
     vm.generate = generate;
@@ -40,12 +23,21 @@ jd.factory.newController('app.generator.controllerCtrl', ['$scope', 'jedi.dialog
 
     //#region Events definitions
     function generate() {
-        var params =  vm.controllerModel.params;
+        var params =  this;  
         
-        service.post(params).then(function(console){
-				vm.controllerModel.console = console;
-		});
+        params.model = {
+           module : service.copy(vm.controllerModel.params),
+            action : 'new'
+        };
+    
+        
+        params.model.module.post().then(function(msgConsole){
+                console.log("MENSAGEM CONSOLE: " + msgConsole);
+                vm.controllerModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+                alertHelper.addInfo('Operação realizada com sucesso!');
+        });
     }
     //#endregion
+
 
 }]);

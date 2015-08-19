@@ -53,7 +53,6 @@ jd.factory.newController('app.generator.bootstrapCtrl', ['$scope', 'jedi.dialogs
                 vm.bootstrapModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
                 alertHelper.addInfo('Operação realizada com sucesso!');
         });
-        
     }
     //#endregion
 

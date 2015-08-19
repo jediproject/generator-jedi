@@ -40,12 +40,21 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     //#region Events definitions
     function generate() {
-        var params =  vm.featureModel.params;
+        var params =  this;  
         
-        service.post(params).then(function(console){
-				vm.featureModel.console = console;
-		});
+        params.model = {
+           module : service.copy(vm.featureModel.params),
+            action : 'new'
+        };
+    
+        
+        params.model.module.post().then(function(msgConsole){
+                console.log("MENSAGEM CONSOLE: " + msgConsole);
+                vm.featureModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+                alertHelper.addInfo('Operação realizada com sucesso!');
+        });
     }
     //#endregion
+
 
 }]);

@@ -40,11 +40,19 @@ jd.factory.newController('app.generator.modalCtrl', ['$scope', 'jedi.dialogs.Ale
 
     //#region Events definitions
     function generate() {
-        var params =  vm.modalModel.params;
+        var params =  this;  
         
-        service.post(params).then(function(console){
-				vm.modalModel.console = console;
-		});
+        params.model = {
+           module : service.copy(vm.modalModel.params),
+            action : 'new'
+        };
+    
+        
+        params.model.module.post().then(function(msgConsole){
+                console.log("MENSAGEM CONSOLE: " + msgConsole);
+                vm.modalModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+                alertHelper.addInfo('Operação realizada com sucesso!');
+        });
     }
     //#endregion
 
