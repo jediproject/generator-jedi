@@ -35,6 +35,7 @@
   "dependencies": {
     "body-parser": "^1.13.3",
     "chalk": "^1.0.0",
+    "express": "^4.13.3",
     "fs-json": "^0.1.2",
     "html-wiring": "1.2.0",
     "lodash": "^3.10.1",

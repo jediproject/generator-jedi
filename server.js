@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var generator = require('./server/controller/generator');
+var generator = require('./generators/gui/server/controller/generator');
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -10,15 +10,15 @@ app.use(bodyParser.json())
 
 
 
-app.configure(function () {
-    app.use(bodyParser.urlencoded({
-        extended: true
-    }));
-    app.use(bodyParser.json());
-});
+//app.configure(function () {
+//    app.use(bodyParser.urlencoded({
+//        extended: true
+//    }));
+//    app.use(bodyParser.json());
+//});
 
 
-app.use(express.static(__dirname + '/client')); 
+app.use(express.static(__dirname + '/generators/gui/client')); 
 
 app.post('/api/v1/generator/bootstrap', generator.bootstrap);
 app.post('/api/v1/generator/controller', generator.controller);
