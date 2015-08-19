@@ -9,7 +9,7 @@ module.exports = {
 
 
 function createStructure (modulename, submodule, controller) {
-  var dest = 'app/' + modulename.toLowerCase() + '/features/';
+  var dest =  'app/' + modulename.toLowerCase() + '/features/';
 	if (submodule) {
 		dest += submodule.toLowerCase() + '/';
 	}

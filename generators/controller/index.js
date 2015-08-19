@@ -73,6 +73,8 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+    this.destinationRoot(this.props.destinationRoot);
+      
     // Cria a estrutura básica de diretórios   
     var dest = baseutil.createStructure(this.props.module, this.props.submodule, this.props.controller);
 

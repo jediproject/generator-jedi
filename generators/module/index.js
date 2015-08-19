@@ -63,16 +63,17 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+      
+    this.destinationRoot(this.props.destinationRoot);
     //----
     // structure
-
-    mkdirp('app/'+this.props.moduleName.toLowerCase());
-    mkdirp('app/'+this.props.moduleName.toLowerCase()+'/components');
-    mkdirp('app/'+this.props.moduleName.toLowerCase()+'/env');
-    mkdirp('app/'+this.props.moduleName.toLowerCase()+'/features');
+    mkdirp(this.props.destinationRoot +'app/'+this.props.moduleName.toLowerCase());
+    mkdirp(this.props.destinationRoot +'app/'+this.props.moduleName.toLowerCase()+'/components');
+    mkdirp(this.props.destinationRoot +'app/'+this.props.moduleName.toLowerCase()+'/env');
+    mkdirp(this.props.destinationRoot +'app/'+this.props.moduleName.toLowerCase()+'/features');
 
     if (this.props.useI18n) {
-      mkdirp('app/'+this.props.moduleName.toLowerCase()+'/i18n');
+      mkdirp(this.props.destinationRoot +'app/'+this.props.moduleName.toLowerCase()+'/i18n');
     }
 
     //----
