@@ -1,0 +1,54 @@
+<form jd-panel ng-controller="app.generator.bootstrapCtrl as bootstrapCtrl" name="bootstrapCtrlForm" jd-title=" Bootstrap">
+
+    <div jd-panel jd-title="Parameters" jd-toggle>
+        <div class="row">
+            <input jd-input required jd-label="App name" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.appName" />
+
+            <input jd-input="3" required jd-label="App title" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.appTitle" />
+
+            <input jd-input="3" required jd-label="Principal module name" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.moduleName" />
+
+            <input jd-input="3" required jd-label="Destination root" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.destinationRoot" />
+        </div>
+        <div class="row">
+
+
+             <select jd-input="3" jd-label="Principal language" ng-model="bootstrapCtrl.bootstrapModel.params.defaultLang"
+                    jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.languages">
+                <option value="" jd-i18n>Selecione</option>
+            </select>
+            
+            <select jd-input="3" jd-label="i18n component?" ng-model="bootstrapCtrl.bootstrapModel.params.useI18n"
+                    jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.yesno">
+                <option value="" jd-i18n>Selecione</option>
+            </select>
+            
+            <select jd-input="3" jd-label="Breadcrumb component?" ng-model="bootstrapCtrl.bootstrapModel.params.useBreadcrumb"
+                    jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.yesno">
+                <option value="" jd-i18n>Selecione</option>
+            </select>
+            
+            <select jd-input="3" jd-label="Authentication page?" ng-model="bootstrapCtrl.bootstrapModel.params.generateAuth"
+                    jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.yesno">
+                <option value="" jd-i18n>Selecione</option>
+            </select>
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <button ng-click="bootstrapCtrl.generate()" jd-i18n>generate</button>
+            </div>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+
+    <div jd-panel jd-title="Output console" jd-toggle>
+        <div class="row">
+            <textarea jd-input="12" jd-lg-size="10" readonly ng-model="bootstrapCtrl.bootstrapModel.msgConsole" required rows="20"></textarea>
+        </div>
+        <!--Fim div jd-panel -->
+</form>

@@ -8,7 +8,8 @@ var path = require('path');
 var fs = require('fs');
 var s = require("underscore.string");
 var baseutil = require('../base-util.js');
-var _ = require('yeoman-generator/node_modules/lodash')
+var _ = require('yeoman-generator/node_modules/lodash');
+var optionOrPrompt = require('yeoman-option-or-prompt');
 
 String.prototype.capitalize = function () {
     return s(this).capitalize().value();
@@ -21,6 +22,8 @@ String.prototype.decapitalize = function () {
 
 
 module.exports = yeoman.generators.Base.extend({
+    
+    _optionOrPrompt: optionOrPrompt,
     prompting: function () {
         var done = this.async();
 
@@ -37,7 +40,7 @@ module.exports = yeoman.generators.Base.extend({
         }
     ];
 
-        this.prompt(prompts, function (props) {
+        this._optionOrPrompt(prompts, function (props) {
             this.configFile = props.configFile;
             done();
         }.bind(this));
