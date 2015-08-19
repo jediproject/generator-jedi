@@ -3,6 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var generator = require('./generators/gui/server/controller/generator');
 
+app.set('port', (process.env.PORT || 8080));
+
 
 app.use(bodyParser.urlencoded({ extended: true }))
 // parse application/json
@@ -27,5 +29,6 @@ app.post('/api/v1/generator/module', generator.module);
 app.post('/api/v1/generator/feature', generator.feature);
 
 
-app.listen(8080);
-console.log('Listening on port 8080...');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});

@@ -19,10 +19,7 @@
         "name": "Fábio Henrique da Silva Viana",
         "email": "fabioviana.bh@gmail.com",
         "url": "http://ng-jedi.github.io/ref-arch/"
-    },
-    "engines": {
-        "node": "0.12.2"
-    },
+    }.
     "scripts": {
         "test": "mocha",
         "start": "node server.js"
