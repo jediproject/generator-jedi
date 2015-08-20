@@ -4,7 +4,6 @@
     "description": "Angular Jedi Project Reference Architecture Generator",
     "license": "LGPL",
     "main": [
-    "server.js"
     "app/index.js",
     "controller/index.js",
     "modal/index.js",
