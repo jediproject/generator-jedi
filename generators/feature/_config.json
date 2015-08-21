@@ -1,7 +1,7 @@
 {
+  "featureName": "<nome da funcionalidade>",
   "moduleName": "<nome do módulo>",
   "submodule": "<nome do sub módulo (opcional)>",
-  "featureName": "<nome da funcionalidade>",
   "featureTitle": {
     "pt": "<título da funcionalidade em português>",
     "en": "<título da funcionalidade em inglês>"
@@ -9,64 +9,100 @@
   "APIAddress": "<Endereço da API>",
   "feature": {
     "type": "<tipo da feature:  crud|modal>",
-    "domains": [
+    "fields": [
       {
         "entity": {
           "fieldName": "<Nome do campo>",
           "fieldType": "<string|int|dobule|boolean|date|date-time|object|list>",
-          "reference": "<objectName|nativeType  (preenchido se o fieldType for object ou list)>"
-        },
-        "validator": {
-          "requiredField": true,
-          "maxCharacter": 10,
-          "minCharacter": 0
+          "cardinality": "<one-to-one|one-to-many>"
         },
         "userInterface": {
-          "fieldMask": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-          "staticSelect":[{
-                
-          }],
-          "dinamicSelect":{
-            
+          "geral": {
+            "fieldMask": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean|radio-button|check-box >",
+            "staticSelect": [
+              {
+                "id": 1,
+                "value": "value"
+              }
+            ],
+            "dinamicSelect": {
+              "url": "http://yourdomain.com/api/resource",
+              "values": [
+                {
+                  "id": 1,
+                  "value": "<resource.property >"
+                }
+              ]
+            },
+            "modalSelect": {
+              "directive": "<nome da diretiva>",
+              "interpoleteFormat": "<{expressão}>",
+              "params": [
+                {
+                  "key": "",
+                  "value": ""
+                }
+              ]
+            },
+            "autoCompleteSelect": {
+              "url": "http://yourdomain.com/api/resource",
+              "columns": [
+                {
+                  "columnName": "<nome da coluna>",
+                  "value": "<resourse.property>"
+                }
+              ],
+              "pagination": true
+            },
+            "fieldLabel": {
+              "pt": "<nome do campo em português>",
+              "en": "<nome do campo em inglês>"
+            },
+            "fieldHint": {
+              "pt": "<hint para o campo em português (opcional)>",
+              "en": "<hint para o campo em inglês (opcional)>"
+            },
+            "messageRequired": {
+              "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+              "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+            },
+            "newLine": false,
+            "validator": {
+              "requiredField": true,
+              "maxCharacter": 10,
+              "minCharacter": 0
+            },
+            "size": "<col-md-1|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2>"
           },
-          "modalSelect":{
-            
+          "form": {
+            "visibleToTheUser": true,
+            "fieldEditableFor": [
+              "create",
+              "update"
+            ],
+            "dependsOn": [
+              "<fieldName>",
+              "<fieldName>",
+              "<fieldName>"
+            ]
           },
-          "autoCompleteSelect":{
-            
-          },
-          "dependsOn":["<fieldName>", "<fieldName>", "<fieldName>"],
-          "fieldLabel": {
-            "pt": "<nome do campo em português>",
-            "en": "<nome do campo em inglês>"
-          },
-          "fieldHint": {
-            "pt": "<hint para o campo em português (opcional)>",
-            "en": "<hint para o campo em inglês (opcional)>"
-          },
-          "messageRequired": {
-            "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-            "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-          },
-          "fieldEditableFor": [
-            "create",
-            "update"
+          "filters": [
+            {
+              "showInFilter": true,
+              "dependsOn": [
+                "<fieldName>",
+                "<fieldName>",
+                "<fieldName>"
+              ]
+            }
           ],
-          "visibleToTheUser": true,
-          "usedToDelete": false, 
-          "newLine": false,
-          "Sizexxxx": "<col-md-1|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2|col-md-2>"
+          "results": [
+            {
+              "showInResult": true,
+              "usedToDelete": false
+            }
+          ]
         }
-      }
-    ],
-    "filters": [
-      {
-        "fieldName": "<Nome do campo>"
-      }
-    ],
-    "results": [
-      {
-        "fieldName": "<Nome do campo>"
       }
     ]
   }

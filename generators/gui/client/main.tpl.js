@@ -36,6 +36,7 @@ require.config({
         'app-common-env': 'app/common/env/common-env.json.js',
         'app-common-components': 'app/common/components/components.js',
         'app-common-components-exceptions': 'app/common/components/exceptions/exceptions.js',
+        'app-form-directives': 'app/common/components/directives/form-directive.js',
 
         //## 3rd party angular scripts
         'angular': 'assets/libs/angular/angular.js',
@@ -63,7 +64,8 @@ require.config({
         'moment-locale': 'assets/libs/moment/pt.js',
         'slimscroll': 'assets/libs/slimscroll/jquery.slimscroll.js',
         'json': 'assets/libs/requirejs-plugins/json.js',
-        'text': 'assets/libs/requirejs-plugins/text.js'
+        'text': 'assets/libs/requirejs-plugins/text.js',
+        'jquery-steps' : 'assets/libs/jquery-steps/jquery.steps.js'
     },
 
     // Add angular modules that does not support AMD out of the box, put it in a shim
@@ -91,7 +93,8 @@ require.config({
         "angular-file-upload": ["angular"],
         "restangular": ["lodash", "angular"],
         "angular-loading-bar": ["angular"],
-        'angular-dynamic-locale': ["angular"]
+        'angular-dynamic-locale': ["angular"],
+        "jquery-steps":["jquery"]
     },
 
     // kick start application

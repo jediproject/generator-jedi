@@ -295,6 +295,10 @@
 		{
 			"src": "bower_components/ng-jedi-layout/validationtooltip.js",
 			"dest": "assets/libs/ng-jedi-layout/validationtooltip.js"
-		}
+		},
+        {
+            "src": "bower_components/jquery-steps/build/jquery.steps.js",
+            "dest": "assets/libs/jquery-steps/jquery.steps.js"
+        }
 	]
 }
