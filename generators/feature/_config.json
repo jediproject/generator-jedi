@@ -86,22 +86,18 @@
               "<fieldName>"
             ]
           },
-          "filters": [
-            {
-              "showInFilter": true,
-              "dependsOn": [
-                "<fieldName>",
-                "<fieldName>",
-                "<fieldName>"
-              ]
-            }
-          ],
-          "results": [
-            {
-              "showInResult": true,
-              "usedToDelete": false
-            }
-          ]
+          "filter": {
+            "showInFilter": true,
+            "dependsOn": [
+              "<fieldName>",
+              "<fieldName>",
+              "<fieldName>"
+            ]
+          },
+          "result": {
+            "showInResult": true,
+            "usedToDelete": false
+          }
         }
       }
     ]
