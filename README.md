@@ -1,4 +1,4 @@
-# generator-ng-jedi-ref-arch
+# generator-jedi
 
 O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://jediproject.github.io).
 
@@ -57,8 +57,8 @@ bower install [componente] --save
 	{
 	"files": [
 		{
-			"src": "bower_components//[componente]//[arquivo]",
-			"dest": "assets//[tipo: css|libs|img]//[componente]//[arquivo]"
+			"src": "bower_components/[componente]/[arquivo]",
+			"dest": "assets/[tipo: css|libs|img]/[componente]/[arquivo]"
 		}
 		...
 	]}
@@ -71,7 +71,7 @@ bower install [componente] --save
 	```json
 	{
 		paths: {
-			"[componente]": "assets//[tipo: css|libs|img]//[componente]//[arquivo].js"
+			"[componente]": "assets/[tipo: css|libs|img]/[componente]/[arquivo].js"
 			...
 		},
 		shim: {
@@ -87,13 +87,13 @@ Para utilizar o gerador, siga os passos:
 
 	```bash
 	npm install -g yo
-	npm install -g generator-ng-jedi-ref-arch
+	npm install -g generator-jedi
 	```
 
 2. Execução do gerador principal
 
 	```bash
-	yo ng-jedi-ref-arch
+	yo generator-jedi
 	```
 
 	- informe o nome do projeto, título, nome do módulo padrão, linguagem padrão e relação de componentes que deseja gerar.
@@ -107,7 +107,7 @@ Para utilizar o gerador, siga os passos:
 3. Execução do gerador de controller
 
 	```bash
-	yo ng-jedi-ref-arch:controller
+	yo generator-jedi:controller
 	```
 
 	- informe o título da tela, nome do módulo, nome do submódulo e nome do controlador.
@@ -116,7 +116,7 @@ Para utilizar o gerador, siga os passos:
 4. Execução do gerador de modal
 
 	```bash
-	yo ng-jedi-ref-arch:modal
+	yo generator-jedi:modal
 	```
 
 	- informe o título da modal, nome do módulo, nome do submódulo e nome do controlador.
@@ -125,7 +125,7 @@ Para utilizar o gerador, siga os passos:
 5. Execução do gerador de módulo
 
 	```bash
-	yo ng-jedi-ref-arch:module
+	yo generator-jedi:module
 	```
 
 	- informe o nome do módulo, linguagem padrão e se deve utilizar i18n
@@ -134,7 +134,7 @@ Para utilizar o gerador, siga os passos:
 6. Execução do gerador de feature
 
 	```bash
-	yo ng-jedi-ref-arch:feature
+	yo generator-jedi:feature
 	```
     - Informe o caminho do arquivo de config.
     - Exemplo genérico do arquivo de config:
@@ -210,10 +210,10 @@ Para utilizar o gerador, siga os passos:
 		      }
 		    ]
 		  }
-	}		
-	```    
+	}
+	```
 
-Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo.github.io) criado utilizando este gerador.
+## Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo.github.io) criado utilizando este gerador.
 
 ## License
 
