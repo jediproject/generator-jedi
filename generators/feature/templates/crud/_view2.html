@@ -1,4 +1,5 @@
 <form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.submodule) {%><%= config.submodule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
+    
     <div class="padding-bottom">
         <% if(config.feature.filters)  {%>
             <% config.feature.filters.forEach(function(filter){ %>
@@ -7,8 +8,9 @@
                 <% }%>       
             <% }) %>
         <% }%>
-    </div>
-    <div class="buttons">
+    </div> 
+                
+    <div class="buttons" >
         <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.filter()" jd-i18n>Filtrar</button>
         <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.clear()" jd-i18n>Limpar</button>
         <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.openCreateModal()" jd-i18n>Novo</button>

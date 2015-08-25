@@ -3,7 +3,7 @@
 /*
     Controlador da tela de <%= config.featureName%>.
 */
-jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config.submodule) {%><%= config.submodule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl', [ 'jedi.dialogs.AlertHelper', '<%= config.moduleName%>RestService', 'jedi.dialogs.ModalHelper', '$log', function (alertHelper, <%= config.moduleName%>RestService, modalHelper, $log) {
+jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config.subModule) {%><%= config.subModule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl', [ 'jedi.dialogs.AlertHelper', '<%= config.moduleName%>RestService', 'jedi.dialogs.ModalHelper', '$log', function (alertHelper, <%= config.moduleName%>RestService, modalHelper, $log) {
 
     //#region Service initialize
     var service = <%= config.moduleName%>RestService.all('<%= config.APIAddress%>');
@@ -30,15 +30,15 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
     //#region Events definitions
     function filter() {
         var _filter = {};
-         <% if(config.feature.filters)  {%>
-            <% config.feature.filters.forEach(function(filter){ %>
-             
-             if (vm.<%= config.featureName%>Model.<%= filter.fieldName%>Filter && vm.<%= config.featureName%>Model.<%= filter.fieldName%>Filter.trim() != '') {
-                 _filter.<%= filter.fieldName%> = vm.<%= config.featureName%>Model.<%= filter.fieldName%>Filter;
-             }
-            <% }) %>
-         <% }%>
+        <% config.feature.fields.forEach(function(field){ %>
+              <% if (field.userInterface.filter.showInFilter) {%>
+                if (vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter && vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter.trim() != '')                 {
+                 _filter.<%= field.entity.fieldName%> = vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter;
+                }
+             <% }%>
+        <% }) %>
         
+
         
         $log.debug('Realizando busca de sistemas com filtros:');
         $log.debug(_filter);
@@ -50,23 +50,23 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
 
     function clear() {
         $log.debug('Limpando filtros');
-             
-        <% if(config.feature.filters)  {%>
-            <% config.feature.filters.forEach(function(filter){ %>
-                vm.<%= config.featureName%>Model.<%= filter.fieldName%>Filter = null;
-            <% }) %>                            
-        <% }%>
-                                        
+
+        <% config.feature.fields.forEach(function(field){ %>
+              <% if (field.userInterface.filter.showInFilter) {%>
+                  vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter = null;
+             <% }%>
+        <% }) %>
+                                            
         vm.filter();
     }
 
     function remove(<%= config.featureName%>) {
         alertHelper.confirm('Deseja realmente excluir o registro ?', function () {
             $log.debug('Removendo: <%= config.featureName%>');
-            <% if(config.feature.domains)  {%> 
-                 <% config.feature.domains.forEach(function(domain){ %>
-                     <% if (domain.key == true) {%>
-                        <%= config.featureName%>.remove({ id: <%= config.featureName%>.<%= domain.fieldName%> }).then(function () {
+            <% if(config.feature.fields)  {%> 
+                 <% config.feature.fields.forEach(function(field){ %>
+                     <% if (field.userInterface.result.usedToDelete) {%>
+                        <%= config.featureName%>.remove({ id: <%= config.featureName%>.<%= field.entity.fieldName%> }).then(function () {
                 vm.<%= config.featureName%>Model.<%= config.featureName%>s = _.without(vm.<%= config.featureName%>Model.<%= config.featureName%>s, <%= config.featureName%>);             
                      <% }%>         
                  <% }) %>

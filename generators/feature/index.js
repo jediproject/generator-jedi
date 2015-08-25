@@ -34,14 +34,21 @@ module.exports = yeoman.generators.Base.extend({
 
         var prompts = [
             {
+				type: 'confirm',
+				name: 'loadFromFile',
+				message: 'Would you like load json config from file?',
+				default: true
+			},
+            {
                 name: 'configFile',
                 message: 'Configuration file',
                 default: 'config.json'
-        }
+            }
     ];
 
         this._optionOrPrompt(prompts, function (props) {
             this.configFile = props.configFile;
+            this.config = props.configFile;
             done();
         }.bind(this));
 
@@ -50,12 +57,13 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: function () {
       
-        // Load json config from file
-        this.config = JSON.parse(fs.readFileSync(path.join(this.configFile), 'utf8'));
-        var dest = baseutil.createStructure(this.config.moduleName, this.config.submodule, this.config.featureName);
+        if (this.props.loadFromFile) {
+            // Load json config from file
+            this.config = JSON.parse(fs.readFileSync(path.join(this.configFile), 'utf8'));
+        }
         
+        var dest = baseutil.createStructure(this.config.moduleName, this.config.subModule, this.config.featureName);
         
-      
         
         // Verifica se é para gerar código baseado em crud
         if (this.config.feature.type == 'crud'){
@@ -81,13 +89,13 @@ module.exports = yeoman.generators.Base.extend({
     },
     
     writeMenu: function(){    
-        var hook = '<!--#===== yeoman menu hook =====#-->',
+        var hook = '<!--#hook.yeoman.menu# do not remove this line-->',
             path = 'app/common/components/header/header.html',
             file = require("html-wiring").readFileAsString(path);
         
         var insert = '<li><a href="#/' + this.config.moduleName + '/';
-        if (this.config.submodule){
-               insert = insert  + this.config.submodule + '/';
+        if (this.config.subModule){
+               insert = insert  + this.config.subModule + '/';
         }
         insert = insert + this.config.featureName + '" jd-i18n>' + this.config.featureName + '</a></li>';
         
@@ -98,31 +106,31 @@ module.exports = yeoman.generators.Base.extend({
     
     
     writeRoutes: function(){
-        var hook = '//#===== yeoman route hook =====#',
+        var hook = '//#hook.yeoman.route# do note remove this line',
             path = 'app/app.js',
             file = require("html-wiring").readFileAsString(path);
         
         
            var insert =   '.when(\'/' + this.config.moduleName +'/';
-           if (this.config.submodule){
-               insert = insert  + this.config.submodule + '/';
+           if (this.config.subModule){
+               insert = insert  + this.config.subModule + '/';
            }
            insert = insert + this.config.featureName + '\', angularAMD.route({ \n';
            insert = insert + 'breadcrumb: [\'' + this.config.moduleName+   '\' , ';
-           if (this.config.submodule){
-               insert = insert + '\'' + this.config.submodule + '\','; 
+           if (this.config.subModule){
+               insert = insert + '\'' + this.config.subModule + '\','; 
            }
            insert = insert + '\'' + this.config.featureName + '\'], \n';
             
            insert = insert + 'templateUrl: jd.factory.getFileVersion(\'app/' + this.config.moduleName + '/features/';
-           if (this.config.submodule){
-               insert = insert + this.config.submodule + '/';
+           if (this.config.subModule){
+               insert = insert + this.config.subModule + '/';
            }
            insert = insert + this.config.featureName + '/' + this.config.featureName + '.html \'),\n';
             
            insert = insert + 'controllerUrl: jd.factory.getFileVersion(\'app/' + this.config.moduleName + '/features/';
-           if (this.config.submodule){
-               insert = insert + this.config.submodule + '/';
+           if (this.config.subModule){
+               insert = insert + this.config.subModule + '/';
            }
            insert = insert + this.config.featureName + '/' + this.config.featureName + '-ctrl.js \')\n }))';    
     

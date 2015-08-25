@@ -1,60 +1,68 @@
-<form jd-panel jd-title="Sistemas" ng-controller="app.security.administration.systemregistration.SystemRegistrationCtrl as systemRegistrationCtrl">
-
+<form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.submodule) {%><%= config.submodule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
+    
     <div jd-panel jd-title="Filtros" jd-toggle>
         <div class="row">
             <input jd-input="3" jd-label="Alias" type="text" ng-model="systemRegistrationCtrl.systemRegistrationModel.aliasFilter" />
             <input jd-input="4" jd-label="Nome" type="text" ng-model="systemRegistrationCtrl.systemRegistrationModel.nameFilter" />
+              
+            <% if(config.feature.fields)  {%>
+                <% config.feature.fields.forEach(function(field){ %>
+                    <% if (field.entity.fieldType === 'text'){%>
+                        <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= filter.entity.fieldName%>Filter" />            
+                    <% }%>       
+                <% }) %>
+            <% }%>  
+            
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-primary" ng-click="systemRegistrationCtrl.filter()" jd-i18n>Filtrar</button>
-                <button class="btn btn-info" ng-click="systemRegistrationCtrl.clear()" jd-i18n>Limpar</button>
-                <button class="btn btn-info" ng-click="systemRegistrationCtrl.openCreateModal()" jd-i18n>Novo</button>
+                <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.filter()" jd-i18n>Filtrar</button>
+                <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.clear()" jd-i18n>Limpar</button>
+                <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.openCreateModal()" jd-i18n>Novo</button>
             </div>
         </div>
     </div>
 
     <div jd-panel jd-title="Resultado" jd-toggle>
-        <table at-table="systemRegistrationCtrl.systemRegistrationModel.systems" at-paginated>
+        <table at-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" at-paginated>    
             <tbody>
                 <tr>
                     <td at-sortable at-attribute="id" at-title="Código"></td>
                     <td at-sortable at-attribute="name" at-title="Nome"></td>
                     <td at-sortable at-attribute="alias" at-title="Alias"></td>
+                    
+                    <% config.feature.fields.forEach(function(field){ %>  
+                        <% if (field.userInterface.result.showInResult) {%>
+                            <td at-sortable at-attribute="<%= field.entity.fieldName%>" at-title="<%= field.userInterface.geral.fieldLabel.pt%>"></td>
+                        <% }%>  
+                     <% }) %>                    
                     <td at-sortable at-attribute="isMenuItem" at-filter="jdBoolToText" at-title="Visível no menu"></td>
                     <td at-title="Ações" class="text-center">
-                        <a href="javascript:;" jd-i18n title="Editar" ng-click="systemRegistrationCtrl.openEditModal(item)"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a href="javascript:;" jd-i18n title="Editar" ng-click="<%= config.featureName%>Ctrl.openEditModal(item)"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;
-                        <a href="javascript:;" jd-i18n title="Excluir" ng-click="systemRegistrationCtrl.remove(item)"><i class=" glyphicon glyphicon-remove"></i></a>
+                        <a href="javascript:;" jd-i18n title="Excluir" ng-click="<%= config.featureName%>Ctrl.remove(item)"><i class=" glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <script type="text/ng-template" id="systemRegistrationEdit.html">
-        <form jd-modal name="form_registrationeditsystem" jd-title="{{systemRegistrationEditCtrl.systemRegistrationEditModel.action == 'edit' ? 'Edição' : 'Inclusão'}}">
-            <div class="row">
-                <input jd-input="6" required jd-label="Alias" type="text" ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.alias" />
-                <input jd-input="6" required jd-label="Código" type="text" data-ng-minlength=2 data-ng-maxlength=2 ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.code" />
-            </div>
+    <script type="text/ng-template" id="<%= config.featureName%>Edit.html">
+        <form jd-modal name="form_<%= config.featureName%>" jd-title="{{<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.action == 'edit' ? 'Edição' : 'Inclusão'}}">
+        <% if(config.feature.fields)  {%>
+            <% config.feature.fields.forEach(function(field){ %>
+                <% if (field.userInterface.form.visibleToTheUser){%>
+                    <% if (field.geral.fieldMask === 'text'){%>
+                           <input jd-input="5" required jd-label="<%= field.userInterface.fieldLabel.pt%>" type="text" ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
+                    <% }%>
+                <% }%>            
+            <% }) %>
+        <% }%> 
+        
 
-            <div class="row">
-                <input jd-input="12" required jd-label="Nome" type="text" ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.name" />
-            </div>
-
-            <div class="row">
-                <input jd-input="12" required jd-label="Descrição" type="text" ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.description" />
-            </div>
-
-            <div class="row">
-                <input jd-input="3" required jd-label="Ordem no menu" type="text" mask="int" ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.displayOrder" />
-                <input jd-input="4" jd-label="Aparece no menu" type="checkbox" ng-model="systemRegistrationEditCtrl.systemRegistrationEditModel.system.isMenuItem" />
-            </div>
-
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-disabled="!form_registrationeditsystem.$valid" ng-click="systemRegistrationEditCtrl.save()" jd-i18n>Salvar</button>
-                <button class="btn btn-info" type="button" jd-dismiss-modal jd-i18n>Cancelar</button>
+             <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-disabled="!form_<%= config.featureName%>.$valid" ng-click="<%= config.featureName%>EditCtrl.save()" jd-i18n>Salvar</button>
+                <button class="btn btn-primary" type="button" jd-dismiss-modal jd-i18n>Cancelar</button>
             </div>
         </form>
     </script>

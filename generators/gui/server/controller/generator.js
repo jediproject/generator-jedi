@@ -80,10 +80,12 @@ exports.module = function(req, res){
 };
 
 exports.feature = function(req, res){
-    console.log('body: ' +JSON.stringify(req.body, null, 2));
     
-    var command = 'yo ng-jedi-ref-arch:feature --force ';
-    var configFile = '--configFile=" ' + req.body + '" ';
+    var body = JSON.stringify(req.body, null, 2);
+    console.log('body: ' +body);
+    
+    var command = 'yo ng-jedi-ref-arch:feature --force --loadFromFile="n" ';
+    var configFile = '--configFile=" ' + body + '" ';
     
     console.log(command + configFile);
     

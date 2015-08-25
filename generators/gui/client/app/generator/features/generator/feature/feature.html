@@ -5,24 +5,24 @@
 
 
 
-            <input jd-input="3" required jd-label="Feature name" type="text" ng-model="featureCtrl.featureModel.params.featureName" />
+            <input jd-input="3" required jd-label="Feature name" type="text" ng-model="featureCtrl.featureModel.json.featureName" />
 
-            <input jd-input="3" required jd-label="Module name" type="text" ng-model="featureCtrl.featureModel.params.moduleName" />
-
-
-            <input jd-input="3" required jd-label="Sub-module name" type="text" ng-model="featureCtrl.featureModel.params.subModuleName" />
+            <input jd-input="3" required jd-label="Module name" type="text" ng-model="featureCtrl.featureModel.json.moduleName" />
 
 
-            <input jd-input="3" required jd-label="Feature title" type="text" ng-model="featureCtrl.featureModel.params.featureTitle" />
+            <input jd-input="3" required jd-label="Sub-module name" type="text" ng-model="featureCtrl.featureModel.json.subModule" />
 
 
-            <input jd-input="3" required jd-label="API address" type="text" ng-model="featureCtrl.featureModel.params.apiAddress" />
+            <input jd-input="3" required jd-label="Feature title" type="text" ng-model="featureCtrl.featureModel.json.featureTitle.pt" />
 
-            <select jd-input="3" jd-label="Feature type" ng-model="featureCtrl.featureModel.params.featureType" jd-options="item.id as item.value for item in featureCtrl.featureModel.featurestype">
+
+            <input jd-input="3" required jd-label="API address" type="text" ng-model="featureCtrl.featureModel.json.apiAddress" />
+
+            <select jd-input="3" jd-label="Feature type" ng-model="featureCtrl.featureModel.json.feature.type" jd-options="item.value as item.value for item in featureCtrl.featureModel.featurestype">
                 <option value="" jd-i18n>Selecione</option>
             </select>
 
-            <input jd-input="3" required jd-label="Destination root " type="text" ng-model="featureCtrl.featureModel.params.destinationRoot" />
+            <input jd-input="3" required jd-label="Destination root " type="text" ng-model="featureCtrl.featureModel.json.destinationRoot" />
 
 
         </div>
@@ -30,21 +30,21 @@
     <!--Fim div jd-panel -->
     <div jd-panel jd-title="Fields" jd-toggle>
         <div class="row">
-            <div data-ui-wizard-form>
+            <div data-ui-wizard-form finished='finished()'>
 
 
                 <h1>Entity</h1>
 
                 <div class="form-group" id="div-entity">
 
-                    <input jd-input="3" required jd-label="Field name" type="text" ng-model="featureCtrl.featureModel.params.fieldName" />
+                    <input jd-input="3" required jd-label="Field name" type="text" ng-model="featureCtrl.featureModel.param.feature.entity.fieldName" />
 
 
-                    <select jd-input="3" jd-label="Field type" ng-model="featureCtrl.featureModel.params.fieldType" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldstype">
+                    <select jd-input="3" jd-label="Field type" ng-model="featureCtrl.featureModel.param.feature.entity.fieldType" jd-options="item.value as item.value for item in featureCtrl.featureModel.fieldstype">
                         <option value="" jd-i18n>Selecione</option>
                     </select>
 
-                    <select jd-input="3" jd-label="Cardinality" ng-model="featureCtrl.featureModel.params.cardinality" jd-options="item.id as item.value for item in featureCtrl.featureModel.cardinality">
+                    <select jd-input="3" jd-label="Cardinality" ng-model="featureCtrl.featureModel.param.feature.entity.cardinality" jd-options="item.value as item.value for item in featureCtrl.featureModel.cardinality">
                         <option value="" jd-i18n>Selecione</option>
                     </select>
 
@@ -59,15 +59,15 @@
                     <div class="row">
 
 
-                        <input jd-input="3" required jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.params.fieldLabel" />
+                        <input jd-input="3" required jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel.pt" />
 
-                        <input jd-input="3" required jd-label="Field hint" type="text" ng-model="featureCtrl.featureModel.params.fieldHint" />
+                        <input jd-input="3" required jd-label="Field hint" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldHint.pt" />
 
-                        <input jd-input="3" required jd-label="Message required" type="text" ng-model="featureCtrl.featureModel.params.messageRequired" />
+                        <input jd-input="3" required jd-label="Message required" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.messageRequired.pt" />
                     </div>
 
                     <div class="row">
-                        <select jd-input="3" jd-label="Field mask" ng-model="featureCtrl.featureModel.params.fieldMask" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldsMask">
+                        <select jd-input="3" jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.value as item.value for item in featureCtrl.featureModel.fieldsMask">
                             <option value="" jd-i18n>Selecione</option>
                         </select>
                     </div>
@@ -75,18 +75,18 @@
                     <div class="row">
 
 
-                        <input jd-input="3" required jd-label="Max character" mask="int" type="text" ng-model="featureCtrl.featureModel.params.maxCharacter" />
+                        <input jd-input="3" required jd-label="Max character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter" />
 
-                        <input jd-input="3" required jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.params.minCharacter" />
+                        <input jd-input="3" required jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter" />
 
-                        <input jd-input="3" jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
+                        <input jd-input="3" jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     </div>
 
                     <div class="row">
-                        <select jd-input="3" jd-label="Size" ng-model="featureCtrl.featureModel.params.size" jd-options="item.id as item.value for item in featureCtrl.featureModel.size">
+                        <select jd-input="3" jd-label="Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.value as item.value for item in featureCtrl.featureModel.size">
                             <option value="" jd-i18n>Selecione</option>
                         </select>
-                        <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
+                        <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     </div>
 
                 </div>
@@ -96,47 +96,90 @@
                 <h1>UI Form</h1>
                 <div class="form-group" id="div-uiform">
 
-                    <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.params.dependsOn" jd-options="item.id as item.value for item in featureCtrl.featureModel.dependsOn">
+                    <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
                         <option value="" jd-i18n>Selecione</option>
                     </select>
 
-                    <input jd-input="3" jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.checks[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="true" />
+                    <input jd-input="3" jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
 
-                    <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.visibileToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
+                    <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibileToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                 </div>
                 <!-- Fim div-uiform  -->
 
-                <h1>Filter</h1>
+                <h1>UI Filter</h1>
                 <div class="form-group" id="div-filter">
-                    <input jd-input="3" jd-grouplabel="Show in filter" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.showInFilter" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
-                    <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.params.dependsOn" jd-options="item.id as item.value for item in featureCtrl.featureModel.dependsOn">
+                    <input jd-input="3" jd-grouplabel="Show in filter" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+
+                    <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
                         <option value="" jd-i18n>Selecione</option>
                     </select>
 
                 </div>
                 <!-- Fim div-filter  -->
 
-                <h1>Results</h1>
+                <h1>UI Results</h1>
                 <div class="form-group" id="div-results">
 
-                    <input jd-input="3" jd-grouplabel="Show in Result" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.showInResult" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
-                    <input jd-input="3" jd-grouplabel="Used to delete" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.params.usedToDelete" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item" />
+                    <input jd-input="3" jd-grouplabel="Show in Result" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.result.showInResult" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    <input jd-input="3" jd-grouplabel="Used to delete" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.result.usedToDelete" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                 </div>
                 <!-- Fim div-results  -->
 
 
                 <h1>Resume</h1>
+                <div class="panel-body">
+                    <div class="row">
 
-                <div class="form-group" id="div-resume">
+                        <div class="col-md-4">
+                            <h4>Entity</h4>
+                            <p><strong>Field name:</strong> {{featureCtrl.featureModel.param.feature.entity.fieldName}}</p>
+                            <p><strong>Field type:</strong> {{featureCtrl.featureModel.param.feature.entity.fieldType}}</p>
+                            <p><strong>Cardinality:</strong> {{featureCtrl.featureModel.param.feature.entity.fieldType}}</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Ui Geral</h4>
+                            <p><strong>Field label:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel.pt}}</p>
+                            <p><strong>Field hint:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldHint.pt}}</p>
+                            <p><strong>Message required:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.messageRequired.pt}}</p>
+                            <p><strong>Field mask:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask}}</p>
 
+                            <p><strong>Max character:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter}}</p>
+                            <p><strong>Min character:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter}}</p>
+                            <p><strong>Required field:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.requiredField}}</p>
+
+                            <p><strong>Size:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.size}}</p>
+
+                            <p><strong>Include in new line:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.newLine}}</p>
+                        </div>
+
+
+
+                        <div class="col-md-4">
+                            <h4>UI Form</h4>
+                            <p><strong>Depends on:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.dependsOn}}</p>
+                            <p><strong>Field editable for:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]}}</p>
+                            <p><strong>Visible to the user:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.visibileToTheUser}}</p>
+                            <h4>UI Filter</h4>
+                            <p><strong>Show in filter:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter}}</p>
+
+                            <p><strong>Depends on:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn}}</p>
+                            <h4>UI Filter</h4>
+                            <p><strong>Show in result:</strong> {{featureCtrl.featureModel.param.feature.userInterface.result.showInResult}}</p>
+                            <p><strong>Used to delete:</strong> {{featureCtrl.featureModel.param.feature.userInterface.result.usedToDelete}}</p>
+                        </div>
+
+
+                    </div>
                 </div>
-                <!-- Fim div-resume  -->
 
             </div>
-
+            <!-- Fim div-resume  -->
 
         </div>
+
+
+    </div>
     </div>
     <!--Fim div jd-panel -->
     <div jd-panel jd-title="Fields Adds" jd-toggle>
@@ -156,17 +199,30 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="field in featureCtrl.featureModel.json.feature.fields">
-                            <td>{{json.feature.fields.entity.fieldName}}</td>
-                            <td>{{json.feature.fields.entity.fieldType}}</td>
-                            <td>{{json.feature.fields.userInterface.geral.fieldLabel}}</td>
-                            <td>{{json.feature.fields.userInterface.geral.FieldMask}}</td>
-                            <td>{{json.feature.fields.userInterface.filter.showInFilter}}</td>
-                            <td>{{json.feature.fields.userInterface.result.showInResult}}</td>
+                            <td>{{field.entity.fieldName}}</td>
+                            <td>{{field.entity.fieldType}}</td>
+                            <td>{{field.userInterface.geral.fieldLabel.pt}}</td>
+                            <td>{{field.userInterface.geral.fieldMask}}</td>
+                            <td>{{field.userInterface.filter.showInFilter}}</td>
+                            <td>{{field.userInterface.result.showInResult}}</td>
+                            <td>
+                                <p>
+                                    <a href="" class="btn-icon btn-icon-sm bg-success" ng-click="edit(field)"><i class="fa fa-edit"></i></a>
+                                    </span>
+                                    <a href="" class="btn-icon btn-icon-sm bg-danger" ng-click="remove(field)"><i class="fa fa-remove"></i></a>
+                                </p>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-primary pull-right" ng-click="featureCtrl.generate()" jd-i18n>generate</button>
+            </div>
         </div>
     </div>
     <!--Fim div jd-panel -->

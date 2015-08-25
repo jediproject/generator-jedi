@@ -14,14 +14,18 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
     vm.featureModel = {};
     //#endregion
 
- 
+
     vm.featureModel.featuresType = [
         {
             id: 1,
-            value: 'Crud'
-            }
+            value: 'crud'
+        },
+        {
+            id: 2,
+            value: 'modal';
+        }
         ];
-    
+
     vm.featureModel.fieldstype = [
         {
             id: 1,
@@ -61,10 +65,10 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.yesNo = [
         {
-            id: 1,
+            id: 'true',
             value: 'Yes'
             }, {
-            id: 2,
+            id: 'false',
             value: 'No'
             }
         ];
@@ -132,10 +136,10 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.fiedlsEditableFor = [
         {
-            id: 1,
+            id: 'insert',
             value: 'Insert'
             }, {
-            id: 2,
+            id: 'update',
             value: 'Update'
             }];
 
@@ -192,28 +196,63 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.dependsOn = [];
 
+    vm.featureModel.param = {};
+
+    vm.featureModel.param.feature = {};
+
+    vm.featureModel.param.feature.index = 0;
+
+    vm.featureModel.json = {}
+
+    vm.featureModel.json.feature = {};
+
+    vm.featureModel.json.feature.fields = [];
+
     //#region Events binds
     vm.generate = generate;
+    
+    
     //#endregion
+
+    $scope.finished = function () {
+        // var p = JSON.parse(vm.featureModel.param);
+        //  var obj = Object.clone(vm.featureModel.param);
+        
+        var p = JSON.parse(JSON.stringify(vm.featureModel.param.feature));
+        vm.featureModel.json.feature.fields.push(p);
+        
+        var index = vm.featureModel.param.feature.index;
+        
+        vm.featureModel.param.feature = {};
+        vm.featureModel.param.feature.index = index + 1 ;
+    }
 
 
     //#region Events definitions
     function generate() {
-            var params = this;
+        var params = this;
 
-            params.model = {
-                module: service.copy(vm.featureModel.params),
-                action: 'new'
-            };
+        params.model = {
+            module: service.copy(vm.featureModel.json),
+            action: 'new'
+        };
 
 
-            params.model.module.post().then(function (msgConsole) {
-                console.log("MENSAGEM CONSOLE: " + msgConsole);
-                vm.featureModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
-                alertHelper.addInfo('Operação realizada com sucesso!');
-            });
-        }
+        params.model.module.post().then(function (msgConsole) {
+            console.log("MENSAGEM CONSOLE: " + msgConsole);
+            vm.featureModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            alertHelper.addInfo('Operação realizada com sucesso!');
+        });
+    }
+
+    $scope.edit = function (item) {
+        vm.featureModel.param = JSON.parse(JSON.stringify(item)); 
+    }
+
+    $scope.remove =  function (item) {
+            vm.featureModel.json.feature.fields.splice(item.index, 1);
+    }
         //#endregion
 
 
-            }]);
+}]);
