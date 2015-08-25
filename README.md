@@ -1,18 +1,18 @@
 # generator-ng-jedi-ref-arch
 
-O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://ng-jedi.github.io/ref-arch).
+O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://jediproject.github.io).
 
 O gerador é composto por um rotina de geração principal, que gera toda estruturação v0 de um projeto, e sub geradores para criação de controllers, modais, módulos e funcionalidades.
 
 A rotina de geração principal é uma composição de vários recursos Stack JS de mercado e alguns componentes criados neste projeto Jedi Cube Components. Segue relação dos componentes que compõe a solução:
 
-- [ng-jedi-breadcrumb](https://github.com/ng-jedi/breadcrumb)
-- [ng-jedi-dialogs](https://github.com/ng-jedi/dialogs)
-- [ng-jedi-factory](https://github.com/ng-jedi/factory)
-- [ng-jedi-i18n](https://github.com/ng-jedi/i18n)
-- [ng-jedi-layout](https://github.com/ng-jedi/layout)
-- [ng-jedi-loading](https://github.com/ng-jedi/loading)
-- [ng-jedi-utilities](https://github.com/ng-jedi/utilities)
+- [ng-jedi-breadcrumb](https://github.com/jediproject/ng-jedi-breadcrumb)
+- [ng-jedi-dialogs](https://github.com/jediproject/ng-jedi-dialogs)
+- [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory)
+- [ng-jedi-i18n](https://github.com/jediproject/ng-jedi-i18n)
+- [ng-jedi-layout](https://github.com/jediproject/ng-jedi-layout)
+- [ng-jedi-loading](https://github.com/jediproject/ng-jedi-loading)
+- [ng-jedi-utilities](https://github.com/jediproject/ng-jedi-utilities)
 - [angular-authService](https://github.com/fabioviana/angular-authService): componente para controle de autenticação e autorização via token
 - [angular-bootstrap](https://github.com/angular-ui/bootstrap-bower): componentes bootstrap angular
 - [angular-file-upload-interceptor](https://github.com/mateusmcg/angular-file-upload-interceptor): componente para realizar upload de arquivos via angular
@@ -38,7 +38,7 @@ As rotinas grunt são destinada para execução de build do projeto gerado, com 
 
 - **master**: responsável por gerar a versão da aplicação para execução em ambiente de produção, realizando os mesmos passos do ambiente release, porém, minificando os js e css da pasta build/.
 
-Para ambientes onde é utilizado estratégia de cache bust, o processo de build gera o arquivo version.json com o mapeamento dos arquivos originais e as versões atuais em cache, para carregamento de scripts dinâmicos, em tempo de execução, através do mecanismo factory.getFileVersion do componente [ng-jedi-factory](https://github.com/ng-jedi/factory).
+Para ambientes onde é utilizado estratégia de cache bust, o processo de build gera o arquivo version.json com o mapeamento dos arquivos originais e as versões atuais em cache, para carregamento de scripts dinâmicos, em tempo de execução, através do mecanismo factory.getFileVersion do componente [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory).
 
 Cada módulo, por padrão, possui um arquivo json template (app/MODULO/env/MODULO-env.tpl.json) com variáveis de ambiente e uma versão deste arquivo para cada opção de build (app/MODULO/env/MODULO-env.AMBIENTE.json), durante execução da build o template é parseado com o conteúdo do json do ambiente selecionado (app/MODULO/env/MODULO-env.json).
 
@@ -213,7 +213,7 @@ Para utilizar o gerador, siga os passos:
 	}		
 	```    
 
-Aprecie o [demo](https://github.com/ng-jedi/ref-arch/tree/master/demo) criado utilizando este gerador.
+Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo.github.io) criado utilizando este gerador.
 
 ## License
 

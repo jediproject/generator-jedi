@@ -141,7 +141,7 @@
 			"dest": "assets/libs/angularAMD/angularAMD.js"
 		},
 		{
-			"src": "bower_components/ng-mask-currency/dist/ng-currency-mask.js",
+			"src": "bower_components/ng-currency-mask/dist/ng-currency-mask.js",
 			"dest": "assets/libs/ng-currency-mask/ng-currency-mask.js"
 		},<% if (props.useRestangular) {%>
 		{
@@ -299,6 +299,14 @@
 		{
 			"src": "bower_components/ng-jedi-layout/validationtooltip.js",
 			"dest": "assets/libs/ng-jedi-layout/validationtooltip.js"
+		},
+        {
+            "src": "bower_components/angular-toastr/dist/angular-toastr.tpls.js",
+            "dest": "assets/libs/angular-toastr/angular-toastr.tpls.js"
+        },
+		{
+			"src": "bower_components/angular-toastr/dist/angular-toastr.css",
+			"dest": "assets/css/angular-toastr.css"
 		}
 	]
 }

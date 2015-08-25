@@ -7,7 +7,8 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
         'angular-bootstrap',
         'angular-file-upload',
         'angular-table',
-        'app-common-components'], function () {
+        'app-common-components',
+        'angular-toastr'], function () {
     
     angular.module("app.external.components", [ <% if (!props.useI18n) {%>'ngLocale',
                                                 <%}%>'authService',
@@ -15,7 +16,8 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
                                                 'ngMask',
                                                 'ui.bootstrap',
                                                 'angularFileUpload',
-                                                'angular-table' ]);
+                                                'angular-table',
+                                                'toastr' ]);
 
     angular.module("app.common", ['app.external.components', 'app.common.components']);
     

@@ -1,8 +1,8 @@
 {
-    "name": "generator-ng-jedi-ref-arch",
+    "name": "generator-jedi",
     "version": "0.0.1",
-    "description": "Angular Jedi Project Reference Architecture Generator",
-    "license": "LGPL",
+    "description": "Jedi Project Generator",
+    "license": "MIT",
     "main": [
     "app/index.js",
     "controller/index.js",
@@ -13,12 +13,12 @@
   ],
     "repository": {
         "type":"git",
-        "url":"https://github.com/ng-jedi/generator-ng-jedi-ref-arch"
+        "url":"https://github.com/jediproject/generator-jedi"
     },
     "author": {
         "name": "Fábio Henrique da Silva Viana",
         "email": "fabioviana.bh@gmail.com",
-        "url": "http://ng-jedi.github.io/ref-arch/"
+        "url": "http://jediproject.github.io"
     },
     "scripts": {
         "test": "mocha",

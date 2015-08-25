@@ -4,6 +4,8 @@
 require.jsExtRegExp = /^app\/|^\/|:|\?|\.js$/;
 
 require.config({
+    waitSeconds: 15,
+
     baseUrl: "",
 
     paths: {
@@ -19,7 +21,7 @@ require.config({
         'ng-jedi-dialogs': 'assets/libs/ng-jedi-dialogs/dialogs.js',
         'ng-jedi-dialogs-ctrls': 'assets/libs/ng-jedi-dialogs/dialogs-ctrls.js',
         'ng-jedi-factory': 'assets/libs/ng-jedi-factory/factory.js',
-        'jdver': 'assets/libs/ng-jedi-factory/version.js.js',
+        'jdver': 'assets/libs/ng-jedi-factory/version.js',
         'ng-jedi-loading': 'assets/libs/ng-jedi-loading/loading.js',
         'ng-jedi-loading-directives': 'assets/libs/ng-jedi-loading/loading-directives.js',<% if (props.useBreadcrumb) {%>
         'ng-jedi-breadcrumb': 'assets/libs/ng-jedi-breadcrumb/breadcrumb.js',<%}%>
@@ -53,6 +55,7 @@ require.config({
         'angularAMD': 'assets/libs/angularAMD/angularAMD.js',
         'ng-currency-mask': 'assets/libs/ng-currency-mask/ng-currency-mask.js',<% if (props.useRestangular) {%>
         'restangular': 'assets/libs/restangular/restangular.js',<%}%>
+        'angular-toastr': 'assets/libs/angular-toastr/angular-toastr.tpls.js',
 
         //## 3rd party non angular scripts
         'bootstrap': 'assets/libs/bootstrap/bootstrap.js',
@@ -89,6 +92,7 @@ require.config({
         "angular-authService": ["angular"],
         "ng-currency-mask": ["angular"],
         "angular-ngMask": ["angular"],
+        "angular-toastr": ["angular"],
         "angular-file-upload": ["angular"],<% if (props.useRestangular != 'en') {%>
         "restangular": ["lodash", "angular"],<%}%>
         "angular-loading-bar": ["angular"]<% if (props.useI18n) {%>,

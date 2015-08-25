@@ -59,7 +59,7 @@ define([
         });<%}%>
     }]);
 
-    app.run(['$http', '$route', '$rootScope', '$location', 'authService', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log'<% if (props.useI18n) {%>, 'jedi.i18n.Localize'<%}%>, function ($http, $route, $rootScope, $location, authService, alertHelper, $timeout, $injector, $log<% if (props.useI18n) {%>, localize<%}%>) {
+    app.run(['$http', '$route', '$rootScope', '$location', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log'<% if (props.useI18n) {%>, 'jedi.i18n.Localize'<%}%>, function ($http, $route, $rootScope, $location, alertHelper, $timeout, $injector, $log<% if (props.useI18n) {%>, localize<%}%>) {
         <% if (props.useI18n) {%>$log.info('Configure i18n');
         localize.addResource('app/common/i18n/resources_{lang}.json');
 
@@ -141,7 +141,6 @@ define([
         $rootScope.$on('auth:logout-success', resetUserProfile);
         $rootScope.$on('auth:logout-error', resetUserProfile);
         $rootScope.$on('auth:invalid', resetUserProfile);
-
         ////-------<%} else {%>
         $log.info('Load modules');
 
@@ -172,10 +171,6 @@ define([
         // redirect to home
         $location.path('/');
         <%}%>
-
-        // initialize authService
-        $log.info('Initializing authService');
-        authService.initialize();
     }]);
 
     // AppCtrl: possui controles gerais da aplicação, como a parte de locale e também de deslogar

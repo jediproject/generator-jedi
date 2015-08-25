@@ -3,7 +3,7 @@
 /*
     Controller to signup
 */
-jd.factory.newController('app.common.auth.signup.SignupCtrl', ['authService', function (authService) {
+jd.factory.newController('app.common.auth.signup.SignupCtrl', ['authService', 'jedi.dialogs.AlertHelper', '$location', function (authService, AlertHelper, $location) {
 
     //#region View/Model initialize
     var vm = this;
@@ -16,7 +16,12 @@ jd.factory.newController('app.common.auth.signup.SignupCtrl', ['authService', fu
 
     //#region Events definitions
     function save() {
-        authService.signIn(vm.signupModel);
+        authService.signUp(vm.signupModel).then(function() {
+            AlertHelper.addInfo('Usuário cadastrado com sucesso.');
+            $location.path('/common/auth/signin');
+        }, function() {
+            AlertHelper.addError('Erro ao cadastrar usuário');
+        });
     }
     //#endregion
 }]);
