@@ -8,7 +8,7 @@ function puts(error, stdout, stderr) {
 exports.bootstrap = function (req, res) {
     console.log('body: ' +JSON.stringify(req.body, null, 2));
     
-    var command = 'yo ng-jedi-ref-arch --force ';
+    var command = 'yo jedi --force ';
     var appName = '--appName="' + req.body.appName + '" ';
     var appTitle = '--appTitle="' + req.body.appTitle + '" ';
     var moduleName = '--moduleName="' + req.body.moduleName + '" ';
@@ -27,7 +27,7 @@ exports.bootstrap = function (req, res) {
 exports.controller = function(req, res){
     console.log('body: ' +JSON.stringify(req.body, null, 2));
     
-    var command = 'yo ng-jedi-ref-arch:controller --force ';
+    var command = 'yo jedi:controller --force ';
     
     var title = '--title="' + req.body.title + '" ';
     var moduleName  = '--module="' + req.body.moduleName + '" ';
@@ -45,7 +45,7 @@ exports.controller = function(req, res){
 exports.modal = function(req, res){
     console.log('body: ' +JSON.stringify(req.body, null, 2));
     
-    var command = 'yo ng-jedi-ref-arch:modal --force ';
+    var command = 'yo jedi:modal --force ';
     
     var title = '--title="' + req.body.title + '" ';
     var moduleName  = '--module="' + req.body.moduleName + '" ';
@@ -65,7 +65,7 @@ exports.modal = function(req, res){
 exports.module = function(req, res){
     console.log('body: ' +JSON.stringify(req.body, null, 2));
     
-    var command = 'yo ng-jedi-ref-arch:module --force ';
+    var command = 'yo jedi:module --force ';
     
     var moduleName  = '--moduleName="' + req.body.moduleName + '" '; 
     var defaultLang = '--defaultLang="' + (req.body.defaultLang ? 'y': 'n') + '" ';
@@ -84,7 +84,7 @@ exports.feature = function(req, res){
     var body = JSON.stringify(req.body, null, 2);
     console.log('body: ' +body);
     
-    var command = 'yo ng-jedi-ref-arch:feature --force --loadFromFile="n" ';
+    var command = 'yo jedi:feature --force --loadFromFile="n" ';
     var configFile = '--configFile=" ' + body + '" ';
     
     console.log(command + configFile);

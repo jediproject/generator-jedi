@@ -91,6 +91,8 @@ module.exports = yeoman.generators.Base.extend({
 	writing: function () {
 		//----
 		// structure
+        this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
+        
         this.destinationRoot(this.props.destinationRoot);
         console.log('destinationRoot ' + this.destinationRoot());
 
@@ -284,9 +286,9 @@ module.exports = yeoman.generators.Base.extend({
 	},
 
 	end: function () {
-		this.composeWith('ng-jedi-ref-arch:module', {args: [this.props.moduleName + ':' + this.props.useI18n + ':' + this.props.defaultLang]});
-		this.composeWith('ng-jedi-ref-arch:controller', {args: ['My Feature 1:' + this.props.moduleName + ':mysubmodule:myfeature1']});
-		this.composeWith('ng-jedi-ref-arch:controller', {args: ['My Feature 2:' + this.props.moduleName + ':mysubmodule:myfeature2']});
+		this.composeWith('jedi:module', {args: [this.props.moduleName + ':' + this.props.useI18n + ':' + this.props.defaultLang]});
+		this.composeWith('jedi:controller', {args: ['My Feature 1:' + this.props.moduleName + ':mysubmodule:myfeature1']});
+		this.composeWith('jedi:controller', {args: ['My Feature 2:' + this.props.moduleName + ':mysubmodule:myfeature2']});
 	},
 
 	install: function () {

@@ -22,7 +22,8 @@
     },
     "scripts": {
         "test": "mocha",
-        "start": "npm install && npm install ./generators/gui && node server.js"  
+        "start": "node server.js",
+        "heroku": "npm install && npm install generators/gui && npm run develop generators/gui && node server.js"  
     },
     "files": [
     "generators"
