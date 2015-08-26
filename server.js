@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 //});
 
 
-app.use(express.static(__dirname + '/generators/gui/client')); 
+app.use(express.static(__dirname + '/generators/gui')); 
 
 app.post('/api/v1/generator/bootstrap', generator.bootstrap);
 app.post('/api/v1/generator/controller', generator.controller);
