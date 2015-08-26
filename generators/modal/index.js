@@ -71,6 +71,9 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+    // Froce / in the end. 
+    this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');  
+      
     this.destinationRoot(this.props.destinationRoot);  
       
      // Cria a estrutura básica de diretórios   

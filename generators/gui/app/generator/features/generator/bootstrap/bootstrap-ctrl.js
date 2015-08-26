@@ -15,20 +15,20 @@ jd.factory.newController('app.generator.bootstrapCtrl', ['$scope', 'jedi.dialogs
     //#endregion
 
     vm.bootstrapModel.languages = [{
-        id: 1,
+        id: 'pt',
         value: 'pt'
             }, {
-        id: 2,
+        id:'en',
         value: 'en'
             }
         ];
     
     vm.bootstrapModel.yesno = [{
-        id: 1,
-        value: 'true'
+        id: true,
+        value: 'yes'
             }, {
-        id: 2,
-        value: 'false'
+        id: false,
+        value: 'no'
             }
         ];
     

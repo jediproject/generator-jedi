@@ -89,13 +89,21 @@ module.exports = yeoman.generators.Base.extend({
 
     
 	writing: function () {
-		//----
-		// structure
+		
+        // Froce / in the end. 
         this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
         
+        // set destination root path
         this.destinationRoot(this.props.destinationRoot);
         console.log('destinationRoot ' + this.destinationRoot());
+        
+        // Force to boolean
+        this.props.generateAuth = JSON.parse(this.props.generateAuth);
+        this.props.useBreadcrumb = JSON.parse(this.props.useBreadcrumb);
+        this.props.useI18n = JSON.parse(this.props.useI18n);
+        
 
+		// structure
 		mkdirp(this.props.destinationRoot + 'mocks');
 
 		mkdirp(this.props.destinationRoot + 'assets');
@@ -111,13 +119,13 @@ module.exports = yeoman.generators.Base.extend({
 		mkdirp(this.props.destinationRoot + 'app/common/components/header');
 		mkdirp(this.props.destinationRoot + 'app/common/env');
 
+    
 		if (this.props.generateAuth) {
 			mkdirp(this.props.destinationRoot + 'app/common/features');
 			mkdirp(this.props.destinationRoot + 'app/common/features/auth');
 			mkdirp(this.props.destinationRoot + 'app/common/features/auth/signin');
 			mkdirp(this.props.destinationRoot + 'app/common/features/auth/signup');
 		}
-		
 		if (this.props.useI18n) {
 			mkdirp(this.props.destinationRoot + 'app/common/i18n');
 		}

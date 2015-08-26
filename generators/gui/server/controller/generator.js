@@ -12,11 +12,11 @@ exports.bootstrap = function (req, res) {
     var appName = '--appName="' + req.body.appName + '" ';
     var appTitle = '--appTitle="' + req.body.appTitle + '" ';
     var moduleName = '--moduleName="' + req.body.moduleName + '" ';
-    var defaultLang = '--defaultLang="' + (req.body.defaultLang ? 'y': 'n') + '" ';
-    var useI18n = '--useI18n="' + (req.body.useI18n? 'y': 'n') + '" ';
-    var useBreadcrumb = '--useBreadcrumb="' + (req.body.useBreadcrumb? 'y': 'n') + '" ';
-    var generateAuth = '--generateAuth="' + (req.body.generateAuth? 'y': 'n') + '" ';
-    var destinationRoot = '--destinationRoot="' + req.body.destinationRoot + '" '; 
+    var defaultLang = '--defaultLang="' + req.body.defaultLang + '" ';
+    var useI18n = '--useI18n=' + (req.body.useI18n? true: false) + ' ';
+    var useBreadcrumb = '--useBreadcrumb=' + (req.body.useBreadcrumb? true: false) + ' ';
+    var generateAuth = '--generateAuth=' + (req.body.generateAuth? true: false) + ' ';
+    var destinationRoot = '--destinationRoot=' + req.body.destinationRoot + ' '; 
 
     var arguments = appName + appTitle + moduleName + defaultLang + useI18n + useBreadcrumb + generateAuth + destinationRoot;
 
@@ -68,8 +68,8 @@ exports.module = function(req, res){
     var command = 'yo jedi:module --force ';
     
     var moduleName  = '--moduleName="' + req.body.moduleName + '" '; 
-    var defaultLang = '--defaultLang="' + (req.body.defaultLang ? 'y': 'n') + '" ';
-    var useI18n = '--useI18n="' + (req.body.useI18n? 'y': 'n') + '" ';
+    var defaultLang = '--defaultLang="' + req.body.defaultLang + '" ';
+    var useI18n = '--useI18n=' + (req.body.useI18n? true: false) + ' ';
     var destinationRoot  = '--destinationRoot="' + req.body.destinationRoot + '" ';
     
     var arguments = moduleName + defaultLang + useI18n + destinationRoot;
