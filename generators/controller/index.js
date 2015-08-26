@@ -26,12 +26,14 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function () {
     if (this.arguments) {
-      this.arguments = this.arguments.split(':');
+      this.arguments = this.arguments.split(';');
       this.props = {
         title: this.arguments[0],
         module: this.arguments[1],
         submodule: this.arguments[2],
-        controller: this.arguments[3]
+        controller: this.arguments[3],
+        destinationRoot : this.arguments[4]         
+
       };
     } else {
       var done = this.async();
@@ -73,9 +75,13 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
+    
+    console.log('destinationRoot controller antes: ' + this.props.destinationRoot);    
       
     // Froce / in the end. 
     this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
+      
+    console.log('destinationRoot controller depois: ' + this.props.destinationRoot);  
       
     this.destinationRoot(this.props.destinationRoot);
       

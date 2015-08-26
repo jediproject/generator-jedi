@@ -19,11 +19,12 @@ module.exports = yeoman.generators.Base.extend({
 
   prompting: function () {
     if (this.moduleName) {
-      this.moduleName = this.moduleName.split(':');
+      this.moduleName = this.moduleName.split(';');
       this.props = {
         moduleName: this.moduleName[0],
         useI18n: this.moduleName[1],
-        defaultLang: this.moduleName[2]
+        defaultLang: this.moduleName[2],
+        destinationRoot : this.moduleName[3]
       };
     } else {
       var done = this.async();
@@ -64,8 +65,12 @@ module.exports = yeoman.generators.Base.extend({
 
   writing: function () {
       
+    console.log('destinationRoot module antes: ' + this.props.destinationRoot);  
+      
     // Froce / in the end. 
     this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
+      
+    console.log('destinationRoot module depois: ' + this.props.destinationRoot);  
       
     this.props.useI18n = JSON.parse(this.props.useI18n);
       

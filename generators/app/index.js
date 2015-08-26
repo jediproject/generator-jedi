@@ -73,7 +73,7 @@ module.exports = yeoman.generators.Base.extend({
 				message: 'Would you like to generate auth pages?',
 				default: true
 			},
-            {
+            {          
 				name: 'destinationRoot',
 				message: 'What\'s the destination root?',
 				default: '.'
@@ -90,8 +90,13 @@ module.exports = yeoman.generators.Base.extend({
     
 	writing: function () {
 		
+        console.log('destinationRoot index antes: ' + this.props.destinationRoot);
+        
         // Froce / in the end. 
         this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
+        
+        
+        console.log('destinationRoot index depois: ' + this.props.destinationRoot);
         
         // set destination root path
         this.destinationRoot(this.props.destinationRoot);
@@ -294,9 +299,9 @@ module.exports = yeoman.generators.Base.extend({
 	},
 
 	end: function () {
-		this.composeWith('jedi:module', {args: [this.props.moduleName + ':' + this.props.useI18n + ':' + this.props.defaultLang]});
-		this.composeWith('jedi:controller', {args: ['My Feature 1:' + this.props.moduleName + ':mysubmodule:myfeature1']});
-		this.composeWith('jedi:controller', {args: ['My Feature 2:' + this.props.moduleName + ':mysubmodule:myfeature2']});
+		this.composeWith('jedi:module', {args: [this.props.moduleName + ';' + this.props.useI18n + ';' + this.props.defaultLang + ';' + this.props.destinationRoot]});
+		this.composeWith('jedi:controller', {args: ['My Feature 1;' + this.props.moduleName + ';mysubmodule;myfeature1;' + this.props.destinationRoot]});
+		this.composeWith('jedi:controller', {args: ['My Feature 2;' + this.props.moduleName + ';mysubmodule;myfeature2;' +this.props.destinationRoot ]});
 	},
 
 	install: function () {
