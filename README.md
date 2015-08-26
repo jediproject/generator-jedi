@@ -70,11 +70,11 @@ bower install [componente] --save
 
 	```json
 	{
-		paths: {
+		"paths": {
 			"[componente]": "assets/[tipo: css|libs|img]/[componente]/[arquivo].js"
 			...
 		},
-		shim: {
+		"shim": {
 			"[componente]": ["angular"]
 			...
 		}
@@ -93,7 +93,7 @@ Para utilizar o gerador, siga os passos:
 2. Execução do gerador principal
 
 	```bash
-	yo generator-jedi
+	yo jedi
 	```
 
 	- informe o nome do projeto, título, nome do módulo padrão, linguagem padrão e relação de componentes que deseja gerar.
@@ -107,7 +107,7 @@ Para utilizar o gerador, siga os passos:
 3. Execução do gerador de controller
 
 	```bash
-	yo generator-jedi:controller
+	yo jedi:controller
 	```
 
 	- informe o título da tela, nome do módulo, nome do submódulo e nome do controlador.
@@ -116,7 +116,7 @@ Para utilizar o gerador, siga os passos:
 4. Execução do gerador de modal
 
 	```bash
-	yo generator-jedi:modal
+	yo jedi:modal
 	```
 
 	- informe o título da modal, nome do módulo, nome do submódulo e nome do controlador.
@@ -125,7 +125,7 @@ Para utilizar o gerador, siga os passos:
 5. Execução do gerador de módulo
 
 	```bash
-	yo generator-jedi:module
+	yo jedi:module
 	```
 
 	- informe o nome do módulo, linguagem padrão e se deve utilizar i18n
@@ -134,7 +134,7 @@ Para utilizar o gerador, siga os passos:
 6. Execução do gerador de feature
 
 	```bash
-	yo generator-jedi:feature
+	yo jedi:feature
 	```
     - Informe o caminho do arquivo de config.
     - Exemplo genérico do arquivo de config:

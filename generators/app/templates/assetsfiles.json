@@ -137,7 +137,7 @@
 			"dest": "assets/libs/angular-table/angular-table.js"
 		},
 		{
-			"src": "bower_components/angularAMD-multiscript/dist/angularAMD.js",
+			"src": "bower_components/angularAMD/angularAMD.js",
 			"dest": "assets/libs/angularAMD/angularAMD.js"
 		},
 		{
