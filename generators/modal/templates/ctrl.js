@@ -3,7 +3,7 @@
 /*
     Controller and modal for the feature <%= props.controller%>
 */
-jd.factory.newModal('<%= props.directiveName%>', 'app/<%= props.module.toLowerCase()%>/<%if (props.submodule) {%><%= props.submodule.toLowerCase()%>/<%}%><%= props.controller.toLowerCase()%>/<%= props.controller.toLowerCase()%>.html', 'app.<%= props.module.toLowerCase()%>.<%if (props.submodule) {%><%= props.submodule.toLowerCase()%>.<%}%><%= props.controller.toLowerCase()%>.<%= props.controller.capitalize()%>Ctrl', ['jedi.dialogs.AlertHelper', 'toastr', function (alertHelper, toastr) {
+jd.factory.newModal('<%= props.directiveName%>', 'app/<%= props.module.toLowerCase()%>/<%if (props.submodule) {%><%= props.submodule.toLowerCase()%>/<%}%><%= props.controller.toLowerCase()%>/<%= props.controller.toLowerCase()%>.html', 'app.<%= props.module.toLowerCase()%>.<%if (props.submodule) {%><%= props.submodule.toLowerCase()%>.<%}%><%= props.controller.toLowerCase()%>.<%= props.controller.capitalize()%>Ctrl', ['jedi.dialogs.AlertHelper', 'toastr', <% if (props.params) {%>[<%= props.params%>], <%}%>function (alertHelper, toastr<% if (props.params) {%>, <%= s(props.params).replaceAll("'", '').value()%><%}%>) {
 
     //#region Service initialize
     var service;// = ... e.g: restangular instance

@@ -26,9 +26,9 @@
     "apimocker": "^0.4.4"<%}%>
   },
   "scripts": {
-    "develop": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt develop",
-	  "release": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt release",
-    "master": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt master",
-    "start": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt develop && <% if (props.generateAuth) {%>start node.exe node_modules/apimocker/bin/apimocker.js -c mocks/config.json && <%}%>node.exe node_modules/http-server/bin/http-server -a localhost -p 8080"
+    "develop": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt develop",
+	  "release": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt release",
+    "master": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt master",
+    "start": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt develop && <% if (props.generateAuth) {%>start node.exe node_modules/apimocker/bin/apimocker.js -c mocks/config.json && <%}%>node.exe node_modules/http-server/bin/http-server -a localhost -p 8080"
   }
 }
