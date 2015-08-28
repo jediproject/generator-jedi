@@ -9,6 +9,8 @@ assets/css/loading-bar.css
 assets/css/font-awesome.css
 assets/css/weather-icons.css
 assets/css/angular-toastr.css
+assets/css/loading.css
 **/env/*-env.json
 main.js
 version.json
+*.log
