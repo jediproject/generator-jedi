@@ -26,19 +26,11 @@
     "express": "3.x"
   },
   "scripts": {
-<<<<<<< HEAD
-    "develop": "npm install && node.exe node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt develop",
-    "release": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt release",
-    "master": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt master",
-    "start": "npm install && node.exe node_modules/bower/bin/bower update && node.exe node_modules/grunt-cli/bin/grunt develop && node.exe node_modules/http-server/bin/http-server -a localhost -p 8080",
-    "heroku": "npm install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt master"  
-=======
     "develop": "npm install && node.exe node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt develop",
     "release": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt release",
     "master": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt master",
     "start": "npm install && node.exe node_modules/bower/bin/bower install && node.exe node_modules/grunt-cli/bin/grunt develop && node.exe node_modules/http-server/bin/http-server -a localhost -p 8080",
     "heroku": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt master"
->>>>>>> Incremente de funcionaliades do gerador de feature
   },
   "dependencies": {
     "body-parser": "^1.13.3"
