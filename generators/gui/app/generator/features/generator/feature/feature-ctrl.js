@@ -17,12 +17,8 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.featuresType = [
         {
-            id: 1,
-            value: 'crud'
-        },
-        {
-            id: 2,
-            value: 'modal'
+            id: 'crud',
+            value: 'Crud'
         }
         ];
 

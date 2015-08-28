@@ -1,6 +1,7 @@
 var fs = require("fs");
 var exec = require('child_process').exec;
 
+
 function puts(error, stdout, stderr) {
     sys.puts(stdout)
 }
@@ -81,13 +82,14 @@ exports.module = function(req, res){
 
 exports.feature = function(req, res){
     
-    var body = JSON.stringify(req.body, null, 2);
-    console.log('body: ' +body);
+    // converte req.body em string
+    var myjson  = JSON.stringify(req.body, null, 2) ;
+
+    // remove todos os espaços em branco para fazer o encode
+    myjson = myjson.replace(/(\r\n|\n|\r)/gm,"");
     
-    var command = 'yo jedi:feature --force --loadFromFile="n" ';
-    var configFile = '--configFile=" ' + body + '" ';
-    
-    console.log(command + configFile);
+    var command = 'yo jedi:feature --force --loadFromFile=false ';
+    var configFile = '--configFile=" ' +encodeURIComponent(myjson) + '" ';
     
     execCommand(res, command + configFile);
 };

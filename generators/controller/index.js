@@ -75,13 +75,9 @@ module.exports = yeoman.generators.Base.extend({
   },
 
   writing: function () {
-    
-    console.log('destinationRoot controller antes: ' + this.props.destinationRoot);    
-      
+
     // Froce / in the end. 
     this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
-      
-    console.log('destinationRoot controller depois: ' + this.props.destinationRoot);  
       
     this.destinationRoot(this.props.destinationRoot);
       

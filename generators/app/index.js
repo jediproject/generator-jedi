@@ -4,7 +4,6 @@ var chalk = require('chalk');
 var yosay = require('yosay');
 var mkdirp = require('mkdirp');
 var s = require("underscore.string");
-var _ = require('lodash');
 var optionOrPrompt = require('yeoman-option-or-prompt');
 
 String.prototype.capitalize = function() {

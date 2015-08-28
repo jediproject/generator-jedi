@@ -93,7 +93,7 @@ define([
                 $log.info('Load routes');
 
                 $routeProviderReference
-                    //#===== yeoman route hook =====#
+                    //#hook.yeoman.route# do not remove this line
                     .when('/<%= props.moduleName%>/mysubmodule/myfeature1', angularAMD.route({
                         breadcrumb: ['<%= props.moduleName.capitalize()%>', 'My Submodule', 'My Feature 1'],
                         templateUrl: jd.factory.getFileVersion('app/<%= props.moduleName%>/features/mysubmodule/myfeature1/myfeature1.html'),
@@ -154,6 +154,7 @@ define([
             $log.info('Load routes');
 
             $routeProviderReference
+                //#hook.yeoman.route# do not remove this line
                 .when('/<%= props.moduleName%>/mysubmodule/myfeature1', angularAMD.route({
                     breadcrumb: ['<%= props.moduleName.capitalize()%>', 'My Submodule', 'My Feature 1'],
                     templateUrl: jd.factory.getFileVersion('app/<%= props.moduleName%>/features/mysubmodule/myfeature1/myfeature1.html'),
