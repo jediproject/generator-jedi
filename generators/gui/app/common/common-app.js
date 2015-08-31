@@ -1,15 +1,13 @@
 "use strict";
 
-define(['angular-authService',
-        'ng-currency-mask',
+define(['ng-currency-mask',
         'angular-ngMask',
         'angular-bootstrap',
         'angular-file-upload',
         'angular-table',
         'app-common-components'], function () {
     
-    angular.module("app.external.components", [ 'authService',
-                                                'ngCurrencyMask',
+    angular.module("app.external.components", [ 'ngCurrencyMask',
                                                 'ngMask',
                                                 'ui.bootstrap',
                                                 'angularFileUpload',

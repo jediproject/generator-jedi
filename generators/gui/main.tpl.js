@@ -41,7 +41,6 @@ require.config({
         //## 3rd party angular scripts
         'angular': 'assets/libs/angular/angular.js',
         'angular-animate': 'assets/libs/angular-animate/angular-animate.js',
-        'angular-authService': 'assets/libs/angular-authService/authService.js',
         'angular-bootstrap': 'assets/libs/angular-bootstrap/ui-bootstrap-tpls.js',
         'angular-cookie': 'assets/libs/angular-cookie/angular-cookie.js',
         'angular-file-upload': 'assets/libs/angular-file-upload/angular-file-upload.js',
@@ -87,7 +86,6 @@ require.config({
         "angularAMD": ["angular"],
         "angular-bootstrap": ["bootstrap", "angular"],
         "angular-table": ["angular"],
-        "angular-authService": ["angular"],
         "ng-currency-mask": ["angular"],
         "angular-ngMask": ["angular"],
         "angular-file-upload": ["angular"],
