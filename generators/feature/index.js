@@ -41,25 +41,31 @@ module.exports = yeoman.generators.Base.extend({
                 default: 'config.json'
             }
         ];
-            
+
         this._optionOrPrompt(prompts, function (props) {
             this.props = props;
 
             // Force to boolean
             this.props.loadFromFile = JSON.parse(this.props.loadFromFile);
 
+            var sjson = '';
+
             if (this.props.loadFromFile) {
                 // Load json config from file
-                this.config = JSON.parse(fs.readFileSync(path.join(this.props.configFile), 'utf8'));
+                sjson = s.readFileSync(path.join(this.props.configFile), 'utf8');
             } else {
-                var string = decodeURIComponent(this.props.configFile)
-                this.config = JSON.parse(string);
+                sjson = decodeURIComponent(this.props.configFile)
+
             }
-            // Froce / in the end. 
-            this.config.destinationRoot = this.config.destinationRoot.replace(/\/?$/, '/');
+            var obj = JSON.parse(sjson);
 
             // set destination root path
-            this.destinationRoot(this.props.destinationRoot);
+            this.destinationRoot(obj.destinationRoot.replace(/\/?$/, '/'));
+
+            this.config = JSON.parse(sjson);
+
+            // Froce / in the end. 
+            this.config.destinationRoot = this.config.destinationRoot.replace(/\/?$/, '/');
             done();
         }.bind(this));
 
@@ -67,7 +73,6 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     writing: function () {
-
         var dest = baseutil.createStructure(this.config.moduleName, this.config.subModule, this.config.featureName);
 
         // Verifica se é para gerar código baseado em crud
@@ -94,7 +99,7 @@ module.exports = yeoman.generators.Base.extend({
 
         var hook = '<!--#hook.yeoman.menu# do not remove this line-->';
         var filepath = this.config.destinationRoot + 'app/common/components/header/header.html';
-      
+
         var file = require("html-wiring").readFileAsString(filepath);
 
         var insert = '<li><a href="#/' + this.config.moduleName + '/';

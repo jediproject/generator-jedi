@@ -75,6 +75,7 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
             });
         });
     }
+    
 
     function openEditModal(<%= config.featureName%>) {
         $log.debug('Abrindo edição do <%= config.featureName%>: ' + <%= config.featureName%>);

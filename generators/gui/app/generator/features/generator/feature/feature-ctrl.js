@@ -61,10 +61,10 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.yesNo = [
         {
-            id: 'true',
+            id: true,
             value: 'Yes'
             }, {
-            id: 'false',
+            id: false,
             value: 'No'
             }
         ];

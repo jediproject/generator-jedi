@@ -1,14 +1,11 @@
-<form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.submodule) {%><%= config.submodule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
+<form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.subModule) {%><%= config.subModule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
     
     <div jd-panel jd-title="Filtros" jd-toggle>
         <div class="row">
-            <input jd-input="3" jd-label="Alias" type="text" ng-model="systemRegistrationCtrl.systemRegistrationModel.aliasFilter" />
-            <input jd-input="4" jd-label="Nome" type="text" ng-model="systemRegistrationCtrl.systemRegistrationModel.nameFilter" />
-              
             <% if(config.feature.fields)  {%>
                 <% config.feature.fields.forEach(function(field){ %>
-                    <% if (field.entity.fieldType === 'text'){%>
-                        <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= filter.entity.fieldName%>Filter" />            
+                    <% if (field.userInterface.geral.fieldMask === 'text'){%>
+                        <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>       
                 <% }) %>
             <% }%>  
@@ -27,16 +24,12 @@
         <table at-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" at-paginated>    
             <tbody>
                 <tr>
-                    <td at-sortable at-attribute="id" at-title="Código"></td>
-                    <td at-sortable at-attribute="name" at-title="Nome"></td>
-                    <td at-sortable at-attribute="alias" at-title="Alias"></td>
                     
                     <% config.feature.fields.forEach(function(field){ %>  
                         <% if (field.userInterface.result.showInResult) {%>
                             <td at-sortable at-attribute="<%= field.entity.fieldName%>" at-title="<%= field.userInterface.geral.fieldLabel.pt%>"></td>
                         <% }%>  
                      <% }) %>                    
-                    <td at-sortable at-attribute="isMenuItem" at-filter="jdBoolToText" at-title="Visível no menu"></td>
                     <td at-title="Ações" class="text-center">
                         <a href="javascript:;" jd-i18n title="Editar" ng-click="<%= config.featureName%>Ctrl.openEditModal(item)"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;
@@ -52,12 +45,14 @@
         <% if(config.feature.fields)  {%>
             <% config.feature.fields.forEach(function(field){ %>
                 <% if (field.userInterface.form.visibleToTheUser){%>
-                    <% if (field.geral.fieldMask === 'text'){%>
-                           <input jd-input="5" required jd-label="<%= field.userInterface.fieldLabel.pt%>" type="text" ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
-                    <% }%>
+                    <% if (field.userInterface.geral.fieldMask === 'text'){%>
+                           <input jd-input="3" required jd-label="<%= field.userInterface.geral.fieldLabel.pt%>" type="text" ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
+                    <% }%>          
                 <% }%>            
             <% }) %>
         <% }%> 
+
+            
         
 
              <div class="modal-footer">

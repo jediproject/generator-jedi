@@ -102,7 +102,7 @@
 
                     <input jd-input="3" jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
 
-                    <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibileToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                 </div>
                 <!-- Fim div-uiform  -->
@@ -159,7 +159,7 @@
                             <h4>UI Form</h4>
                             <p><strong>Depends on:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.dependsOn}}</p>
                             <p><strong>Field editable for:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]}}</p>
-                            <p><strong>Visible to the user:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.visibileToTheUser}}</p>
+                            <p><strong>Visible to the user:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser}}</p>
                             <h4>UI Filter</h4>
                             <p><strong>Show in filter:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter}}</p>
 
