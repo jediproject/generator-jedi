@@ -51,8 +51,10 @@ module.exports = yeoman.generators.Base.extend({
             var sjson = '';
 
             if (this.props.loadFromFile) {
+                
+                console.log('this.props.configFile: ' + this.props.configFile);
                 // Load json config from file
-                sjson = s.readFileSync(path.join(this.props.configFile), 'utf8');
+                sjson = fs.readFileSync(path.join(this.props.configFile), 'utf8');
             } else {
                 sjson = decodeURIComponent(this.props.configFile)
 

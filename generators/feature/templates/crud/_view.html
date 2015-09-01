@@ -14,21 +14,33 @@
                        <div class="row">  
                     <% }%>            
 
-                    <% if (field.userInterface.geral.fieldMask === 'text'){%>
+                    <% if (field.userInterface.geral.fieldMask === 'text' ||
+                           field.userInterface.geral.fieldMask === 'cpf'  ||
+                           field.userInterface.geral.fieldMask === 'cnpj' ||
+                           field.userInterface.geral.fieldMask === 'cep'  ||
+                           field.userInterface.geral.fieldMask === 'int'  ||
+                           field.userInterface.geral.fieldMask === 'tel'  ||
+                           field.userInterface.geral.fieldMask === 'decimal' ){%>
                         <input jd-input="3" 
                             <% if (field.userInterface.filter.requiredField) {%>
                               required
                            <% }%>    
                                jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" 
                                type="text" 
+                            <% if (field.userInterface.geral.fieldMask !== 'decimal'){%>
+                               mask="<%= field.userInterface.geral.fieldMask %>" 
+                            <% }%>
+                            <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                               ng-currency-mask currency=""
+                            <% }%>
                                ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>     
                 <% }%>       
             <% }) %>
             </div>    
         <% }%>  
-
-        
+            
+                
         <div class="row">
             <div class="col-xs-12">
                 <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.filter()" jd-i18n>Filtrar</button>
@@ -74,13 +86,25 @@
                        <div class="row">  
                     <% }%>          
                         
-                    <% if (field.userInterface.geral.fieldMask === 'text'){%>
-                           <input jd-input="3" 
+                     <% if (field.userInterface.geral.fieldMask === 'text' ||
+                           field.userInterface.geral.fieldMask === 'cpf'  ||
+                           field.userInterface.geral.fieldMask === 'cnpj' ||
+                           field.userInterface.geral.fieldMask === 'cep'  ||
+                           field.userInterface.geral.fieldMask === 'int'  ||
+                           field.userInterface.geral.fieldMask === 'tel'  ||
+                           field.userInterface.geral.fieldMask === 'decimal' ){%>
+                      <input jd-input="3" 
                         <% if (field.userInterface.filter.requiredField) {%>
                             required
-                       <% }%>    
+                        <% }%>    
                             jd-label="<%= field.userInterface.geral.fieldLabel.pt%>" 
                             type="text" 
+                         <% if (field.userInterface.geral.fieldMask !== 'decimal'){%>
+                               mask="<%= field.userInterface.geral.fieldMask %>" 
+                          <% }%>
+                          <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                               ng-currency-mask currency=""
+                          <% }%>
                             ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
                 <% }%>            

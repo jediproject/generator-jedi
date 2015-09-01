@@ -12,5 +12,6 @@ assets/css/angular-toastr.css
 assets/css/loading.css
 **/env/*-env.json
 main.js
+tmp
 version.json
 *.log

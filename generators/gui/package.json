@@ -33,6 +33,7 @@
     "heroku": "npm install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt master"
   },
   "dependencies": {
-    "body-parser": "^1.13.3"
+    "body-parser": "^1.13.3",
+    "mkdirp": "^0.5.1"
   }
 }

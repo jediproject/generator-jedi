@@ -71,62 +71,69 @@ jd.factory.newController('app.generator.featureCtrl', ['$scope', 'jedi.dialogs.A
 
     vm.featureModel.fieldsMask = [
         {
-            id: 1,
-            value: 'text'
+            id: 'text',
+            value: 'Text'
             }, {
-            id: 2,
-            value: 'multi-select'
+            id: 'multi-select',
+            value: 'Multi-select'
             }, {
-            id: 3,
-            value: 'single-select'
+            id: 'single-select',
+            value: 'Single-select'
             }
             , {
-            id: 4,
-            value: 'text-multi-value'
+            id: 'text-multi-value',
+            value: 'Text-multi-value'
             }
             , {
-            id: 5,
-            value: 'date'
+            id: 'date',
+            value: 'Date'
             }
             , {
-            id: 6,
-            value: 'date-time'
+            id: 'date-time',
+            value: 'Date-time'
             }
             , {
-            id: 7,
-            value: 'password'
+            id: 'password',
+            value: 'Password'
             }
             , {
-            id: 8,
-            value: 'cpf'
+            id: 'cpf',
+            value: 'Cpf'
             }
             , {
-            id: 9,
-            value: 'tel'
+            id: 'cnpj',
+            value: 'Cnpj'
             }
             , {
-            id: 10,
-            value: 'cep'
+            id: 'tel',
+            value: 'Tel'
             }
             , {
-            id: 11,
-            value: 'int'
+            id: 'cep',
+            value: 'Cep'
             }
             , {
-            id: 12,
-            value: 'currency'
+            id: 'int',
+            value: 'Int'
             }
             , {
-            id: 13,
-            value: 'boolean'
+            id: 'currency',
+            value: 'Currency'
+            } , {
+            id: 'decimal',
+            value: 'Decimal'
             }
             , {
-            id: 14,
-            value: 'radio-button'
+            id: 'boolean',
+            value: 'Boolean'
             }
             , {
-            id: 15,
-            value: 'check-box'
+            id: 'radio-button',
+            value: 'Radio-button'
+            }
+            , {
+            id: 'check-box',
+            value: 'Check-box'
             }
         ];
 

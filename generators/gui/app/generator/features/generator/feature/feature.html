@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="row">
-                        <select jd-input="3" jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.value as item.value for item in featureCtrl.featureModel.fieldsMask">
+                        <select jd-input="3" jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldsMask">
                             <option value="" jd-i18n>Selecione</option>
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="row">
-                        <select jd-input="3" jd-label="Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.value as item.value for item in featureCtrl.featureModel.size">
+                        <select jd-input="3" jd-label="Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.id as item.value for item in featureCtrl.featureModel.size">
                             <option value="" jd-i18n>Selecione</option>
                         </select>
                   
@@ -101,7 +101,7 @@
 
                     <input jd-input="3" jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
 
-                    <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    <input jd-input="3" jd-grouplabel="Show in form" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     
                     <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     
