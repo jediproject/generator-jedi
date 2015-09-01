@@ -79,7 +79,6 @@
 
                         <input jd-input="3" required jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter" />
 
-                        <input jd-input="3" jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     </div>
 
                     <div class="row">
@@ -104,7 +103,9 @@
 
                     <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                     
-                          <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                    <input jd-input="3" jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                 </div>
                 <!-- Fim div-uiform  -->
@@ -113,6 +114,9 @@
                 <div class="form-group" id="div-filter">
                     <input jd-input="3" jd-grouplabel="Show in filter" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
                           <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                       
+                    <input jd-input="3" jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                     <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
                         <option value="" jd-i18n>Selecione</option>
@@ -149,11 +153,10 @@
 
                             <p><strong>Max character:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter}}</p>
                             <p><strong>Min character:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter}}</p>
-                            <p><strong>Required field:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.requiredField}}</p>
 
                             <p><strong>Size:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.size}}</p>
 
-                            <p><strong>Include in new line:</strong> {{featureCtrl.featureModel.param.feature.userInterface.geral.newLine}}</p>
+                            
                         </div>
 
 
@@ -162,11 +165,16 @@
                             <h4>UI Form</h4>
                             <p><strong>Depends on:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.dependsOn}}</p>
                             <p><strong>Field editable for:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]}}</p>
+                            <p><strong>Include in new line:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.newLine}}</p>
+                            <p><strong>Required field:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.requiredField}}</p>
                             <p><strong>Visible to the user:</strong> {{featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser}}</p>
+                            
                             <h4>UI Filter</h4>
                             <p><strong>Show in filter:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter}}</p>
-
+                            <p><strong>Include in new line:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.newLine}}</p>
+                            <p><strong>Required field:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.requiredField}}</p>
                             <p><strong>Depends on:</strong> {{featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn}}</p>
+                            
                             <h4>UI Filter</h4>
                             <p><strong>Show in result:</strong> {{featureCtrl.featureModel.param.feature.userInterface.result.showInResult}}</p>
                             <p><strong>Used to delete:</strong> {{featureCtrl.featureModel.param.feature.userInterface.result.usedToDelete}}</p>

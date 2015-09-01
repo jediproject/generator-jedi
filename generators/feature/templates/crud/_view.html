@@ -5,19 +5,27 @@
         <% if(config.feature.fields)  {%>
             <% config.feature.fields.forEach(function(field){ %>
                 <% if (field.userInterface.filter.showInFilter){%>
-                    <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
-                        <div class="row">  
-                     <% }%>      
+                    <% if(field.index === 0)  {%>
+                      <div class="row">  
+                    <% }%>  
+                        
+                     <% if(field.index != 0 && field.userInterface.form.newLine)  {%>
+                       </div>  
+                       <div class="row">  
+                    <% }%>            
 
                     <% if (field.userInterface.geral.fieldMask === 'text'){%>
-                        <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
+                        <input jd-input="3" 
+                            <% if (field.userInterface.filter.requiredField) {%>
+                              required
+                           <% }%>    
+                               jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" 
+                               type="text" 
+                               ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>     
-
-                    <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
-                        </div>
-                     <% }%>  
                 <% }%>       
             <% }) %>
+            </div>    
         <% }%>  
 
         
@@ -57,19 +65,27 @@
         <% if(config.feature.fields)  {%>
             <% config.feature.fields.forEach(function(field){ %>
                 <% if (field.userInterface.form.visibleToTheUser){%>
-                    <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
+                    <% if(field.index === 0)  {%>
                       <div class="row">  
-                    <% }%>      
+                    <% }%>  
+                        
+                     <% if(field.index != 0 && field.userInterface.filter.newLine)  {%>
+                       </div>  
+                       <div class="row">  
+                    <% }%>          
                         
                     <% if (field.userInterface.geral.fieldMask === 'text'){%>
-                           <input jd-input="3" required jd-label="<%= field.userInterface.geral.fieldLabel.pt%>" type="text" ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
+                           <input jd-input="3" 
+                        <% if (field.userInterface.filter.requiredField) {%>
+                            required
+                       <% }%>    
+                            jd-label="<%= field.userInterface.geral.fieldLabel.pt%>" 
+                            type="text" 
+                            ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
-    
-                    <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
-                       </div>
-                    <% }%>         
                 <% }%>            
             <% }) %>
+             </div>    
         <% }%> 
 
             
