@@ -25,7 +25,7 @@ define([
     // store envSettings as a constant
     app.constant('envSettings', envSettings);
 
-    app.config(['$routeProvider', '$httpProvider', 'authServiceProvider', 'RestangularProvider', '$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider', 'jedi.i18n.LocalizeConfig', function ($routeProvider, $httpProvider, authServiceProvider, RestangularProvider, $provide, ngMaskConfig, Utilities, LocalizeConfig) {
+    app.config(['$routeProvider', '$httpProvider',  'RestangularProvider', '$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider', 'jedi.i18n.LocalizeConfig', function ($routeProvider, $httpProvider, RestangularProvider, $provide, ngMaskConfig, Utilities, LocalizeConfig) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -44,7 +44,7 @@ define([
         LocalizeConfig.defaultLanguage = 'pt';
     }]);
 
-    app.run(['$http', '$route', '$rootScope', '$location', 'authService', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log', 'jedi.i18n.Localize', function ($http, $route, $rootScope, $location, authService, alertHelper, $timeout, $injector, $log, localize) {
+    app.run(['$http', '$route', '$rootScope', '$location', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log', 'jedi.i18n.Localize', function ($http, $route, $rootScope, $location, alertHelper, $timeout, $injector, $log, localize) {
         $log.info('Configure i18n');
         localize.addResource('app/common/i18n/resources_{lang}.json');
 
@@ -105,13 +105,11 @@ define([
         $location.path('/');
 
 
-        // initialize authService
-        $log.info('Initializing authService');
-        authService.initialize();
+        
     }]);
 
     // AppCtrl: possui controles gerais da aplicação, como a parte de locale e também de deslogar
-    app.controller("app.common.AppCtrl", ["jedi.i18n.Localize", 'authService', function (localize, authService) {
+    app.controller("app.common.AppCtrl", ["jedi.i18n.Localize", function (localize) {
         var vm = this;
 
         vm.setLanguage = function (language) {

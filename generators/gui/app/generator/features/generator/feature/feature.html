@@ -86,7 +86,7 @@
                         <select jd-input="3" jd-label="Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.value as item.value for item in featureCtrl.featureModel.size">
                             <option value="" jd-i18n>Selecione</option>
                         </select>
-                        <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                  
                     </div>
 
                 </div>
@@ -103,6 +103,8 @@
                     <input jd-input="3" jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
 
                     <input jd-input="3" jd-grouplabel="Visible to the user" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                          <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                 </div>
                 <!-- Fim div-uiform  -->
@@ -110,6 +112,7 @@
                 <h1>UI Filter</h1>
                 <div class="form-group" id="div-filter">
                     <input jd-input="3" jd-grouplabel="Show in filter" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                          <input jd-input="3" jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
                     <select jd-input="3" jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
                         <option value="" jd-i18n>Selecione</option>

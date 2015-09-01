@@ -1,16 +1,26 @@
 <form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.subModule) {%><%= config.subModule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
     
     <div jd-panel jd-title="Filtros" jd-toggle>
-        <div class="row">
-            <% if(config.feature.fields)  {%>
-                <% config.feature.fields.forEach(function(field){ %>
-                    <% if (field.userInterface.geral.fieldMask === 'text'){%>
-                        <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
-                    <% }%>       
-                <% }) %>
-            <% }%>  
-            
-        </div>
+         
+        <% if(config.feature.fields)  {%>
+            <% config.feature.fields.forEach(function(field){ %>
+
+                <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
+                    <div class="row">  
+                 <% }%>      
+
+                <% if (field.userInterface.geral.fieldMask === 'text'){%>
+                    <input jd-input="3" jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" type="text" ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
+                <% }%>     
+
+                <% if(config.feature.fields.length === 0 || field.userInterface.filter.newLine)  {%>
+                    </div>
+                 <% }%>         
+
+            <% }) %>
+        <% }%>  
+
+        
         <div class="row">
             <div class="col-xs-12">
                 <button class="btn btn-primary" ng-click="<%= config.featureName%>Ctrl.filter()" jd-i18n>Filtrar</button>

@@ -303,6 +303,14 @@
         {
             "src": "bower_components/jquery.steps/build/jquery.steps.js",
             "dest": "assets/libs/jquery-steps/jquery.steps.js"
+        },
+        {
+            "src": "bower_components/angularAMD-multiscript/dist/angularAMD.js",
+            "dest": "assets/libs/angularAMD/angularAMD.js"
+        },
+        {
+            "src": "bower_components/ng-mask-currency/dist/ng-currency-mask.js",
+            "dest": "assets/libs/ng-currency-mask/ng-currency-mask.js"
         }
 	]
 }

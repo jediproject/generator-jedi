@@ -67,7 +67,6 @@
               "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
               "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
             },
-            "newLine": false,
             "validator": {
               "requiredField": true,
               "maxCharacter": 10,
@@ -77,6 +76,7 @@
           },
           "form": {
             "visibleToTheUser": true,
+            "newLine": false,
             "fieldEditableFor": [
               "create",
               "update"
@@ -89,6 +89,7 @@
           },
           "filter": {
             "showInFilter": true,
+            "newLine": false,
             "dependsOn": [
               "<fieldName>",
               "<fieldName>",
