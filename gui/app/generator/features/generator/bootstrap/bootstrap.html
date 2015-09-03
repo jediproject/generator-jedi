@@ -1,0 +1,39 @@
+<form jd-panel ng-controller="app.generator.bootstrapCtrl as bootstrapCtrl" name="bootstrapForm" jd-title="Bootstrap">
+
+    <div jd-panel jd-title="Parameters" jd-toggle>
+        <div class="row">
+            <input jd-input required jd-label="App name" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.appName" jd-help="Without special characters" />
+
+            <input jd-input="6" required jd-label="App title" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.appTitle" />
+        </div>
+        <div class="row">
+            <input jd-input required jd-label="Principal module name" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.moduleName" jd-help="Default is 'core'" />
+
+            <input jd-input required jd-label="Destination root" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.destinationRoot" jd-help="Default is '.'" />
+
+            <select required jd-input jd-label="Principal language" ng-model="bootstrapCtrl.bootstrapModel.params.defaultLang" jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.languages">
+                <option value="">---</option>
+            </select>
+        </div>
+        <div class="row">
+            <input jd-input jd-grouplabel="i18n component?" jd-label="{{item.value}}" type="radio" ng-model="bootstrapCtrl.bootstrapModel.params.useI18n" ng-value="item.id" jd-repeat="item in bootstrapCtrl.bootstrapModel.yesno" />
+
+            <input jd-input jd-grouplabel="Breadcrumb component?" jd-label="{{item.value}}" type="radio" ng-model="bootstrapCtrl.bootstrapModel.params.useBreadcrumb" ng-value="item.id" jd-repeat="item in bootstrapCtrl.bootstrapModel.yesno" />
+
+            <input jd-input jd-grouplabel="Generate Authentication page?" jd-label="{{item.value}}" type="radio" ng-model="bootstrapCtrl.bootstrapModel.params.generateAuth" ng-value="item.id" jd-repeat="item in bootstrapCtrl.bootstrapModel.yesno" />
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-primary" ng-disabled="!bootstrapForm.$valid" ng-click="bootstrapCtrl.generate()" jd-i18n>Generate</button>
+            </div>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+
+    <div jd-panel jd-title="Output console" jd-toggle>
+        <div class="row">
+            <textarea jd-input="12" readonly ng-model="bootstrapCtrl.bootstrapModel.msgConsole" rows="20"></textarea>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+</form>

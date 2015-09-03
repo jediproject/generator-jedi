@@ -1,0 +1,31 @@
+<form jd-panel ng-controller="app.generator.controllerCtrl as controllerCtrl" name="controllerForm" jd-title=" Controller">
+
+    <div jd-panel jd-title="Parameters" jd-toggle>
+        <div class="row">
+            <input jd-input required jd-label="Controller name" type="text" ng-model="controllerCtrl.controllerModel.params.controller" jd-help="Without special characters" />
+
+            <input jd-input="6" required jd-label="Title" type="text" ng-model="controllerCtrl.controllerModel.params.title" />
+        </div>
+        <div class="row">
+            <input jd-input required jd-label="Module" type="text" ng-model="controllerCtrl.controllerModel.params.moduleName" />
+
+            <input jd-input jd-label="Sub module" type="text" ng-model="controllerCtrl.controllerModel.params.submodule" />
+
+            <input jd-input required jd-label="Destination root" type="text" ng-model="controllerCtrl.controllerModel.params.destinationRoot" />
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-primary" ng-disabled="!controllerForm.$valid" ng-click="controllerCtrl.generate()" jd-i18n>Generate</button>
+            </div>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+
+    <div jd-panel jd-title="Output console" jd-toggle>
+        <div class="row">
+            <textarea jd-input="12" readonly ng-model="controllerCtrl.controllerModel.msgConsole" rows="20"></textarea>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+</form>

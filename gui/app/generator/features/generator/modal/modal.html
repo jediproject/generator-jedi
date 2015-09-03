@@ -1,0 +1,34 @@
+<form jd-panel ng-controller="app.generator.modalCtrl as modalCtrl" name="modalForm" jd-title=" Modal">
+
+    <div jd-panel jd-title="Parameters" jd-toggle>
+        <div class="row">
+            <input jd-input required jd-label="Controller name" type="text" ng-model="modalCtrl.modalModel.params.controller" />
+
+            <input jd-input="6" required jd-label="Title" type="text" ng-model="modalCtrl.modalModel.params.title" jd-help="Without special characters" />
+        </div>
+        <div class="row">
+            <input jd-input required jd-label="Module" type="text" ng-model="modalCtrl.modalModel.params.moduleName" />
+
+            <input jd-input jd-label="Sub module" type="text" ng-model="modalCtrl.modalModel.params.submodule" />
+
+            <input jd-input required jd-label="Destination root" type="text" ng-model="modalCtrl.modalModel.params.destinationRoot" />
+        </div>
+        <div class="row">
+            <input jd-input="9" jd-label="Params" type="text" ng-model="modalCtrl.modalModel.params.params" jd-help="Parameter list to open the modal, separated by ','. E.g: name, category" />
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">                
+                <button class="btn btn-primary" ng-disabled="!modalForm.$valid" ng-click="modalCtrl.generate()" jd-i18n>Generate</button>
+            </div>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+
+    <div jd-panel jd-title="Output console" jd-toggle>
+        <div class="row">
+            <textarea jd-input="12" readonly ng-model="modalCtrl.modalModel.msgConsole" rows="20"></textarea>
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+</form>

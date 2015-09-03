@@ -1,0 +1,228 @@
+<form jd-panel ng-controller="app.generator.featureCtrl as featureCtrl" name="featureForm" jd-title=" Feature">
+    <div jd-panel jd-title="Parameters" jd-toggle>
+        <div class="row">
+            <input jd-input required jd-label="Feature name" type="text" ng-model="featureCtrl.featureModel.json.featureName" jd-help="Without special characters" />
+
+            <input jd-input="6" required jd-label="Feature title" type="text" ng-model="featureCtrl.featureModel.json.featureTitle.pt" />
+
+            <select jd-input required jd-label="Feature type" ng-model="featureCtrl.featureModel.json.feature.type" jd-options="item.id as item.value for item in featureCtrl.featureModel.featuresType">
+                <option value="">---</option>
+            </select>
+        </div>
+        <div class="row">
+            <input jd-input required jd-label="Module name" type="text" ng-model="featureCtrl.featureModel.json.moduleName" />
+
+            <input jd-input jd-label="Sub-module name" type="text" ng-model="featureCtrl.featureModel.json.subModule" />
+
+            <input jd-input required jd-label="API address" type="text" ng-model="featureCtrl.featureModel.json.apiAddress" />
+
+            <input jd-input required jd-label="Destination root" type="text" ng-model="featureCtrl.featureModel.json.destinationRoot" />
+        </div>
+    </div>
+    <!--Fim div jd-panel -->
+
+    <div jd-panel jd-title="Fields" jd-toggle>
+        <div class="row">
+            <div jd-wizard finished='featureCtrl.finished()'>
+                <h1 jd-i18n>Entity</h1>
+                <div class="form-group" id="div-entity">
+                    <input jd-input required jd-label="Field name" type="text" ng-model="featureCtrl.featureModel.param.feature.entity.fieldName" jd-help="Without special characters" />
+
+                    <select jd-input required jd-label="Field type" ng-model="featureCtrl.featureModel.param.feature.entity.fieldType" jd-options="item.value as item.value for item in featureCtrl.featureModel.fieldstype">
+                        <option value="">---</option>
+                    </select>
+
+                    <select jd-input required jd-label="Cardinality" ng-model="featureCtrl.featureModel.param.feature.entity.cardinality" jd-options="item.value as item.value for item in featureCtrl.featureModel.cardinality">
+                        <option value="">---</option>
+                    </select>
+                </div>
+                <!-- Fim div-entity  -->
+
+                <h1 jd-i18n>UI Geral</h1>
+                <div class="form-group" id="div-uigeral">
+                    <div class="row">
+                        <input jd-input required jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel.pt" />
+
+                        <input jd-input required jd-label="Field hint" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldHint.pt" />
+
+                        <input jd-input required jd-label="Message required" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.messageRequired.pt" />
+                    </div>
+
+                    <div class="row">
+                        <select jd-input jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldsMask">
+                            <option value="">---</option>
+                        </select>
+                    </div>
+
+                    <div class="row">
+                        <input jd-input required jd-label="Max character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter" />
+
+                        <input jd-input required jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter" />
+                    </div>
+
+                    <div class="row">
+                        <select jd-input jd-label="Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.id as item.value for item in featureCtrl.featureModel.size">
+                            <option value="">---</option>
+                        </select>
+                  
+                    </div>
+                </div>
+                <!-- Fim div-uigeral  -->
+
+                <h1 jd-i18n>UI Form</h1>
+                <div class="form-group" id="div-uiform">
+                    <select jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
+                        <option value="">---</option>
+                    </select>
+
+                    <input jd-input jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" required jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
+
+                    <input jd-input jd-grouplabel="Show in form" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                    <input jd-input jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                    <input jd-input jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                </div>
+                <!-- Fim div-uiform  -->
+
+                <h1 jd-i18n>UI Filter</h1>
+                <div class="form-group" id="div-filter">
+                    <input jd-input jd-grouplabel="Show in filter" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                          <input jd-input jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    
+                    <input jd-input jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+
+                    <select jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.value as item.value for item in featureCtrl.featureModel.dependsOn">
+                        <option value="">---</option>
+                    </select>
+                </div>
+                <!-- Fim div-filter  -->
+
+                <h1 jd-i18n>UI Results</h1>
+                <div class="form-group" id="div-results">
+                    <input jd-input jd-grouplabel="Show in Result" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.result.showInResult" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                    <input jd-input jd-grouplabel="Used to delete" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.result.usedToDelete" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
+                </div>
+                <!-- Fim div-results  -->
+
+                <h1 jd-i18n>Resume</h1>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h4>Entity</h4>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field name:">
+                                {{featureCtrl.featureModel.param.feature.entity.fieldName}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field type:">
+                                {{featureCtrl.featureModel.param.feature.entity.fieldType}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Cardinality:">
+                                {{featureCtrl.featureModel.param.feature.entity.cardinality}}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Ui Geral</h4>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field label:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel.pt}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field hint:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldHint.pt}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field mask:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Max chars:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Min chars:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Size:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.geral.size}}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>UI Form</h4>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Depends on:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.form.dependsOn}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Field editable for:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Include in new line:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.form.newLine}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Required field:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.form.requiredField}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Visible to the user:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser}}
+                            </div>
+                            
+                            <h4>UI Filter</h4>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Show in filter:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.filter.showInFilter}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Include in new line:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.filter.newLine}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Required field:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.filter.requiredField}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Depends on:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn}}
+                            </div>
+                            
+                            <h4>UI Filter</h4>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Show in result:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.result.showInResult}}
+                            </div>
+                            <div jd-input="12" jd-sm-label-size="4" jd-md-label-size="4" jd-lg-label-size="4" jd-label="Used to delete:">
+                                {{featureCtrl.featureModel.param.feature.userInterface.result.usedToDelete}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim div-resume  -->
+        </div>
+    </div>
+
+    <!--Fim div jd-panel -->
+    <div jd-panel jd-title="Fields Adds" jd-toggle>
+        <div class="row">
+            <table at-table="featureCtrl.featureModel.json.feature.fields">
+                <tbody>
+                    <tr>
+                        <td at-attribute="entity.fieldName" at-title="Field name"></td>
+                        <td at-attribute="entity.fieldType" at-title="Field type"></td>
+                        <td at-attribute="userInterface.geral.fieldLabel.pt" at-title="Field label"></td>
+                        <td at-attribute="userInterface.geral.fieldMask" at-title="Field mask"></td>
+                        <td at-attribute="userInterface.filter.showInFilter" at-title="Show in filter"></td>
+                        <td at-attribute="userInterface.result.showInResult" at-title="Show in result"></td>
+                        <td at-title="Action">
+                            <p>
+                                <a href="" class="btn-icon btn-icon-sm bg-success" ng-click="featureCtrl.edit(field)"><i class="fa fa-edit"></i></a>
+                                </span>
+                                <a href="" class="btn-icon btn-icon-sm bg-danger" ng-click="featureCtrl.remove(field)"><i class="fa fa-remove"></i></a>
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button class="btn btn-primary" ng-click="featureCtrl.generate()" jd-i18n>Generate</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Fim div jd-panel -->
+    <div jd-panel jd-title="Output console" jd-toggle>
+        <div class="row">
+            <textarea jd-input="12" jd-lg-size="10" readonly ng-model="featureCtrl.featureModel.msgConsole" required rows="20"></textarea>
+        </div>
+    </div>
+
+</form>
