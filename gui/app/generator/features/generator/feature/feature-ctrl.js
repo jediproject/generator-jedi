@@ -212,6 +212,8 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.remove = remove;
     vm.changeType = changeType;
     vm.hasMasks = hasMasks;
+    vm.changeMask = changeMask;
+    vm.addMultiItem = addMultiItem;
     //#endregion
 
     //#region Events definitions
@@ -225,7 +227,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         var index = vm.featureModel.param.feature.index;
         
         vm.featureModel.param.feature = {};
-        vm.featureModel.param.feature.index = index + 1 ;
+        vm.featureModel.param.feature.index = index + 1;
     }
 
     function generate() {
@@ -260,11 +262,27 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
                 vm.featureModel.param.feature.userInterface.geral.validator.minRange = null;
             }
             vm.featureModel.param.feature.userInterface.geral.fieldMask = null;
+            vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig = {};
         }
     }
 
     function hasMasks() {
         return vm.featureModel.param.feature && vm.featureModel.param.feature.entity && $filter('maskByType')(vm.featureModel.fieldsMask, vm.featureModel.param.feature.entity.fieldType).length > 0;
+    }
+
+    function changeMask() {
+        if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
+            vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig = {};
+            if (vm.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio' || vm.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck' || vm.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select') {
+                vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items = [{}];
+            }
+        }
+    }
+
+    function addMultiItem() {
+        if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
+            vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
+        }
     }
     //#endregion
 

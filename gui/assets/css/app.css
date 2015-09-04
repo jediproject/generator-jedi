@@ -68,3 +68,25 @@ a[disabled] img, img[disabled] {
     filter: alpha(opacity=60);
     opacity: .6;
 }
+
+.btn-control {
+    padding-left: 13px;
+    padding-top: 6px;
+    margin-top: 0px;
+}
+
+.btn-control-label {
+    padding-left: 13px;
+    padding-top: 6px;
+    margin-top: 27px;
+}
+
+@media (max-width: 767px) {
+    .btn-control {
+        margin-top: 0px;
+    }
+
+    .btn-control-label {
+        margin-top: 0px;
+    }
+}
