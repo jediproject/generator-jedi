@@ -21,8 +21,9 @@
         "url": "http://jediproject.github.io"
     },
     "scripts": {
-        "test": "mocha",
-        "start": "npm run develop gui && node server.js"
+        "develop": "bash gui/run.sh develop && node server.js",
+        "heroku": "bash gui/run.sh heroku && node server.js" ,
+        "test": "mocha"
     },
     "files": [
     "generators"
