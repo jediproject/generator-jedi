@@ -63,3 +63,8 @@
         padding-right: 0px;
     }
 }
+
+a[disabled] img, img[disabled] {
+    filter: alpha(opacity=60);
+    opacity: .6;
+}

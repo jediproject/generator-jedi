@@ -3,7 +3,7 @@
 /*
     Controller for the feature 
 */
-jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestService', '$log', function (toastr, GeneratorRestService, $log) {
+jd.factory.newController(['app/generator/features/generator/feature/feature-filter.js'], 'app.generator.featureCtrl', ['toastr', 'generatorRestService', '$log', '$filter', function (toastr, GeneratorRestService, $log, $filter) {
 
     //#region Service initialize
     var service = GeneratorRestService.all('feature');
@@ -21,32 +21,7 @@ jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestS
         }
         ];
 
-    vm.featureModel.fieldstype = [
-        {
-            id: 1,
-            value: 'string'
-            },
-        {
-            id: 2,
-            value: 'int'
-            },
-        {
-            id: 3,
-            value: 'dobule'
-            },
-        {
-            id: 4,
-            value: 'boolean'
-            },
-        {
-            id: 5,
-            value: 'date'
-            },
-        {
-            id: 6,
-            value: 'date-time'
-            }
-        ];
+    vm.featureModel.fieldstype = ['string', 'int', 'dobule', 'boolean', 'date', 'date-time', 'time'];
 
     vm.featureModel.cardinality = [
         {
@@ -70,71 +45,88 @@ jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestS
 
     vm.featureModel.fieldsMask = [
         {
-            id: 'text',
-            value: 'Text'
-            }, {
-            id: 'multi-select',
-            value: 'Multi-select'
-            }, {
-            id: 'single-select',
-            value: 'Single-select'
-            }
-            , {
-            id: 'text-multi-value',
-            value: 'Text-multi-value'
-            }
-            , {
-            id: 'date',
-            value: 'Date'
-            }
-            , {
-            id: 'date-time',
-            value: 'Date-time'
-            }
-            , {
+            id: 'multi-radio', // lista de radios, complementado com um key e value
+            value: 'Multi-radios'
+        },
+        {
+            id: 'multi-ckeck', // lista de checkboxes, complementado com um key e value
+            value: 'Multi-ckecks'
+        },
+        {
+            id: 'multi-select', // lista de options, complementado com um key e value
+            value: 'Multi-selects'
+        },{
+            id: 'multi-radio-rest', // url de get com parametros de entrada e campo para exibição no option
+            value: 'Multi-radios by rest'
+        },
+        {
+            id: 'multi-ckeck-rest', // url de get com parametros de entrada e campo para exibição no option
+            value: 'Multi-ckecks by rest'
+        },
+        {
+            id: 'multi-select-rest', // url de get com parametros de entrada e campo para exibição no option
+            value: 'Multi-selects by rest'
+        }, {
+            id: 'modal',
+            value: 'Modal Directive' // diretiva para abertura de modal, complementado com nome da diretiva, parâmetros de entrada e expressão pra formatar valor
+        }
+        , {
+            id: 'autocomplete', // url para get do autocomplete, parâmetros de entrada, campos de exibição na listagem e expressão pra formatar valor
+            value: 'Autocomplete'
+        }
+        , {
             id: 'password',
-            value: 'Password'
-            }
-            , {
+            value: 'Password',
+            type: 'string'
+        }
+        , {
             id: 'cpf',
-            value: 'Cpf'
-            }
-            , {
+            value: 'Cpf',
+            type: 'string'
+        }
+        , {
             id: 'cnpj',
-            value: 'Cnpj'
-            }
-            , {
+            value: 'Cnpj',
+            type: 'string'
+        }
+        , {
             id: 'tel',
-            value: 'Tel'
-            }
-            , {
+            value: 'Tel',
+            type: 'string'
+        }
+        , {
             id: 'cep',
-            value: 'Cep'
-            }
-            , {
-            id: 'int',
-            value: 'Int'
-            }
-            , {
+            value: 'Cep',
+            type: 'string'
+        }
+        , {
+            id: 'url',
+            value: 'URL',
+            type: 'string'
+        }
+        , {
+            id: 'email',
+            value: 'E-mail',
+            type: 'string'
+        }
+        , {
+            id: 'pattern',
+            value: 'Pattern',
+            type: 'string'
+        }
+        , {
             id: 'currency',
-            value: 'Currency'
-            } , {
+            value: 'Currency',
+            type: 'dobule'
+        } , {
             id: 'decimal',
-            value: 'Decimal'
-            }
-            , {
-            id: 'boolean',
-            value: 'Boolean'
-            }
-            , {
-            id: 'radio-button',
-            value: 'Radio-button'
-            }
-            , {
-            id: 'check-box',
-            value: 'Check-box'
-            }
-        ];
+            value: 'Decimal',
+            type: 'dobule'
+        } , {
+            id: 'mask',
+            value: 'Mask',
+            type: 'string'
+        }];
 
     vm.featureModel.fiedlsEditableFor = [
         {
@@ -148,50 +140,50 @@ jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestS
     vm.featureModel.size = [
         {
             id: 1,
-            value: 'col-md-1'
+            value: '1 column'
             }, {
             id: 2,
-            value: 'col-md-2'
+            value: '2 columns'
             }
         , {
             id: 3,
-            value: 'col-md-3'
+            value: '3 columns'
             }
         , {
             id: 4,
-            value: 'col-md-4'
+            value: '4 columns'
             }
         , {
             id: 5,
-            value: 'col-md-5'
+            value: '5 columns'
             }
         , {
             id: 6,
-            value: 'col-md-6'
+            value: '6 columns'
             }
         , {
             id: 7,
-            value: 'col-md-7'
+            value: '7 columns'
             }
         , {
             id: 8,
-            value: 'col-md-8'
+            value: '8 columns'
             }
         , {
             id: 9,
-            value: 'col-md-9'
+            value: '9 columns'
             }
         , {
             id: 10,
-            value: 'col-md-10'
+            value: '10 columns'
             }
         , {
             id: 11,
-            value: 'col-md-11'
+            value: '11 columns'
             }
         , {
             id: 12,
-            value: 'col-md-12'
+            value: '12 columns'
             }
         ];
 
@@ -218,6 +210,8 @@ jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestS
     vm.finished = finished;
     vm.edit = edit;
     vm.remove = remove;
+    vm.changeType = changeType;
+    vm.hasMasks = hasMasks;
     //#endregion
 
     //#region Events definitions
@@ -255,6 +249,22 @@ jd.factory.newController('app.generator.featureCtrl', ['toastr', 'generatorRestS
 
     function remove(item) {
         vm.featureModel.json.feature.fields.splice(item.index, 1);
+    }
+
+    function changeType() {
+        if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
+            if (vm.featureModel.param.feature.userInterface.geral.validator) {
+                vm.featureModel.param.feature.userInterface.geral.validator.maxCharacter = null;
+                vm.featureModel.param.feature.userInterface.geral.validator.minCharacter = null;
+                vm.featureModel.param.feature.userInterface.geral.validator.maxRange = null;
+                vm.featureModel.param.feature.userInterface.geral.validator.minRange = null;
+            }
+            vm.featureModel.param.feature.userInterface.geral.fieldMask = null;
+        }
+    }
+
+    function hasMasks() {
+        return vm.featureModel.param.feature && vm.featureModel.param.feature.entity && $filter('maskByType')(vm.featureModel.fieldsMask, vm.featureModel.param.feature.entity.fieldType).length > 0;
     }
     //#endregion
 

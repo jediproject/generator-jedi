@@ -25,7 +25,7 @@ define([
     // store envSettings as a constant
     app.constant('envSettings', envSettings);
 
-    app.config(['$routeProvider', '$httpProvider',  'RestangularProvider', '$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider', 'jedi.i18n.LocalizeConfig', function ($routeProvider, $httpProvider, RestangularProvider, $provide, ngMaskConfig, Utilities, LocalizeConfig) {
+    app.config(['jedi.breadcrumb.BreadcrumbConfig', '$routeProvider', '$httpProvider',  'RestangularProvider', '$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider', 'jedi.i18n.LocalizeConfig', function (BreadcrumbConfig, $routeProvider, $httpProvider, RestangularProvider, $provide, ngMaskConfig, Utilities, LocalizeConfig) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -42,6 +42,7 @@ define([
 
         // configure language
         LocalizeConfig.defaultLanguage = 'en';
+        BreadcrumbConfig.homeTitle = 'Home';
     }]);
 
     app.run(['$http', '$route', '$rootScope', '$location', 'jedi.dialogs.AlertHelper', '$timeout', '$injector', '$log', 'jedi.i18n.Localize', function ($http, $route, $rootScope, $location, alertHelper, $timeout, $injector, $log, localize) {

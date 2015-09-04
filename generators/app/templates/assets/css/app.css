@@ -35,3 +35,8 @@
         text-align: left;
     }
 }
+
+a[disabled] img, img[disabled] {
+    filter: alpha(opacity=60);
+    opacity: .6;
+}
