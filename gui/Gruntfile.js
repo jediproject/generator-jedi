@@ -1,11 +1,11 @@
 /// <vs AfterBuild='debug' />
 
-var chalk = require('chalk');
-var _ = require('lodash');
-
 module.exports = function (grunt) {
-    require('load-grunt-tasks')(grunt);
+    'use strict';
 
+    require('load-grunt-tasks')(grunt);
+    var _ = require('lodash');
+    
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -29,20 +29,20 @@ module.exports = function (grunt) {
                     src: ['**/*.*', '!**/*.js', '!**/*.css', '!**/*.tpl.*', '!**/env/*.json', '**/env/*-env.json'], // Discard uglified files, template files and json environment parameters
                     dest: 'build/app/',
                 },
-                {
-                    expand: true,
-                    cwd: 'assets/',
-                    src: ['**/*.*', '!**/*.js', '!**/*.css'],
-                    dest: 'build/assets/',
-                },
-                {
-                    expand: true,
-                    src: ['favicon.ico', 'index.html', 'main.tpl.js', 'version.tpl.json'],
-                    dest: 'build/',
-                    rename: function (dest, src) {
-                        return dest + src.replace('.tpl', '');
-                    }
-                }]
+                    {
+                        expand: true,
+                        cwd: 'assets/',
+                        src: ['**/*.*', '!**/*.js', '!**/*.css'],
+                        dest: 'build/assets/',
+                    },
+                    {
+                        expand: true,
+                        src: ['favicon.ico', 'index.html', 'main.tpl.js', 'version.tpl.json'],
+                        dest: 'build/',
+                        rename: function (dest, src) {
+                            return dest + src.replace('.tpl', '');
+                        }
+                    }]
             },
             build: {
                 files: [{
@@ -51,20 +51,20 @@ module.exports = function (grunt) {
                     src: ['**/*.*', '!**/*.tpl.*', '!**/env/*.json', '**/env/*-env.json'], // Discard uglified files, template files and json environment parameters
                     dest: 'build/app/',
                 },
-                {
-                    expand: true,
-                    cwd: 'assets/',
-                    src: ['**/*.*'],
-                    dest: 'build/assets/',
-                },
-                {
-                    expand: true,
-                    src: ['favicon.ico', 'index.html', 'main.tpl.js', 'version.tpl.json'], //Copy necessary files from root
-                    dest: 'build/',
-                    rename: function (dest, src) {
-                        return dest + src.replace('.tpl', '');
+                    {
+                        expand: true,
+                        cwd: 'assets/',
+                        src: ['**/*.*'],
+                        dest: 'build/assets/',
                     },
-                }]
+                    {
+                        expand: true,
+                        src: ['favicon.ico', 'index.html', 'main.tpl.js', 'version.tpl.json'], //Copy necessary files from root
+                        dest: 'build/',
+                        rename: function (dest, src) {
+                            return dest + src.replace('.tpl', '');
+                        },
+                    }]
             }
         },
         uglify: {
@@ -79,16 +79,16 @@ module.exports = function (grunt) {
                     dest: 'build/app/',
                     ext: '.js'
                 },
-                {
-                    expand: true,
-                    cwd: 'assets/',
-                    src: ['**/*.js', '!**/*.min.js'],
-                    dest: 'build/assets/',
-                    ext: '.js'
-                },
-                {
-                    'build/main.js': ['main.tpl.js']
-                }]
+                    {
+                        expand: true,
+                        cwd: 'assets/',
+                        src: ['**/*.js', '!**/*.min.js'],
+                        dest: 'build/assets/',
+                        ext: '.js'
+                    },
+                    {
+                        'build/main.js': ['main.tpl.js']
+                    }]
             }
         },
         cssmin: {
@@ -100,13 +100,13 @@ module.exports = function (grunt) {
                     dest: 'build/app/',
                     ext: '.css'
                 },
-                {
-                    expand: true,
-                    cwd: 'assets/',
-                    src: ['**/*.css', '!**/*.min.css'],
-                    dest: 'build/assets/',
-                    ext: '.css'
-                }]
+                    {
+                        expand: true,
+                        cwd: 'assets/',
+                        src: ['**/*.css', '!**/*.min.css'],
+                        dest: 'build/assets/',
+                        ext: '.css'
+                    }]
             }
         },
         replace: {
@@ -151,10 +151,10 @@ module.exports = function (grunt) {
                         // Insert file mapping with '/' as directory separator and breakline
                         replacement: "<%= JSON.stringify(grunt.filerev.summary).replace(/\\\\\\\\/g, '\/').replace(/,/g, ',\\n').replace(/\"build\\//g, '\"') %>",
                     },
-                    {
-                        match: 'version',
-                        replacement: "<%= grunt.task.current.args.length ? grunt.task.current.args[0] : pkg.version %>" // ToDo Versioning
-                    }]
+                        {
+                            match: 'version',
+                            replacement: "<%= grunt.task.current.args.length ? grunt.task.current.args[0] : pkg.version %>" // ToDo Versioning
+                        }]
                 },
                 files: [{ src: ['version.tpl.json'], dest: "<%= grunt.filerev.summary['build\\\\version\\\.json'].replace(/\\\\/g, '\/') %>" }]
             },
@@ -164,10 +164,10 @@ module.exports = function (grunt) {
                         match: 'mapping',
                         replacement: "{}",
                     },
-                    {
-                        match: 'version',
-                        replacement: "<%= grunt.task.current.args.length ? grunt.task.current.args[0] : pkg.version %>" // ToDo Versioning
-                    }]
+                        {
+                            match: 'version',
+                            replacement: "<%= grunt.task.current.args.length ? grunt.task.current.args[0] : pkg.version %>" // ToDo Versioning
+                        }]
                 },
                 files: [{ src: ['version.tpl.json'], dest: 'version.json' }]
             }
@@ -203,14 +203,40 @@ module.exports = function (grunt) {
                 prefix: ['build', 'assets'],
                 unixfyPath: true,
             },
-            files:
-                {
-                    expand: true,
-                    cwd: 'build/',
-                    src: ['**/*.{html,css,js}'],
-                    dest: 'build',
-                }
-        }
+            files: {
+                expand: true,
+                cwd: 'build/',
+                src: ['**/*.{html,css,js}'],
+                dest: 'build',
+            }
+        },
+        jshint: {
+            options: {
+                globalstrict: true,
+                curly: true,
+                eqeqeq: true,
+                eqnull: true,
+                browser: true,
+                strict: true,
+                newcap: false,
+                validthis: true,
+                globals: {
+                    jQuery: true,
+                    angular: false,
+                    "$": false,
+                    "_": false,
+                    "jd": false,
+                    "define": false,
+                    "console": false,
+                    "moment": false
+                },
+            },
+            allFiles: [
+                'Gruntfile.js',
+                '../**/*.js',
+                '!../**/index.js',
+            ]
+        },
     });
 
     // Main tasks for each environment
@@ -233,10 +259,10 @@ module.exports = function (grunt) {
         grunt.task.run('set-environment:' + env);
 
         // Build version 
-        if (env == 'develop') {
+        if (env === 'develop') {
             grunt.task.run('build-develop');
         } else
-            if (env != 'master') {
+            if (env !== 'master') {
                 grunt.task.run('build');
             } else {
                 grunt.task.run('build-min');
@@ -246,7 +272,7 @@ module.exports = function (grunt) {
     // Task responsible for prepare and replace scripts to develop mode
     grunt.registerTask('build-develop', ['replace:main', 'replace:versiondevelop']);
 
-    grunt.registerTask('cache-bust', ['filerev', 'filerev_apply_cit', 'replace:version', 'replace:mainbuild'])
+    grunt.registerTask('cache-bust', ['filerev', 'filerev_apply_cit', 'replace:version', 'replace:mainbuild']);
 
     // Task responsible for create the build folder without minify
     grunt.registerTask('build', ['clean:build', 'copy:build', 'cache-bust']);
@@ -340,5 +366,5 @@ module.exports = function (grunt) {
         return fs.readdirSync('./app').filter(function (file) {
             return fs.statSync(path.join('./app', file)).isDirectory();
         });
-    };
+    }
 };

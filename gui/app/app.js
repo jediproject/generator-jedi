@@ -114,7 +114,7 @@ define([
         vm.getLanguage = function () {
             return localize.getLanguage();
         };
-    }])
+    }]);
 
     return angularAMD.bootstrap(app);
 });
