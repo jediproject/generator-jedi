@@ -55,7 +55,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         {
             id: 'multi-select', // lista de options, complementado com um key e value
             value: 'Multi-selects'
-        },{
+        }, {
             id: 'multi-radio-rest', // url de get com parametros de entrada e campo para exibição no option
             value: 'Multi-radios by rest'
         },
@@ -118,11 +118,11 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             id: 'currency',
             value: 'Currency',
             type: 'dobule'
-        } , {
+        }, {
             id: 'decimal',
             value: 'Decimal',
             type: 'dobule'
-        } , {
+        }, {
             id: 'mask',
             value: 'Mask',
             type: 'string'
@@ -193,7 +193,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
 
     vm.featureModel.param.feature = {};
 
-    vm.featureModel.param.feature.index = 0;
+    vm.featureModel.param.index = 0;
 
     vm.featureModel.json = {
         destinationRoot: '.'
@@ -218,16 +218,26 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
 
     //#region Events definitions
     function finished() {
-        //var p = JSON.parse(vm.featureModel.param);
-        //var obj = Object.clone(vm.featureModel.param);
-        
+        var i;
+        var existe = false;
+
         var p = JSON.parse(JSON.stringify(vm.featureModel.param.feature));
-        vm.featureModel.json.feature.fields.push(p);
-        
-        var index = vm.featureModel.param.feature.index;
+
+        for (i = 0; i < vm.featureModel.json.feature.fields.length; i++) {
+            if (p.index != undefined && vm.featureModel.json.feature.fields[i].index === p.index) {
+                vm.featureModel.json.feature.fields.splice(i, 1);
+                vm.featureModel.json.feature.fields.splice(i, 0, p);
+                existe = true;
+            }
+        }
+
+        if (!existe) {
+            p.index = vm.featureModel.param.index;
+            vm.featureModel.json.feature.fields.push(p);        
+            vm.featureModel.param.index ++;
+        }
         
         vm.featureModel.param.feature = {};
-        vm.featureModel.param.feature.index = index + 1;
     }
 
     function generate() {
@@ -246,11 +256,18 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     }
 
     function edit(item) {
-        vm.featureModel.param = JSON.parse(JSON.stringify(item)); 
+        vm.featureModel.param.feature = JSON.parse(JSON.stringify(item));
     }
 
     function remove(item) {
-        vm.featureModel.json.feature.fields.splice(item.index, 1);
+        var i = 0;
+        while (i < vm.featureModel.json.feature.fields.length) {
+            if (vm.featureModel.json.feature.fields[i].index === item.index) {
+                vm.featureModel.json.feature.fields.splice(i, 1);
+                break;
+            }
+            i++;
+        }
     }
 
     function changeType() {
@@ -280,10 +297,10 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     }
 
     function addMultiItem() {
-        if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
-            vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
+            if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
+                vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
+            }
         }
-    }
-    //#endregion
+        //#endregion
 
 }]);

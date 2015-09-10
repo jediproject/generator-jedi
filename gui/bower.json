@@ -40,7 +40,6 @@
     "angular-dynamic-locale": "~0.1.27",
     "ng-jedi-layout": "0.0.1",
     "requirejs-plugins": "~1.0.3",
-    "jquery.steps": "~1.1.0",
     "angular-toastr": "~1.4.1"
   },
   "resolutions": {

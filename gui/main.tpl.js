@@ -65,7 +65,7 @@ require.config({
         'slimscroll': 'assets/libs/slimscroll/jquery.slimscroll.js',
         'json': 'assets/libs/requirejs-plugins/json.js',
         'text': 'assets/libs/requirejs-plugins/text.js',
-        'jquery-steps' : 'assets/libs/jquery-steps/jquery.steps.js'
+        'jquery-steps' : 'app/common/components/wizard/jquery-steps.js'
     },
 
     // Add angular modules that does not support AMD out of the box, put it in a shim
