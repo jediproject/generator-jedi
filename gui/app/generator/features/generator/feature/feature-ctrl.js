@@ -187,7 +187,6 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             }
         ];
 
-    vm.featureModel.dependsOn = [];
 
     vm.featureModel.param = {};
 
