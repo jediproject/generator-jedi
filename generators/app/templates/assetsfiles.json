@@ -87,15 +87,15 @@
 		{
 			"src": "bower_components/angular-animate/angular-animate.js",
 			"dest": "assets/libs/angular-animate/angular-animate.js"
-		},
+		},<% if (props.generateAuth) {%>
 		{
-			"src": "bower_components/angular-authService/authService.js",
-			"dest": "assets/libs/angular-authService/authService.js"
+			"src": "bower_components/ng-jedi-security/security.js",
+			"dest": "assets/libs/ng-jedi-security/security.js"
 		},
 		{
 			"src": "bower_components/cryptojslib/rollups/md5.js",
 			"dest": "assets/libs/cryptojslib/md5.js"
-		},
+		},<%}%>
 		{
 			"src": "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
 			"dest": "assets/libs/angular-bootstrap/ui-bootstrap-tpls.js"

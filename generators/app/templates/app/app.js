@@ -25,7 +25,8 @@ define([
     // store envSettings as a constant
     app.constant('envSettings', envSettings);
 
-    app.config(['$routeProvider', '$httpProvider', 'authServiceProvider', <% if (props.useRestangular) {%>'RestangularProvider', <%}%>'$provide', 'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, authServiceProvider, <% if (props.useRestangular) {%>RestangularProvider, <%}%>$provide, ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
+    app.config(['$routeProvider', '$httpProvider', <% if (props.generateAuth) {%>'jedi.security.SecurityService'
+        });<%}%><% if (props.useRestangular) {%>'RestangularProvider', <%}%>'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, <% if (props.generateAuth) {%>authServiceProvider, <%}%><% if (props.useRestangular) {%>RestangularProvider, <%}%> ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -49,7 +50,7 @@ define([
             storageKey: 'authData',
             signInUrl: '/auth',
             signOutUrl: '/auth/signout',
-            handleTokenResponse: function (response, identity) {
+            onCreateIdentity: function (response, identity) {
                 // complements for a identify
                 //identity.name = response.name;
                 //identity.email = response.email;
@@ -131,16 +132,16 @@ define([
         }
 
         // authenticate events
-        $rootScope.$on('auth:login-success', loadUserProfile);
-        $rootScope.$on('auth:validation-success', loadUserProfile);
+        $rootScope.$on('jedi.security:login-success', loadUserProfile);
+        $rootScope.$on('jedi.security:validation-success', loadUserProfile);
 
         // unauthenticate events
-        $rootScope.$on('auth:login-error', resetUserProfile);
-        $rootScope.$on('auth:session-expired', resetUserProfile);
-        $rootScope.$on('auth:validation-error', resetUserProfile);
-        $rootScope.$on('auth:logout-success', resetUserProfile);
-        $rootScope.$on('auth:logout-error', resetUserProfile);
-        $rootScope.$on('auth:invalid', resetUserProfile);
+        $rootScope.$on('jedi.security:login-error', resetUserProfile);
+        $rootScope.$on('jedi.security:session-expired', resetUserProfile);
+        $rootScope.$on('jedi.security:validation-error', resetUserProfile);
+        $rootScope.$on('jedi.security:logout-success', resetUserProfile);
+        $rootScope.$on('jedi.security:logout-error', resetUserProfile);
+        $rootScope.$on('jedi.security:invalid', resetUserProfile);
         ////-------<%} else {%>
         $log.info('Load modules');
 
@@ -175,7 +176,7 @@ define([
     }]);
 
     // AppCtrl: possui controles gerais da aplicação, como a parte de locale e também de deslogar
-    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"jedi.i18n.Localize", <%}%>'authService', function (<% if (props.useI18n) {%>localize, <%}%>authService) {
+    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"jedi.i18n.Localize", <%}%>'jedi.security.SecurityService', function (<% if (props.useI18n) {%>localize, <%}%>authService) {
         var vm = this;<% if (props.useI18n) {%>
 
         vm.setLanguage = function (language) {

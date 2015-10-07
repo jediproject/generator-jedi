@@ -1,8 +1,7 @@
 ﻿"use strict";
 
 define([<% if (!props.useI18n) {%>'angular-i18n',
-        <%}%>'angular-authService',
-        'ng-currency-mask',
+        <%}%>'ng-currency-mask',
         'angular-ngMask',
         'angular-bootstrap',
         'angular-file-upload',
@@ -11,8 +10,7 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
         'angular-toastr'], function () {
     
     angular.module("app.external.components", [ <% if (!props.useI18n) {%>'ngLocale',
-                                                <%}%>'authService',
-                                                'ngCurrencyMask',
+                                                <%}%>'ngCurrencyMask',
                                                 'ngMask',
                                                 'ui.bootstrap',
                                                 'angularFileUpload',
