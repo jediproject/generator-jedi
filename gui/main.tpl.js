@@ -30,6 +30,7 @@ require.config({
         'ng-jedi-layout-panel': 'assets/libs/ng-jedi-layout/panel.js',
         'ng-jedi-layout-treeview': 'assets/libs/ng-jedi-layout/treeview.js',
         'ng-jedi-layout-validationtooltip': 'assets/libs/ng-jedi-layout/validationtooltip.js',
+        'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
         'ng-jedi-wizard': 'app/common/components/wizard/wizard-directive.js',
 
         // ## common components
@@ -48,7 +49,6 @@ require.config({
         'angular-loading-bar': 'assets/libs/angular-loading-bar/loading-bar.js',
         'angular-ngMask': 'assets/libs/angular-ngMask/ngMask.js',
         'angular-route': 'assets/libs/angular-route/angular-route.js',
-        'angular-table': 'assets/libs/angular-table/angular-table.js',
         'angularAMD': 'assets/libs/angularAMD/angularAMD.js',
         'ng-currency-mask': 'assets/libs/ng-currency-mask/ng-currency-mask.js',
         'restangular': 'assets/libs/restangular/restangular.js',
@@ -86,7 +86,6 @@ require.config({
         "angular-i18n": ["angular"],
         "angularAMD": ["angular"],
         "angular-bootstrap": ["bootstrap", "angular"],
-        "angular-table": ["angular"],
         "ng-currency-mask": ["angular"],
         "angular-ngMask": ["angular"],
         "angular-file-upload": ["angular"],

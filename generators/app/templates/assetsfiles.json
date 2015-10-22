@@ -137,10 +137,6 @@
 			"dest": "assets/libs/angular-route/angular-route.js"
 		},
 		{
-			"src": "bower_components/angular-table-restful/angular-table-restful.js",
-			"dest": "assets/libs/angular-table/angular-table.js"
-		},
-		{
 			"src": "bower_components/angularAMD/angularAMD.js",
 			"dest": "assets/libs/angularAMD/angularAMD.js"
 		},
@@ -235,6 +231,14 @@
 		{
 			"src": "bower_components/ng-jedi-loading/loading.css",
 			"dest": "assets/css/loading.css"
+		},
+		{
+			"src": "bower_components/ng-jedi-table/table.js",
+			"dest": "assets/libs/ng-jedi-table/table.js"
+		},
+		{
+			"src": "bower_components/ng-jedi-table/table.css",
+			"dest": "assets/css/table.css"
 		},
 		{
 			"src": "bower_components/ng-jedi-utilities/utilities.js",

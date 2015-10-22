@@ -25,8 +25,8 @@ define([
     // store envSettings as a constant
     app.constant('envSettings', envSettings);
 
-    app.config(['$routeProvider', '$httpProvider', <% if (props.generateAuth) {%>'jedi.security.SecurityService'
-        });<%}%><% if (props.useRestangular) {%>'RestangularProvider', <%}%>'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, <% if (props.generateAuth) {%>authServiceProvider, <%}%><% if (props.useRestangular) {%>RestangularProvider, <%}%> ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
+    app.config(['$routeProvider', '$httpProvider', <% if (props.generateAuth) {%>'jedi.security.SecurityServiceProvider',
+        <%} if (props.useRestangular) {%>'RestangularProvider', <%}%>'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, <% if (props.generateAuth) {%>authServiceProvider, <%}%><% if (props.useRestangular) {%>RestangularProvider, <%}%> ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -146,10 +146,12 @@ define([
         $log.info('Load modules');
 
         // load app modules (e.g.: core, billing)
-        jd.factory.loadModules(['<%= props.moduleName%>'], <% if (props.useI18n) {%>function (module) {
-            // adiciona path para i18n do sistema
-            localize.addResource('app/' + module + '/i18n/resources_{lang}.json');
-        }, <%}%>function () {
+        jd.factory.loadModules(['<%= props.moduleName%>'], function (module) {
+            <% if (props.useI18n) {%>
+                // adiciona path para i18n do sistema
+                localize.addResource('app/' + module + '/i18n/resources_{lang}.json');
+            <%}%>
+        }, function () {
             // after load all modules and its dependencies, it can load routes
 
             $log.info('Load routes');
@@ -176,7 +178,9 @@ define([
     }]);
 
     // AppCtrl: possui controles gerais da aplicação, como a parte de locale e também de deslogar
-    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"jedi.i18n.Localize", <%}%>'jedi.security.SecurityService', function (<% if (props.useI18n) {%>localize, <%}%>authService) {
+    app.controller("app.common.AppCtrl", [<% if (props.useI18n) {%>"jedi.i18n.Localize", <%} if (props.generateAuth) {%>'jedi.security.SecurityService',<%}%> '$log', function (<% if (props.useI18n) {%>localize, <%} if (props.generateAuth) {%>authService, <%}%> $log) {
+        $log.info('Iniciando AppCtrl');
+        
         var vm = this;<% if (props.useI18n) {%>
 
         vm.setLanguage = function (language) {

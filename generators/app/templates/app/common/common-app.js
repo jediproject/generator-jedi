@@ -5,7 +5,6 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
         'angular-ngMask',
         'angular-bootstrap',
         'angular-file-upload',
-        'angular-table',
         'app-common-components',
         'angular-toastr'], function () {
     
@@ -14,7 +13,6 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
                                                 'ngMask',
                                                 'ui.bootstrap',
                                                 'angularFileUpload',
-                                                'angular-table',
                                                 'toastr' ]);
 
     angular.module("app.common", ['app.external.components', 'app.common.components']);

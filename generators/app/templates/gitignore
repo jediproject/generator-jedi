@@ -10,6 +10,7 @@ assets/css/font-awesome.css
 assets/css/weather-icons.css
 assets/css/angular-toastr.css
 assets/css/loading.css
+assets/css/table.css
 **/env/*-env.json
 main.js
 version.json

@@ -27,7 +27,7 @@
     "lodash": "^3.10.0",
     "ember-cli-bootstrap": "0.0.15"
   },
-  "devDependencies": {<% if (props.generateAuth) {%>,
+  "devDependencies": {<% if (props.generateAuth) {%>
     "apimocker": "^0.4.4",<%}%>
     "http-server": "^0.8.0",
     "json-server": "^0.7.20",

@@ -27,11 +27,11 @@
 	"angular-ngMask-alias": "*",
 	"angular-file-upload-interceptor": "*",
 	"fontawesome": "~4.3.0",
-	"weather-icons": "~1.3.2",
-	"angular-table-restful": "*",
+	"weather-icons": "~1.3.2",	
 	"angularAMD": "~0.2.1",
 	"ng-currency-mask": "1.0.7",<% if (props.useBreadcrumb) {%>
 	"ng-jedi-breadcrumb": "0.0.1",<%}%>
+	"ng-jedi-table": "0.0.1",
 	"ng-jedi-dialogs": "0.0.1",
 	"ng-jedi-loading": "0.0.1",
 	"ng-jedi-utilities": "0.0.1",

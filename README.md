@@ -13,12 +13,12 @@ A rotina de geração principal é uma composição de vários recursos Stack JS
 - [ng-jedi-layout](https://github.com/jediproject/ng-jedi-layout)
 - [ng-jedi-loading](https://github.com/jediproject/ng-jedi-loading)
 - [ng-jedi-utilities](https://github.com/jediproject/ng-jedi-utilities)
-- [angular-authService](https://github.com/fabioviana/angular-authService): componente para controle de autenticação e autorização via token
+- [ng-jedi-table](https://github.com/jediproject/ng-jedi-table): componente de grid com paginação e ordenação via api rest.
+- [ng-jedi-security](https://github.com/jediproject/ng-jedi-security): componente para controle de autenticação e autorização via token
 - [angular-bootstrap](https://github.com/angular-ui/bootstrap-bower): componentes bootstrap angular
 - [angular-file-upload-interceptor](https://github.com/mateusmcg/angular-file-upload-interceptor): componente para realizar upload de arquivos via angular
 - [angular-dynamic-locale](https://github.com/lgalfaso/angular-dynamic-locale): componente para carregamento do ngLocale dinamicamente, após seleção da linguagem, utilizado diretamente pelo componente ng-jedi-i18n.
 - [angular-ngMask](https://github.com/fabioviana/ngMaskAlias): componente para aplicar máscaras em campos input
-- [angular-table](https://github.com/mateusmcg/angular-table-restful): componente de grid com paginação e ordenação via api rest.
 - [angularAMD](https://github.com/mateusmcg/angularAMD-multiscript): componente para integração entre angular e requirejs, para correto carregamento.
 - [ng-currency-mask](https://github.com/VictorQueiroz/ngCurrencyMask): componente para aplicar máscara de monetário em campos input.
 - [bootstrap](https://github.com/twbs/bootstrap)

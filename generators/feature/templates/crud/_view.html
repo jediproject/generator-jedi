@@ -51,16 +51,16 @@
     </div>
 
     <div jd-panel jd-title="Resultado" jd-toggle>
-        <table at-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" at-paginated>    
+        <table jd-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" jd-paginated>    
             <tbody>
                 <tr>
                     
                     <% config.feature.fields.forEach(function(field){ %>  
                         <% if (field.userInterface.result.showInResult) {%>
-                            <td at-sortable at-attribute="<%= field.entity.fieldName%>" at-title="<%= field.userInterface.geral.fieldLabel.pt%>"></td>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>"></td>
                         <% }%>  
                      <% }) %>                    
-                    <td at-title="Ações" class="text-center">
+                    <td jd-title="Ações" class="text-center">
                         <a href="javascript:;" jd-i18n title="Editar" ng-click="<%= config.featureName%>Ctrl.openEditModal(item)"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;
                         <a href="javascript:;" jd-i18n title="Excluir" ng-click="<%= config.featureName%>Ctrl.remove(item)"><i class=" glyphicon glyphicon-remove"></i></a>
