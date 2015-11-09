@@ -14,9 +14,7 @@ require.config({
         'version': 'version.json',
 
         // ## ng-jedi components
-        'ng-jedi-utilities': 'assets/libs/ng-jedi-utilities/utilities.js',
-        'ng-jedi-utilities-directives': 'assets/libs/ng-jedi-utilities/utilities-directives.js',
-        'ng-jedi-utilities-filters': 'assets/libs/ng-jedi-utilities/utilities-filters.js',<% if (props.useI18n) {%>
+        'ng-jedi-utilities': 'assets/libs/ng-jedi-utilities/utilities.js',<% if (props.useI18n) {%>
         'ng-jedi-i18n': 'assets/libs/ng-jedi-i18n/i18n.js',<%}%>
         'ng-jedi-dialogs': 'assets/libs/ng-jedi-dialogs/dialogs.js',
         'ng-jedi-dialogs-ctrls': 'assets/libs/ng-jedi-dialogs/dialogs-ctrls.js',
@@ -32,8 +30,10 @@ require.config({
         'ng-jedi-layout-panel': 'assets/libs/ng-jedi-layout/panel.js',
         'ng-jedi-layout-treeview': 'assets/libs/ng-jedi-layout/treeview.js',
         'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
-        'ng-jedi-layout-validationtooltip': 'assets/libs/ng-jedi-layout/validationtooltip.js',<% if (props.generateAuth) {%>
+        'ng-jedi-layout-validationtooltip': 'assets/libs/ng-jedi-layout/validationtooltip.js',
+        'ng-jedi-activities': 'assets/libs/ng-jedi-activities/activities.js',<% if (props.generateAuth) {%>
         'ng-jedi-security': 'assets/libs/ng-jedi-security/security.js',<%}%>
+        'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
 
         // ## common components
         'app-common': 'app/common/common-app.js',
@@ -52,7 +52,7 @@ require.config({
         'angular-i18n': 'assets/libs/angular-i18n/angular-locale_<%= props.defaultLang%>.js',<%}%>
         'angular-loading-bar': 'assets/libs/angular-loading-bar/loading-bar.js',
         'angular-ngMask': 'assets/libs/angular-ngMask/ngMask.js',
-        'angular-route': 'assets/libs/angular-route/angular-route.js',        
+        'angular-route': 'assets/libs/angular-route/angular-route.js',
         'angularAMD': 'assets/libs/angularAMD/angularAMD.js',
         'ng-currency-mask': 'assets/libs/ng-currency-mask/ng-currency-mask.js',<% if (props.useRestangular) {%>
         'restangular': 'assets/libs/restangular/restangular.js',<%}%>

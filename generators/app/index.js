@@ -26,7 +26,7 @@ module.exports = yeoman.generators.Base.extend({
 
 		// Have Yeoman greet the user.
 		this.log(yosay(
-			'Welcome to the CI&T Angular Reference Architecture generator!'
+			'Welcome to the Jedi Project generator!'
 		));
     
 
@@ -300,7 +300,7 @@ module.exports = yeoman.generators.Base.extend({
 	end: function () {
 		this.composeWith('jedi:module', {args: [this.props.moduleName + ';' + this.props.useI18n + ';' + this.props.defaultLang + ';' + this.props.destinationRoot]});
 		this.composeWith('jedi:controller', {args: ['My Feature 1;' + this.props.moduleName + ';mysubmodule;myfeature1;' + this.props.destinationRoot]});
-		this.composeWith('jedi:controller', {args: ['My Feature 2;' + this.props.moduleName + ';mysubmodule;myfeature2;' +this.props.destinationRoot ]});
+		this.composeWith('jedi:controller', {args: ['My Feature 2;' + this.props.moduleName + ';mysubmodule;myfeature2;' + this.props.destinationRoot ]});
 	},
 
 	install: function () {

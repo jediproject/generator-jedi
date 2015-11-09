@@ -7,7 +7,7 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
         'angular-file-upload',
         'app-common-components',
         'angular-toastr'], function () {
-    
+
     angular.module("app.external.components", [ <% if (!props.useI18n) {%>'ngLocale',
                                                 <%}%>'ngCurrencyMask',
                                                 'ngMask',
@@ -16,5 +16,5 @@ define([<% if (!props.useI18n) {%>'angular-i18n',
                                                 'toastr' ]);
 
     angular.module("app.common", ['app.external.components', 'app.common.components']);
-    
+
 });

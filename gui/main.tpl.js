@@ -13,8 +13,6 @@ require.config({
 
         // ## ng-jedi components
         'ng-jedi-utilities': 'assets/libs/ng-jedi-utilities/utilities.js',
-        'ng-jedi-utilities-directives': 'assets/libs/ng-jedi-utilities/utilities-directives.js',
-        'ng-jedi-utilities-filters': 'assets/libs/ng-jedi-utilities/utilities-filters.js',
         'ng-jedi-i18n': 'assets/libs/ng-jedi-i18n/i18n.js',
         'ng-jedi-dialogs': 'assets/libs/ng-jedi-dialogs/dialogs.js',
         'ng-jedi-dialogs-ctrls': 'assets/libs/ng-jedi-dialogs/dialogs-ctrls.js',

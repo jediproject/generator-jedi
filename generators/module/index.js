@@ -31,7 +31,7 @@ module.exports = yeoman.generators.Base.extend({
 
       // Have Yeoman greet the user.
       this.log(yosay(
-        'Welcome to the CI&T Angular Reference Architecture generator to module!'
+        'Welcome to the Jedi Project generator to module!'
       ));
 
       var prompts = [{
