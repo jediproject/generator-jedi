@@ -39,6 +39,7 @@
     "angular-dynamic-locale": "~0.1.27",<%}%>
     "ng-jedi-layout": "0.0.1",<% if (props.generateAuth) {%>
     "ng-jedi-security": "0.0.1",<%}%>
+    "ng-jedi-activities": "0.0.1",
 	"ng-jedi-table": "0.0.1",
     "requirejs-plugins": "~1.0.3",
     "angular-dynamic-locale": "~0.1.27",
