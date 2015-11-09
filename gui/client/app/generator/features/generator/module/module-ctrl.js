@@ -47,7 +47,7 @@ jd.factory.newController('app.generator.moduleCtrl', ['toastr', 'generatorRestSe
 
         params.model.module.post().then(function(msgConsole){
             $log.info("MENSAGEM CONSOLE: " + msgConsole);
-            vm.moduleModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            vm.moduleModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Module generated with success!');
         });
     }

@@ -33,7 +33,7 @@ jd.factory.newController('app.generator.controllerCtrl', ['toastr', 'generatorRe
 
         params.model.module.post().then(function(msgConsole){
             $log.info("MENSAGEM CONSOLE: " + msgConsole);
-            vm.controllerModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            vm.controllerModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Controller\'s code generated with success!');
         });
     }

@@ -139,15 +139,16 @@ function execCommand(res, command) {
         if (_error !== null) {
             console.log('\n exec error: ' + _error);
         }
-        res.send(consoleToObj(_error, _stdout, _stderr));
+        res.send(consoleToObj(command, _error, _stdout, _stderr));
     }).stdout.setEncoding('utf8');
 
 
 };
 
-function consoleToObj(error, stdout, stderr) {
+function consoleToObj(command, error, stdout, stderr) {
     var msgconsole = {};
 
+    msgconsole.command = command; 
     msgconsole.error = error;
     msgconsole.stdout = stdout;
     msgconsole.stderr = stderr;

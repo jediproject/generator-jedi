@@ -51,7 +51,7 @@ jd.factory.newController('app.generator.modalCtrl', ['toastr', 'generatorRestSer
 
         params.model.module.post().then(function(msgConsole){
             $log.info("MENSAGEM CONSOLE: " + msgConsole);
-            vm.modalModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            vm.modalModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Modal\'s code generated with success!');
         });
     }

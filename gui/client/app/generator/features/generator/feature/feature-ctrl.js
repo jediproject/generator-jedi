@@ -253,7 +253,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
 
         params.model.module.post().then(function (msgConsole) {
             $log.info("MENSAGEM CONSOLE: " + msgConsole);
-            vm.featureModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            vm.featureModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Feature\'s code generated with success!');
         });
     }

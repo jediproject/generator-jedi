@@ -55,7 +55,7 @@ jd.factory.newController('app.generator.bootstrapCtrl', ['toastr', 'generatorRes
 
         params.model.module.post().then(function(msgConsole){
             $log.info("MENSAGEM CONSOLE: " + msgConsole);
-            vm.bootstrapModel.msgConsole = msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            vm.bootstrapModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('App generated with success!');
         });
     }
