@@ -21,18 +21,25 @@
                            field.userInterface.geral.fieldMask === 'int'  ||
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'decimal' ){%>
-                        <input jd-input="3" 
+                        <input jd-input="<%= field.userInterface.geral.size %>" 
                             <% if (field.userInterface.filter.requiredField) {%>
                               required
                            <% }%>    
                                jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" 
                                type="text" 
-                            <% if (field.userInterface.geral.fieldMask !== 'decimal'){%>
+                            <% if (field.userInterface.geral.fieldMask !== 'decimal' && field.userInterface.geral.fieldMask !== 'text'){%>
                                mask="<%= field.userInterface.geral.fieldMask %>" 
                             <% }%>
                             <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
                                ng-currency-mask currency=""
                             <% }%>
+                            <% if (field.userInterface.geral.fieldHelp !== undefined){%>    
+                                jd-help="<%= field.userInterface.geral.fieldHelp.pt"%>"
+                            <% }%>   
+                            <% if (field.userInterface.filter.dependsOn.length > 0) {%>
+                                <!-- ng-disabled=""   -->
+                            <% }%>   
+                                
                                ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>     
                 <% }%>       
@@ -105,6 +112,12 @@
                           <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
                                ng-currency-mask currency=""
                           <% }%>
+                          <% if (field.userInterface.geral.fieldHelp !== undefined){%>    
+                              jd-help="<%= field.userInterface.geral.fieldHelp.pt"%>"
+                          <% }%> 
+                          <% if (field.userInterface.filter.dependsOn.length > 0) {%>
+                                <!-- ng-disabled=""   -->
+                         <% }%>         
                             ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
                 <% }%>            

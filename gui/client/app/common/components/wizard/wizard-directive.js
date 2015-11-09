@@ -2,7 +2,7 @@
 
 define(['angular', 'jquery-steps'], function () {
 
-    angular.module("jedi.wizard", []).directive('jdWizard', [function() {
+    angular.module("jedi.wizard", []).directive('jdWizard', ['toastr', function(toastr) {
       return {
         scope: {
           stepChanging: '=',
@@ -49,6 +49,8 @@ define(['angular', 'jquery-steps'], function () {
               });
               return ele.children('.steps-wrapper').on('stepChanging', function(e, index) {
                 if (forms[index] && forms[index].name && !scope.$parent.$eval(forms[index].name + '.$valid')) {
+                    toastr.error('Informar campos orbrigatórios');
+                    return false;
                 }
                 return scope.$apply(function() {
                   if (tAttrs.stepChanging != null) {

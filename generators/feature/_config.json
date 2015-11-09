@@ -59,9 +59,9 @@
               "pt": "<nome do campo em português>",
               "en": "<nome do campo em inglês>"
             },
-            "fieldHint": {
-              "pt": "<hint para o campo em português (opcional)>",
-              "en": "<hint para o campo em inglês (opcional)>"
+            "fieldHelp": {
+              "pt": "<help para o campo em português (opcional)>",
+              "en": "<help para o campo em inglês (opcional)>"
             },
             "messageRequired": {
               "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",

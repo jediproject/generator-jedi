@@ -4,7 +4,7 @@ define(['ng-currency-mask',
         'angular-ngMask',
         'angular-bootstrap',
         'angular-file-upload',
-        'angular-table',
+        'ng-jedi-table',
         'app-common-components',
         'angular-toastr'], function () {
     
@@ -12,7 +12,7 @@ define(['ng-currency-mask',
                                                 'ngMask',
                                                 'ui.bootstrap',
                                                 'angularFileUpload',
-                                                'angular-table',
+                                                'jedi.table',
                                                 'toastr' ]);
 
     angular.module("app.common", ['app.external.components', 'app.common.components']);

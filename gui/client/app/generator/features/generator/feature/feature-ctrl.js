@@ -221,6 +221,10 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         var existe = false;
 
         var p = JSON.parse(JSON.stringify(vm.featureModel.param.feature));
+        
+        if (p.userInterface.geral.fieldMask == undefined || p.userInterface.geral.fieldMask == null){
+            p.userInterface.geral.fieldMask = 'text';
+        }
 
         for (i = 0; i < vm.featureModel.json.feature.fields.length; i++) {
             if (p.index != undefined && vm.featureModel.json.feature.fields[i].index === p.index) {

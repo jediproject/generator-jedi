@@ -27,6 +27,7 @@
                 <h1 jd-i18n>Field</h1>
                 <form name="entityForm" class="form-group" id="div-entity" novalidate>
                     <div class="row">
+                        
                         <input jd-input required jd-label="Field name" type="text" ng-model="featureCtrl.featureModel.param.feature.entity.fieldName" jd-help="Without special characters" />
 
                         <select jd-input required jd-label="Field type" ng-model="featureCtrl.featureModel.param.feature.entity.fieldType" jd-options="item as item for item in featureCtrl.featureModel.fieldstype" ng-change="featureCtrl.changeType()">
@@ -41,11 +42,11 @@
                 <h1 jd-i18n>UI Geral</h1>
                 <form name="generalForm" class="form-group" id="div-uigeral" novalidate>
                     <div class="row">
-                        <input jd-input="4" jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel[appCtrl.getLanguage()]" />
+                        <input jd-input="4" required jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldLabel[appCtrl.getLanguage()]" />
 
-                        <input jd-input="5" jd-label="Field help" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldHint[appCtrl.getLanguage()]" />
+                        <input jd-input="5" jd-label="Field help" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldHelp[appCtrl.getLanguage()]" />
 
-                        <select jd-input jd-label="Bootstrap Size" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.id as item.value for item in featureCtrl.featureModel.size">
+                        <select jd-input jd-label="Bootstrap Size" ng-init="featureCtrl.featureModel.param.feature.userInterface.geral.size = featureCtrl.featureModel.size[2]" required ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.size" jd-options="item.id as item.value for item in featureCtrl.featureModel.size">
                             <option value="">---</option>
                         </select>
                     </div>
@@ -291,16 +292,16 @@
 
     <div jd-panel jd-title="Fields Addeds" jd-toggle>
         <div class="row">
-            <table at-table="featureCtrl.featureModel.json.feature.fields">
+            <table jd-table="featureCtrl.featureModel.json.feature.fields">
                 <tbody>
                     <tr>
-                        <td at-attribute="entity.fieldName" at-title="Field name"></td>
-                        <td at-attribute="entity.fieldType" at-title="Field type"></td>
-                        <td at-attribute="userInterface.geral.fieldLabel.pt" at-title="Field label"></td>
-                        <td at-attribute="userInterface.geral.fieldMask" at-title="Field mask"></td>
-                        <td at-attribute="userInterface.filter.showInFilter" at-title="Show in filter"></td>
-                        <td at-attribute="userInterface.result.showInResult" at-title="Show in result"></td>
-                        <td at-title="Action">
+                        <td jd-attribute="entity.fieldName" jd-title="Field name"></td>
+                        <td jd-attribute="entity.fieldType" jd-title="Field type"></td>
+                        <td jd-attribute="userInterface.geral.fieldLabel.pt" jd-title="Field label"></td>
+                        <td jd-attribute="userInterface.geral.fieldMask" jd-title="Field mask"></td>
+                        <td jd-attribute="userInterface.filter.showInFilter" jd-title="Show in filter"></td>
+                        <td jd-attribute="userInterface.result.showInResult" jd-title="Show in result"></td>
+                        <td jd-title="Action">
                             <p>
                                 <a href="" class="btn-icon btn-icon-sm bg-success" ng-click="featureCtrl.edit(item)"><i class="fa fa-edit"></i></a>
                                 </span>
@@ -313,7 +314,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="!parametersForm.$valid || featureCtrl.featureModel.json.feature.fields.length == 0" jd-i18n>Generate</button>
+                <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="featureCtrl.featureModel.json.feature.fields.length == 0" jd-i18n>Generate</button>
             </div>
         </div>
     </div>

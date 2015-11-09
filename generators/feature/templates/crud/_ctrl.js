@@ -32,7 +32,7 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
         var _filter = {};
         <% config.feature.fields.forEach(function(field){ %>
               <% if (field.userInterface.filter.showInFilter) {%>
-                if (vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter && vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter.trim() != '')                 {
+                if (vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter && vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter.trim() !== '')                 {
                  _filter.<%= field.entity.fieldName%> = vm.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter;
                 }
              <% }%>

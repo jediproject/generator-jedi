@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         assets: grunt.file.readJSON('assetsfiles.json'),
         clean: {
             build: ['build/*'],
-            assets: ['assets/libs', 'assets/css/*', 'assets/fonts', '!assets/css/app.css']
+            assets: ['client/assets/libs', 'client/assets/css/*', 'client/assets/fonts', '!client/assets/css/app.css', '!client/assets/css/wizard.css']
         },
         copy: {
             assets: {
@@ -21,13 +21,13 @@ module.exports = function (grunt) {
             buildmin: {
                 files: [{
                     expand: true,
-                    cwd: 'app/',
+                    cwd: 'client/app/',
                     src: ['**/*.*', '!**/*.js', '!**/*.css', '!**/*.tpl.*', '!**/env/*.json', '**/env/*-env.json'], // Discard uglified files, template files and json environment parameters
                     dest: 'build/app/',
                 },
                     {
                         expand: true,
-                        cwd: 'assets/',
+                        cwd: 'client/assets/',
                         src: ['**/*.*', '!**/*.js', '!**/*.css'],
                         dest: 'build/assets/',
                     },
@@ -43,13 +43,13 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'app/',
+                    cwd: 'client/app/',
                     src: ['**/*.*', '!**/*.tpl.*', '!**/env/*.json', '**/env/*-env.json'], // Discard uglified files, template files and json environment parameters
                     dest: 'build/app/',
                 },
                     {
                         expand: true,
-                        cwd: 'assets/',
+                        cwd: 'client/assets/',
                         src: ['**/*.*'],
                         dest: 'build/assets/',
                     },
@@ -70,14 +70,14 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'app/',
+                    cwd: 'client/app/',
                     src: ['**/*.js', '!**/*.tpl.*'],
                     dest: 'build/app/',
                     ext: '.js'
                 },
                     {
                         expand: true,
-                        cwd: 'assets/',
+                        cwd: 'client/assets/',
                         src: ['**/*.js', '!**/*.min.js'],
                         dest: 'build/assets/',
                         ext: '.js'
@@ -91,14 +91,14 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'app/',
+                    cwd: 'client/app/',
                     src: ['**/*.css', '!**/*.min.css'],
                     dest: 'build/app/',
                     ext: '.css'
                 },
                     {
                         expand: true,
-                        cwd: 'assets/',
+                        cwd: 'client/assets/',
                         src: ['**/*.css', '!**/*.min.css'],
                         dest: 'build/assets/',
                         ext: '.css'
@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                     }, ],
                     usePrefix: false,
                 },
-                files: [{ src: 'main.tpl.js', dest: 'main.js' },
+                files: [{ src: 'client/main.tpl.js', dest: 'client/main.js' },
                 ]
             },
             mainbuild: {
@@ -136,8 +136,8 @@ module.exports = function (grunt) {
                     patterns: [{ yaml: "<%= grunt.option(grunt.task.current.args[0] + 'JSON') %>" }]// Json string of environment settings (json must have same properties then the template)
                 },
                 files: [{
-                    src: ['app/<%= grunt.task.current.args[0] %>/env/<%= grunt.task.current.args[0] %>-env.tpl.json'], // template with parameter @@ with same name of property.
-                    dest: 'app/<%= grunt.task.current.args[0] %>/env/<%= grunt.task.current.args[0] %>-env.json'
+                    src: ['client/app/<%= grunt.task.current.args[0] %>/env/<%= grunt.task.current.args[0] %>-env.tpl.json'], // template with parameter @@ with same name of property.
+                    dest: 'client/app/<%= grunt.task.current.args[0] %>/env/<%= grunt.task.current.args[0] %>-env.json'
                 }]
             },
             version: {
@@ -165,7 +165,7 @@ module.exports = function (grunt) {
                             replacement: "<%= grunt.task.current.args.length ? grunt.task.current.args[0] : pkg.version %>" // ToDo Versioning
                         }]
                 },
-                files: [{ src: ['version.tpl.json'], dest: 'version.json' }]
+                files: [{ src: ['client/version.tpl.json'], dest: 'client/version.json' }]
             }
         },
         prompt: {
@@ -290,7 +290,7 @@ module.exports = function (grunt) {
         //Set environment for each module
         for (var i = 0; i < Object.keys(modules).length; i++) {
 
-            var json = grunt.file.readJSON('app/' + modules[i] + '/env/' + modules[i] + '-env.' + env + '.json');
+            var json = grunt.file.readJSON('client/app/' + modules[i] + '/env/' + modules[i] + '-env.' + env + '.json');
 
             grunt.option(modules[i] + 'JSON', JSON.stringify(json));
             grunt.task.run('replace:environment:' + modules[i]);
@@ -346,8 +346,8 @@ module.exports = function (grunt) {
     // Get modules from directories inside ./app/ folder
     function getModules() {
         var fs = require('fs'), path = require('path');
-        return fs.readdirSync('./app').filter(function (file) {
-            return fs.statSync(path.join('./app', file)).isDirectory();
+        return fs.readdirSync('./client/app').filter(function (file) {
+            return fs.statSync(path.join('./client/app', file)).isDirectory();
         });
     }
 };
