@@ -73,27 +73,27 @@ define([
 
             $routeProviderReference
                 .when('/generator/bootstrap', angularAMD.route({
-                    breadcrumb: ['Generator', 'Bootstrap'],
+                    breadcrumb: ['Bootstrap'],
                     templateUrl: jd.factory.getFileVersion('app/generator/features/generator/bootstrap/bootstrap.html'),
                     controllerUrl: jd.factory.getFileVersion('app/generator/features/generator/bootstrap/bootstrap-ctrl.js')
                 }))
                 .when('/generator/controller', angularAMD.route({
-                    breadcrumb: ['Generator', 'Controller'],
+                    breadcrumb: ['AngularJs', 'Controller'],
                     templateUrl: jd.factory.getFileVersion('app/generator/features/generator/controller/controller.html'),
                     controllerUrl: jd.factory.getFileVersion('app/generator/features/generator/controller/controller-ctrl.js')
                 }))
                 .when('/generator/feature', angularAMD.route({
-                    breadcrumb: ['Generator', 'Feature'],
+                    breadcrumb: ['AngularJs', 'Feature'],
                     templateUrl: jd.factory.getFileVersion('app/generator/features/generator/feature/feature.html'),
                     controllerUrl: jd.factory.getFileVersion('app/generator/features/generator/feature/feature-ctrl.js')
                 }))
                 .when('/generator/modal', angularAMD.route({
-                    breadcrumb: ['Generator', 'Modal'],
+                    breadcrumb: ['AngularJs', 'Modal'],
                     templateUrl: jd.factory.getFileVersion('app/generator/features/generator/modal/modal.html'),
                     controllerUrl: jd.factory.getFileVersion('app/generator/features/generator/modal/modal-ctrl.js')
                 }))
                 .when('/generator/module', angularAMD.route({
-                    breadcrumb: ['Generator', 'Module'],
+                    breadcrumb: ['AngularJs', 'Module'],
                     templateUrl: jd.factory.getFileVersion('app/generator/features/generator/module/module.html'),
                     controllerUrl: jd.factory.getFileVersion('app/generator/features/generator/module/module-ctrl.js')
                 }));

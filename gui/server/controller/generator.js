@@ -89,11 +89,10 @@ exports.feature = function (req, res) {
     var obj = JSON.parse(myjson);
     obj.destinationRoot = obj.destinationRoot.replace(/\/?$/, '/');
 
-
-    var milliseconds = new Date().getTime();
+    var date  = new Date();
 
     var outputPathname = obj.destinationRoot + 'generate/';
-    var outputFilename = outputPathname + 'config-' + obj.featureName + '-' + milliseconds + '.json';
+    var outputFilename = outputPathname + obj.featureName + '_' + date.getFullYear() + '-'+  (date.getMonth()+1) + '-'+ date.getDate() +  '-'+ date.getHours() +  '-'+ date.getMinutes()  +  '-'+ date.getSeconds() + '.json';
 
     mkdirp(outputPathname, function (err) {
         if (err) {

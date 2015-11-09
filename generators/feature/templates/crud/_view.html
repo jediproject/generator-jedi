@@ -33,13 +33,14 @@
                             <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
                                ng-currency-mask currency=""
                             <% }%>
-                            <% if (field.userInterface.geral.fieldHelp !== undefined){%>    
-                                jd-help="<%= field.userInterface.geral.fieldHelp.pt"%>"
-                            <% }%>   
-                            <% if (field.userInterface.filter.dependsOn.length > 0) {%>
-                                <!-- ng-disabled=""   -->
-                            <% }%>   
-                                
+                            <% if (field.userInterface.geral.fieldHelp !== undefined){%> 
+                                <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
+                                  jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
+                                <%}%>
+                                <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
+                                  jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
+                                <%}%>  
+                            <% }%>    
                                ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>     
                 <% }%>       
@@ -87,7 +88,7 @@
                     <% if(field.index === 0)  {%>
                       <div class="row">  
                     <% }%>  
-                        
+         
                      <% if(field.index != 0 && field.userInterface.filter.newLine)  {%>
                        </div>  
                        <div class="row">  
@@ -112,12 +113,14 @@
                           <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
                                ng-currency-mask currency=""
                           <% }%>
-                          <% if (field.userInterface.geral.fieldHelp !== undefined){%>    
-                              jd-help="<%= field.userInterface.geral.fieldHelp.pt"%>"
-                          <% }%> 
-                          <% if (field.userInterface.filter.dependsOn.length > 0) {%>
-                                <!-- ng-disabled=""   -->
-                         <% }%>         
+                          <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
+                                <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
+                                  jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
+                                <%}%>
+                                <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
+                                  jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
+                                <%}%>  
+                          <% }%>           
                             ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
                 <% }%>            
