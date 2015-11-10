@@ -26,7 +26,7 @@ define([
     app.constant('envSettings', envSettings);
 
     app.config(['$routeProvider', '$httpProvider', <% if (props.generateAuth) {%>'jedi.security.SecurityServiceProvider',
-        <%} if (props.useRestangular) {%>'RestangularProvider', <%}%>'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%>, function ($routeProvider, $httpProvider, <% if (props.generateAuth) {%>authServiceProvider, <%}%><% if (props.useRestangular) {%>RestangularProvider, <%}%> ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%>) {
+        <%} if (props.useRestangular) {%>'RestangularProvider', <%}%>'ngMaskConfig', 'jedi.utilities.UtilitiesProvider'<% if (props.useI18n) {%>, 'jedi.i18n.LocalizeConfig'<%}%><% if (props.defaultLang == 'pt') {%>, 'jedi.dialogs.DialogsConfig'<%}%>, function ($routeProvider, $httpProvider, <% if (props.generateAuth) {%>authServiceProvider, <%}%><% if (props.useRestangular) {%>RestangularProvider, <%}%> ngMaskConfig, Utilities<% if (props.useI18n) {%>, LocalizeConfig<%}%><% if (props.defaultLang == 'pt') {%>, DialogsConfig<%}%>) {
         var $log = angular.injector(['ng']).get('$log');
 
         // store local $routeProviderReference to be used during run, if it work with dynamic route mapping
@@ -39,7 +39,13 @@ define([
         Utilities.enableCors($httpProvider);<% if (props.useRestangular) {%>
 
         // configure Restangular
-        Utilities.configureRestangular(RestangularProvider);<% }%><% if (props.useI18n) {%>
+        Utilities.configureRestangular(RestangularProvider);<% }%><% if (props.defaultLang == 'pt') {%>
+
+        // configure dialogs language
+        DialogsConfig.confirmYesLabel = 'Sim';
+        DialogsConfig.confirmNoLabel = 'Não';
+        DialogsConfig.confirmTitle = 'Atenção!';
+        DialogsConfig.alertTitle = 'Atenção!';<%}%><% if (props.useI18n) {%>
 
         // configure language
         LocalizeConfig.defaultLanguage = '<%= props.defaultLang%>';<%}%><% if (props.generateAuth) {%>
