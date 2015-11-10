@@ -21,7 +21,7 @@
     </form>
     <!--Fim div jd-panel -->
 
-    <div jd-panel jd-title="Fields" jd-toggle>
+    <div jd-panel jd-title="Input fields" jd-toggle>
         <div class="row">
             <div jd-wizard finished='featureCtrl.finished()' id="wizard">
                 <h1 jd-i18n>Field</h1>
@@ -290,7 +290,7 @@
         </div>
     </div>
 
-    <div jd-panel jd-title="Fields Addeds" jd-toggle>
+    <div jd-panel jd-title="Added fields" jd-toggle>
         <div class="row">
             <table jd-table="featureCtrl.featureModel.json.feature.fields">
                 <tbody>
@@ -314,7 +314,20 @@
         </div>
         <div class="row">
             <div class="col-xs-12">
-                <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="featureCtrl.featureModel.json.feature.fields.length == 0" jd-i18n>Generate</button>
+                 <div class="col-lg-6 col-sm-6 col-12">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                Choose file&hellip; <input type="file" accept=".json" jd-filemodel="featureCtrl.featureModel.filemodel">
+                            </span>
+                        </span>
+                        <input type="text" class="form-control" value={{featureCtrl.featureModel.filemodel.name}} readonly>
+                    </div>
+                </div>
+                <button class="btn btn-primary" ng-click="featureCtrl.importFile()" jd-i18n>Import</button>
+                <div class="pull-right">
+                    <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="featureCtrl.featureModel.json.feature.fields.length == 0" jd-i18n>Generate</button>
+                </div>
             </div>
         </div>
     </div>

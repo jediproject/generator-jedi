@@ -30,6 +30,7 @@ require.config({
         'ng-jedi-layout-validationtooltip': 'assets/libs/ng-jedi-layout/validationtooltip.js',
         'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
         'ng-jedi-wizard': 'app/common/components/wizard/wizard-directive.js',
+        'ng-jedi-filemodel': 'app/common/components/ng-jedi-filemodel/ng-jedi-filemodel.js',
 
         // ## common components
         'app-common': 'app/common/common-app.js',

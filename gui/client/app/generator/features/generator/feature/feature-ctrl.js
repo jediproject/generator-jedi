@@ -14,6 +14,8 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.featureModel = {};
     //#endregion
 
+    vm.featureModel.filemodel = {};
+
     vm.featureModel.featuresType = [
         {
             id: 'crud',
@@ -213,6 +215,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.hasMasks = hasMasks;
     vm.changeMask = changeMask;
     vm.addMultiItem = addMultiItem;
+    vm.importFile = importFile;
     //#endregion
 
     //#region Events definitions
@@ -303,7 +306,11 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
                 vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
             }
-        }
-        //#endregion
+    }
+
+    function importFile(){
+        vm.featureModel.json = JSON.parse(vm.featureModel.filemodel.data);
+    }
+    //#endregion
 
 }]);

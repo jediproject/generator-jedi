@@ -7,6 +7,7 @@ define(['ng-jedi-i18n',
         'ng-jedi-breadcrumb',
         'ng-jedi-layout',
         'ng-jedi-wizard',
+        'ng-jedi-filemodel',
         'app-common-components-exceptions'], function () {
 
     angular.module('app.common.components', ['jedi.i18n',
@@ -16,6 +17,7 @@ define(['ng-jedi-i18n',
                                              'jedi.breadcrumb',
                                              'jedi.layout',
                                              'jedi.wizard',
+                                             'jedi.filemodel',
                                              'app.common.components.exceptions']);
 
 });
