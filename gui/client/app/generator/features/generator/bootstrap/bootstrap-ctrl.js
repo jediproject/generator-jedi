@@ -16,7 +16,7 @@ jd.factory.newController('app.generator.bootstrapCtrl', ['toastr', 'generatorRes
             useI18n: false,
             useBreadcrumb: false,
             generateAuth: false,
-            destinationRoot: '.',
+            destinationRoot: '',
             moduleName: 'core'
         }
     };
@@ -46,6 +46,7 @@ jd.factory.newController('app.generator.bootstrapCtrl', ['toastr', 'generatorRes
 
     //#region Events definitions
     function generate() {
+        vm.featureModel.msgConsole = '';
         var params =  this;  
 
         params.model = {

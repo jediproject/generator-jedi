@@ -38,6 +38,7 @@ jd.factory.newController('app.generator.moduleCtrl', ['toastr', 'generatorRestSe
 
     //#region Events definitions
     function generate() {
+        vm.featureModel.msgConsole = '';
         var params =  this;  
 
         params.model = {

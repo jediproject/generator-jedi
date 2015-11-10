@@ -9,7 +9,7 @@
         <div class="row">
             <input jd-input required jd-label="Principal module name" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.moduleName" jd-help="Default is 'core'" />
 
-            <input jd-input required jd-label="Destination root" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.destinationRoot" jd-help="Default is '.'" />
+            <input jd-input required jd-label="Destination root" type="text" ng-model="bootstrapCtrl.bootstrapModel.params.destinationRoot" />
 
             <select required jd-input jd-label="Principal language" ng-model="bootstrapCtrl.bootstrapModel.params.defaultLang" jd-options="item.id as item.value for item in bootstrapCtrl.bootstrapModel.languages">
                 <option value="">---</option>

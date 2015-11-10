@@ -197,7 +197,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.featureModel.param.index = 0;
 
     vm.featureModel.json = {
-        destinationRoot: '.'
+        destinationRoot: ''
     }
 
     vm.featureModel.json.feature = {
@@ -247,6 +247,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     }
 
     function generate() {
+        vm.featureModel.msgConsole = '';
         var params = this;
 
         params.model = {

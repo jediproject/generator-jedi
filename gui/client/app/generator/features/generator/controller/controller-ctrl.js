@@ -13,7 +13,7 @@ jd.factory.newController('app.generator.controllerCtrl', ['toastr', 'generatorRe
     var vm = this;
     vm.controllerModel = {
         params: {
-            destinationRoot: '.'
+            destinationRoot: ''
         }
     };
     //#endregion
@@ -24,6 +24,7 @@ jd.factory.newController('app.generator.controllerCtrl', ['toastr', 'generatorRe
 
     //#region Events definitions
     function generate() {
+        vm.featureModel.msgConsole = '';
         var params =  this;  
 
         params.model = {

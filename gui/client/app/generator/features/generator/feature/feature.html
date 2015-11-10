@@ -326,7 +326,7 @@
                 </div>
                 <button class="btn btn-primary" ng-click="featureCtrl.importFile()" jd-i18n>Import</button>
                 <div class="pull-right">
-                    <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="featureCtrl.featureModel.json.feature.fields.length == 0" jd-i18n>Generate</button>
+                    <button class="btn btn-primary" ng-click="featureCtrl.generate()" ng-disabled="featureCtrl.featureModel.json.feature.fields.length == 0 || !parametersForm.$valid"  jd-i18n>Generate</button>
                 </div>
             </div>
         </div>
