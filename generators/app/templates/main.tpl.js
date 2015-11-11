@@ -19,17 +19,10 @@ require.config({
         'ng-jedi-dialogs': 'assets/libs/ng-jedi-dialogs/dialogs.js',
         'ng-jedi-factory': 'assets/libs/ng-jedi-factory/factory.js',
         'jdver': 'assets/libs/ng-jedi-factory/version.js',
-        'ng-jedi-loading': 'assets/libs/ng-jedi-loading/loading.js',
-        'ng-jedi-loading-directives': 'assets/libs/ng-jedi-loading/loading-directives.js',<% if (props.useBreadcrumb) {%>
+        'ng-jedi-loading': 'assets/libs/ng-jedi-loading/loading.js',<% if (props.useBreadcrumb) {%>
         'ng-jedi-breadcrumb': 'assets/libs/ng-jedi-breadcrumb/breadcrumb.js',<%}%>
         'ng-jedi-layout': 'assets/libs/ng-jedi-layout/layout.js',
-        'ng-jedi-layout-datepicker': 'assets/libs/ng-jedi-layout/datepicker.js',
-        'ng-jedi-layout-input': 'assets/libs/ng-jedi-layout/input.js',
-        'ng-jedi-layout-modal': 'assets/libs/ng-jedi-layout/modal.js',
-        'ng-jedi-layout-panel': 'assets/libs/ng-jedi-layout/panel.js',
-        'ng-jedi-layout-treeview': 'assets/libs/ng-jedi-layout/treeview.js',
         'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
-        'ng-jedi-layout-validationtooltip': 'assets/libs/ng-jedi-layout/validationtooltip.js',
         'ng-jedi-activities': 'assets/libs/ng-jedi-activities/activities.js',<% if (props.generateAuth) {%>
         'ng-jedi-security': 'assets/libs/ng-jedi-security/security.js',<%}%>
         'ng-jedi-table': 'assets/libs/ng-jedi-table/table.js',
@@ -56,6 +49,7 @@ require.config({
         'ng-currency-mask': 'assets/libs/ng-currency-mask/ng-currency-mask.js',<% if (props.useRestangular) {%>
         'restangular': 'assets/libs/restangular/restangular.js',<%}%>
         'angular-toastr': 'assets/libs/angular-toastr/angular-toastr.tpls.js',
+        'angular-indexed-db': 'assets/libs/angular-indexed-db/angular-indexed-db.js',
 
         //## 3rd party non angular scripts
         'bootstrap': 'assets/libs/bootstrap/bootstrap.js',

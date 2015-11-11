@@ -205,14 +205,6 @@
 			"dest": "assets/libs/ng-jedi-loading/loading.js"
 		},
 		{
-			"src": "bower_components/ng-jedi-loading/loading-directives.js",
-			"dest": "assets/libs/ng-jedi-loading/loading-directives.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-loading/loading.html",
-			"dest": "assets/libs/ng-jedi-loading/loading.html"
-		},
-		{
 			"src": "bower_components/ng-jedi-loading/loading.css",
 			"dest": "assets/css/loading.css"
 		},
@@ -244,46 +236,6 @@
 			"src": "bower_components/ng-jedi-layout/layout.js",
 			"dest": "assets/libs/ng-jedi-layout/layout.js"
 		},
-		{
-			"src": "bower_components/ng-jedi-layout/datepicker.js",
-			"dest": "assets/libs/ng-jedi-layout/datepicker.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/panel.js",
-			"dest": "assets/libs/ng-jedi-layout/panel.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/modal.js",
-			"dest": "assets/libs/ng-jedi-layout/modal.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/modal.html",
-			"dest": "assets/libs/ng-jedi-layout/modal.html"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/treeview.js",
-			"dest": "assets/libs/ng-jedi-layout/treeview.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/input.js",
-			"dest": "assets/libs/ng-jedi-layout/input.js"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/input-multipleinput.html",
-			"dest": "assets/libs/ng-jedi-layout/input-multipleinput.html"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/input-oneinput.html",
-			"dest": "assets/libs/ng-jedi-layout/input-oneinput.html"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/input-single.html",
-			"dest": "assets/libs/ng-jedi-layout/input-single.html"
-		},
-		{
-			"src": "bower_components/ng-jedi-layout/validationtooltip.js",
-			"dest": "assets/libs/ng-jedi-layout/validationtooltip.js"
-		},
         {
             "src": "bower_components/angular-toastr/dist/angular-toastr.tpls.js",
             "dest": "assets/libs/angular-toastr/angular-toastr.tpls.js"
@@ -292,10 +244,6 @@
 			"src": "bower_components/angular-toastr/dist/angular-toastr.css",
 			"dest": "assets/css/angular-toastr.css"
 		},
-		{
-            "src": "bower_components/ng-jedi-activities/activities.html",
-            "dest": "assets/libs/ng-jedi-activities/activities.html"
-        },
         {
             "src": "bower_components/ng-jedi-activities/activities.js",
             "dest": "assets/libs/ng-jedi-activities/activities.js"
@@ -303,6 +251,10 @@
         {
             "src": "bower_components/ng-jedi-activities/activities.css",
             "dest": "assets/css/activities.css"
+        },
+        {
+            "src": "bower_components/angular-indexed-db/angular-indexed-db.js",
+            "dest": "assets/libs/angular-indexed-db/angular-indexed-db.js"
         }
 	]
 }
