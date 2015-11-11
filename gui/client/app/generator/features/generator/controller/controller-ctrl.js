@@ -13,18 +13,24 @@ jd.factory.newController('app.generator.controllerCtrl', ['toastr', 'generatorRe
     var vm = this;
     vm.controllerModel = {
         params: {
-            destinationRoot: ''
+            destinationRoot: '',
+            moduleName : 'core' 
         }
+    };
+
+    vm.controllerModel.commandline = {
+        command : ''
     };
     //#endregion
 
     //#region Events binds
     vm.generate = generate;
+    vm.executeCommand = executeCommand;
     //#endregion
 
     //#region Events definitions
     function generate() {
-        vm.featureModel.msgConsole = '';
+        vm.controllerModel.msgConsole = '';
         var params =  this;  
 
         params.model = {
@@ -37,6 +43,23 @@ jd.factory.newController('app.generator.controllerCtrl', ['toastr', 'generatorRe
             vm.controllerModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Controller\'s code generated with success!');
         });
+    }
+
+     function executeCommand(){
+        vm.controllerModel.msgConsole = '';
+        var service = GeneratorRestService.all('commandline');
+        var command = this;
+
+        command.model = {
+            module : service.copy(vm.controllerModel.commandline),
+            action : 'new'
+        };
+
+        command.model.module.post().then(function(msgConsole){
+            $log.info("MENSAGEM CONSOLE: " + msgConsole);
+            vm.controllerModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            toastr.success('App generated with success!');
+        })
     }
     //#endregion
 

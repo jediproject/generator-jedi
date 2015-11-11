@@ -8,7 +8,8 @@
                 <option value="">---</option>
             </select>
 
-            <input jd-input jd-grouplabel="i18n component?" jd-label="{{item.value}}" type="radio" ng-model="moduleCtrl.moduleModel.params.useI18n" ng-value="item.id" jd-repeat="item in moduleCtrl.moduleModel.yesno" />
+            <input jd-input='2' jd-grouplabel="i18n component?" jd-label="{{item.value}}" type="radio" ng-model="moduleCtrl.moduleModel.params.useI18n" ng-value="item.id" jd-repeat="item in moduleCtrl.moduleModel.yesno" />
+
 
             <input jd-input required jd-label="Destination root" type="text" ng-model="moduleCtrl.moduleModel.params.destinationRoot" />
         </div>
@@ -20,6 +21,18 @@
         </div>
     </div>
     <!--Fim div jd-panel -->
+
+
+   </br>
+    <div jd-panel jd-title="Execute command line" jd-toggle=false>  
+        <input jd-input="12"  jd-label="Command line *" type="text" ng-model="moduleCtrl.moduleModel.commandline.command" jd-help="yo jedi:module --force --moduleName='<>' --defaultLang='<1>' --useI18n=true --destinationRoot='<>' " />
+        <div class="col-xs-12">
+            <button class="btn btn-primary" ng-click="moduleCtrl.executeCommand()" ng-disabled="moduleCtrl.moduleModel.commandline.command == ''"  jd-i18n>Execute command</button>
+        </div>
+    </div>
+    <!--Fim form jd-panel -->
+
+    </br>
 
     <div jd-panel jd-title="Output console" jd-toggle>
         <div class="row">

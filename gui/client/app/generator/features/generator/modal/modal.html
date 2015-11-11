@@ -7,7 +7,7 @@
             <input jd-input="6" required jd-label="Title" type="text" ng-model="modalCtrl.modalModel.params.title" jd-help="Without special characters" />
         </div>
         <div class="row">
-            <input jd-input required jd-label="Module" type="text" ng-model="modalCtrl.modalModel.params.moduleName" />
+            <input jd-input required jd-label="Module name" type="text" ng-model="modalCtrl.modalModel.params.moduleName" />
 
             <input jd-input jd-label="Sub module" type="text" ng-model="modalCtrl.modalModel.params.submodule" />
 
@@ -24,6 +24,18 @@
         </div>
     </div>
     <!--Fim div jd-panel -->
+
+
+   </br>
+    <div jd-panel jd-title="Execute command line" jd-toggle=false>  
+        <input jd-input="12"  jd-label="Command line *" type="text" ng-model="modalCtrl.modalModel.commandline.command" jd-help="yo jedi:modal --force --title='<>' --module='<>' --submodule='<>' --controller='<>' --params='<>' --destinationRoot='<>' " />
+        <div class="col-xs-12">
+            <button class="btn btn-primary" ng-click="modalCtrl.executeCommand()" ng-disabled="modalCtrl.modalModel.commandline.command == ''"  jd-i18n>Execute command</button>
+        </div>
+    </div>
+    <!--Fim form jd-panel -->
+
+    </br>
 
     <div jd-panel jd-title="Output console" jd-toggle>
         <div class="row">

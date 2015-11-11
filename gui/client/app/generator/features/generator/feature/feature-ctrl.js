@@ -197,7 +197,8 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.featureModel.param.index = 0;
 
     vm.featureModel.json = {
-        destinationRoot: ''
+        destinationRoot: '',
+        moduleName : 'core'
     }
 
     vm.featureModel.json.feature = {

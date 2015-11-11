@@ -30,6 +30,16 @@
     </div>
     <!--Fim div jd-panel -->
 
+    </br>
+    <div jd-panel jd-title="Execute command line" jd-toggle=false>  
+        <input jd-input="12"  jd-label="Command line *" type="text" ng-model="bootstrapCtrl.bootstrapModel.commandline.command" jd-help="yo jedi --force --appName= '<>' --appTitle='<>' --moduleName='<>' --defaultLang='<pt/en>' --useI18n=<true/false> --useBreadcrumb=<true/false> --generateAuth=<true/false> --destinationRoot='<>' " />
+        <div class="col-xs-12">
+            <button class="btn btn-primary" ng-click="bootstrapCtrl.executeCommand()" ng-disabled="bootstrapCtrl.bootstrapModel.commandline.command == ''"  jd-i18n>Execute command</button>
+        </div>
+    </div>
+    <!--Fim form jd-panel -->
+
+    </br>
     <div jd-panel jd-title="Output console" jd-toggle>
         <div class="row">
             <textarea jd-input="12" readonly ng-model="bootstrapCtrl.bootstrapModel.msgConsole" rows="20"></textarea>

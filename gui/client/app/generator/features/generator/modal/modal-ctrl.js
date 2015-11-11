@@ -13,8 +13,13 @@ jd.factory.newController('app.generator.modalCtrl', ['toastr', 'generatorRestSer
     var vm = this;
     vm.modalModel = {
         params: {
-            destinationRoot: ''
+            destinationRoot: '',
+            moduleName : 'core'
         }
+    };
+
+     vm.modalModel.commandline = {
+        command : ''
     };
     //#endregion
 
@@ -38,11 +43,12 @@ jd.factory.newController('app.generator.modalCtrl', ['toastr', 'generatorRestSer
     
     //#region Events binds
     vm.generate = generate;
+    vm.executeCommand = executeCommand;
     //#endregion
 
     //#region Events definitions
     function generate() {
-        vm.featureModel.msgConsole = '';
+        vm.modalModel.msgConsole = '';
         var params =  this;  
 
         params.model = {
@@ -55,6 +61,23 @@ jd.factory.newController('app.generator.modalCtrl', ['toastr', 'generatorRestSer
             vm.modalModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
             toastr.success('Modal\'s code generated with success!');
         });
+    }
+
+    function executeCommand(){
+        vm.modalModel.msgConsole = '';
+        var service = GeneratorRestService.all('commandline');
+        var command = this;
+
+        command.model = {
+            module : service.copy(vm.modalModel.commandline),
+            action : 'new'
+        };
+
+        command.model.module.post().then(function(msgConsole){
+            $log.info("MENSAGEM CONSOLE: " + msgConsole);
+            vm.modalModel.msgConsole = msgConsole.command + msgConsole.stderr + msgConsole.stdout + msgConsole.error;
+            toastr.success('App generated with success!');
+        })
     }
     //#endregion
 

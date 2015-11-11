@@ -111,17 +111,15 @@ exports.feature = function (req, res) {
                 }
             });
         }
-
     });
-
-
-
-
-    // remove todos os espaços em branco para fazer o encode
-    // myjson = myjson.replace(/(\r\n|\n|\r)/gm, "");
-
-
 };
+
+
+exports.commandline = function (req, res) {
+    console.log('body: ' + JSON.stringify(req.body, null, 2));
+    console.log(req.body.command);
+    execCommand(res, req.body.command);
+}
 
 
 function execCommand(res, command) {
