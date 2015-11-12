@@ -6,7 +6,7 @@
 jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config.subModule) {%><%= config.subModule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl', [ 'jedi.dialogs.AlertHelper', '<%= config.moduleName%>RestService', 'jedi.dialogs.ModalHelper', '$log', function (alertHelper, <%= config.moduleName%>RestService, modalHelper, $log) {
 
     //#region Service initialize
-    var service = <%= config.moduleName%>RestService.all('<%= config.APIAddress%>');
+    var service = <%= config.moduleName%>RestService.all('<%= config.apiResource%>');
     //#endregion
 
     //#region View/Model initialize

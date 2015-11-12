@@ -6,8 +6,9 @@
     "pt": "<título da funcionalidade em português>",
     "en": "<título da funcionalidade em inglês>"
   },
-  "APIAddress": "<Endereço da API>",
+  "apiAddress": "<Endereço da API>",
   "destinationRoot": "<paht de destino>",
+  "apiResource": "<Nome do recurso>",
   "feature": {
     "type": "<tipo da feature:  crud|modal>",
     "fields": [

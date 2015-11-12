@@ -148,5 +148,11 @@ module.exports = yeoman.generators.Base.extend({
         if (file.indexOf(hook) != -1) {
             this.write(filepath, file.replace(hook, hook + '\n' + insert));
         }
+    },
+
+    writeEnv : function(){
+        var filepath = this.config.destinationRoot + 'app/' + this.config.moduleName.toLowerCase()+'/env/'+this.config.moduleName.toLowerCase()+'-env.develop.json';
+        var insert = '{\n   "apiUrlBase": "' + this.config.apiAddress +'"\n}';
+        this.write(filepath, insert);
     }
 });

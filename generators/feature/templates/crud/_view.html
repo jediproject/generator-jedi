@@ -10,7 +10,6 @@
                     <% }%>  
                         
                      <% if(field.index != 0 && field.userInterface.form.newLine)  {%>
-                       </div>  
                        <div class="row">  
                     <% }%>            
 
@@ -20,14 +19,22 @@
                            field.userInterface.geral.fieldMask === 'cep'  ||
                            field.userInterface.geral.fieldMask === 'int'  ||
                            field.userInterface.geral.fieldMask === 'tel'  ||
+                           field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'decimal' ){%>
                         <input jd-input="<%= field.userInterface.geral.size %>" 
                             <% if (field.userInterface.filter.requiredField) {%>
                               required
                            <% }%>    
                                jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" 
-                               type="text" 
-                            <% if (field.userInterface.geral.fieldMask !== 'decimal' && field.userInterface.geral.fieldMask !== 'text'){%>
+                            <% if (field.userInterface.geral.fieldMask == 'email'){%>  
+                               type="email" 
+                            <% } 
+                            else {%>
+                              type="text" 
+                            <% }%>   
+                            <% if (field.userInterface.geral.fieldMask !== 'decimal' && 
+                                   field.userInterface.geral.fieldMask !== 'text' &&
+                                   field.userInterface.geral.fieldMask !== 'email'){%>
                                mask="<%= field.userInterface.geral.fieldMask %>" 
                             <% }%>
                             <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
@@ -42,7 +49,8 @@
                                 <%}%>  
                             <% }%>    
                                ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
-                    <% }%>     
+                    <% }%>    
+                    </div>   
                 <% }%>       
             <% }) %>
             </div>    
@@ -58,6 +66,7 @@
         </div>
     </div>
 
+    </br>
     <div jd-panel jd-title="Resultado" jd-toggle>
         <table jd-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" jd-paginated>    
             <tbody>
@@ -100,28 +109,36 @@
                            field.userInterface.geral.fieldMask === 'cep'  ||
                            field.userInterface.geral.fieldMask === 'int'  ||
                            field.userInterface.geral.fieldMask === 'tel'  ||
+                           field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'decimal' ){%>
-                      <input jd-input="3" 
+                       <input jd-input="<%= field.userInterface.geral.size %>" 
                         <% if (field.userInterface.filter.requiredField) {%>
                             required
                         <% }%>    
                             jd-label="<%= field.userInterface.geral.fieldLabel.pt%>" 
-                            type="text" 
-                         <% if (field.userInterface.geral.fieldMask !== 'decimal'){%>
-                               mask="<%= field.userInterface.geral.fieldMask %>" 
-                          <% }%>
-                          <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
-                               ng-currency-mask currency=""
-                          <% }%>
-                          <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
-                                <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
-                                  jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
-                                <%}%>
-                                <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
-                                  jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
-                                <%}%>  
-                          <% }%>           
-                            ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
+                        <% if (field.userInterface.geral.fieldMask == 'email'){%>  
+                           type="email" 
+                        <% } 
+                        else {%>
+                          type="text" 
+                        <% }%>   
+                        <% if (field.userInterface.geral.fieldMask !== 'decimal' && 
+                               field.userInterface.geral.fieldMask !== 'text' &&
+                               field.userInterface.geral.fieldMask !== 'email'){%>
+                           mask="<%= field.userInterface.geral.fieldMask %>" 
+                        <% }%>      
+                        <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                             ng-currency-mask currency=""
+                        <% }%>
+                        <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
+                              <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
+                              <%}%>
+                              <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
+                              <%}%>  
+                        <% }%>           
+                         ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
                 <% }%>            
             <% }) %>
