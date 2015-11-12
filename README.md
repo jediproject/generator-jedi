@@ -1,4 +1,4 @@
-# generator-jedi
+# [generator-jedi](https://github.com/jediproject/generator-jedi)
 
 O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://jediproject.github.io).
 
