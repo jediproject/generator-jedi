@@ -88,7 +88,8 @@ require.config({
         "angular-file-upload": ["angular"],<% if (props.useRestangular != 'en') {%>
         "restangular": ["lodash", "angular"],<%}%>
         "angular-loading-bar": ["angular"]<% if (props.useI18n) {%>,
-        'angular-dynamic-locale': ["angular"]<%}%>
+        'angular-dynamic-locale': ["angular"]<%}%>,
+        'angular-indexed-db': ['angular']
     },
 
     // kick start application
