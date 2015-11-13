@@ -20,14 +20,23 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
     vm.filter = filter;
     vm.remove = remove;
     vm.clear = clear;
+    vm.loadUsers = loadUsers;
     //#endregion
 
     //#region Load controller
     vm.filter();
+    vm.loadUsers();
     //#endregion
     
     
     //#region Events definitions
+    function loadUsers(){
+        var service = coreRestService.all('users');
+        service.getList().then(function (data) {
+            vm.<%= config.featureName%>Model.users = data;
+        });
+    }
+
     function filter() {
         var _filter = {};
         <% config.feature.fields.forEach(function(field){ %>

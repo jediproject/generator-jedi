@@ -113,15 +113,16 @@
                                 <input required jd-input="9" jd-label="Values and labels for select option" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="In json format. E.g.: [{&#34;value&#34;:&#34;option-1&#34;, &#34;label&#34;: &#34;Option 1&#34;}, {&#34;value&#34;:&#34;option-2&#34;, &#34;label&#34;: &#34;Option 2&#34;}]"> 
                         </div>
 
-                        <!-- multi-radio-rest, multi-ckeck-rest e multi-select-rest -->
+                        <!-- multi-radio-rest, multi-ckeck-rest e multi-select-rest, single-select-rest -->
                         <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'single-select-rest'">
-                            <input required jd-input jd-label="URL" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.url" />
+                            <input required jd-input jd-label="API address" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.apiAddress" />
 
                             <input required jd-input jd-label="Parameters" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="Field name separated by ','. E.g.: code,name,category" />
-
+                            
                             <input required jd-input jd-label="Field value" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" jd-help="Field name to set in model" />
-
+                            <!--
                             <input required jd-input jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" jd-help="Field name to show in form's field" />
+                            -->
                         </div>
 
                         <div class="col-xs-3" ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select'">
