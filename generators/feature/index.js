@@ -66,6 +66,16 @@ module.exports = yeoman.generators.Base.extend({
 
             this.config = JSON.parse(sjson);
 
+            // Pega o valor do campos fieldMaskConfig.param para filedMask 'single-select-static' 
+            // e converste a string json para um objeto json
+            if (this.config.feature.fields){
+                this.config.feature.fields.forEach(function(field){
+                    if (field.userInterface.geral.fieldMask === 'single-select-static'){
+                        field.userInterface.geral.fieldMaskConfig.params = JSON.parse(field.userInterface.geral.fieldMaskConfig.params);    
+                    }
+                })
+            }            
+        
             // Froce / in the end. 
             this.config.destinationRoot = this.config.destinationRoot.replace(/\/?$/, '/');
             done();
