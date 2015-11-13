@@ -47,8 +47,19 @@
                                 <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
                                   jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
                                 <%}%>  
-                            <% }%>    
-                               ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
+                            <% }%>   
+
+                            <% if (field.userInterface.filter.dependsOn) {%>
+                                jd-depends-on="
+                                <% for(var i=0 in field.userInterface.filter.dependsOn) { %>
+                                    <%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.userInterface.filter.dependsOn[i]%>Filter 
+                                    <% if (i < field.userInterface.filter.dependsOn.length -1) {%>
+                                         &&
+                                    <% }%>         
+                                <% }%>
+                                "    
+                            <% }%>                                 
+                            ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
                     <% }%>    
                     </div>   
                 <% }%>       
