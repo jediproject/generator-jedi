@@ -108,8 +108,13 @@
                             <input required jd-input jd-label="Expression to view" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.expression" jd-help="Interpolate expression will be used to render item selected in the input. E.g: {{code}} - {{name}}" />
                         </div>
 
+                        <!-- single-select-static -->
+                        <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'single-select-static'">
+                                <input required jd-input="9" jd-label="Values and labels for select option" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="In json format. E.g.: [{&#34;value&#34;:&#34;option-1&#34;, &#34;label&#34;: &#34;Option 1&#34;}, {&#34;value&#34;:&#34;option-2&#34;, &#34;label&#34;: &#34;Option 2&#34;}]"> 
+                        </div>
+
                         <!-- multi-radio-rest, multi-ckeck-rest e multi-select-rest -->
-                        <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select-rest'">
+                        <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'single-select-rest'">
                             <input required jd-input jd-label="URL" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.url" />
 
                             <input required jd-input jd-label="Parameters" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="Field name separated by ','. E.g.: code,name,category" />

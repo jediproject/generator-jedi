@@ -20,6 +20,7 @@
                            field.userInterface.geral.fieldMask === 'int'  ||
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
+                           field.userInterface.geral.fieldMask === 'password'||
                            field.userInterface.geral.fieldMask === 'decimal' ){%>
                         <input jd-input="<%= field.userInterface.geral.size %>" 
                             <% if (field.userInterface.filter.requiredField) {%>
@@ -29,6 +30,9 @@
                             <% if (field.userInterface.geral.fieldMask == 'email'){%>  
                                type="email" 
                             <% } 
+                             else if (field.userInterface.geral.fieldMask == 'password'){%>  
+                              type="password" 
+                            <% }
                             else {%>
                               type="text" 
                             <% }%>   
@@ -58,9 +62,35 @@
                                     <% }%>         
                                 <% }%>
                                 "    
-                            <% }%>                                 
-                            ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />            
-                    <% }%>    
+                            <% }%>                                   
+                            ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />        
+                    <% }%>
+                    <% if(field.userInterface.geral.fieldMask === 'single-select-static') {%>
+                        <select name="<%=field.entity.fieldName%>Select" jd-input="<%= field.userInterface.geral.size %>" <% if (field.userInterface.filter.requiredField) {%>required<% }%> jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" ng-model="<%=config.featureName%>Ctrl.<%=config.featureName%>Model.<%=field.entity.fieldName%>Filter">
+                        <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
+                              <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
+                              <%}%>
+                              <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
+                              <%}%>  
+                        <% }%>
+                        <% if (field.userInterface.form.dependsOn) {%>
+                              jd-depends-on="
+                              <% for(var i=0 in field.userInterface.form.dependsOn) { %>
+                                  <%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.userInterface.form.dependsOn[i]%>Filter 
+                                  <% if (i < field.userInterface.form.dependsOn.length -1) {%>
+                                       &&
+                                  <% }%>         
+                              <% }%>
+                              "    
+                         <% }%> 
+                          <option value="">---Please select---</option>
+                        <% field.userInterface.geral.fieldMaskConfig.params.forEach(function(param) {%>
+                            <option value="<%=param.value%>"><%=param.label%></option>
+                        <% }) %>
+                        </select>
+                    <% }%>
                     </div>   
                 <% }%>       
             <% }) %>
@@ -121,6 +151,7 @@
                            field.userInterface.geral.fieldMask === 'int'  ||
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
+                           field.userInterface.geral.fieldMask === 'password'||
                            field.userInterface.geral.fieldMask === 'decimal' ){%>
                        <input jd-input="<%= field.userInterface.geral.size %>" 
                         <% if (field.userInterface.filter.requiredField) {%>
@@ -130,6 +161,9 @@
                         <% if (field.userInterface.geral.fieldMask == 'email'){%>  
                            type="email" 
                         <% } 
+                        else if (field.userInterface.geral.fieldMask == 'password'){%>  
+                              type="password" 
+                        <% }
                         else {%>
                           type="text" 
                         <% }%>   
@@ -148,9 +182,45 @@
                               <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
                                 jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
                               <%}%>  
-                        <% }%>           
-                         ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
+                        <% }%>
+                         <% if (field.userInterface.form.dependsOn) {%>
+                              jd-depends-on="
+                              <% for(var i=0 in field.userInterface.form.dependsOn) { %>
+                                  <%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.userInterface.form.dependsOn[i]%>Filter 
+                                  <% if (i < field.userInterface.form.dependsOn.length -1) {%>
+                                       &&
+                                  <% }%>         
+                              <% }%>
+                              "    
+                          <% }%>                    
+                        ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
+                   <% if(field.userInterface.geral.fieldMask === 'single-select-static') {%>
+                        <select name="<%=field.entity.fieldName%>Select" jd-input="<%= field.userInterface.geral.size %>" <% if (field.userInterface.filter.requiredField) {%>required<% }%> jd-label="<%= field.userInterface.geral.fieldLabel.pt %>" ng-model="<%=config.featureName%>Ctrl.<%=config.featureName%>Model.<%=field.entity.fieldName%>Filter">
+                        <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
+                              <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.pt%>"
+                              <%}%>
+                              <% if (field.userInterface.geral.fieldHelp.en != undefined){%>
+                                jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
+                              <%}%>  
+                        <% }%>
+                        <% if (field.userInterface.form.dependsOn) {%>
+                              jd-depends-on="
+                              <% for(var i=0 in field.userInterface.form.dependsOn) { %>
+                                  <%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.userInterface.form.dependsOn[i]%>Filter 
+                                  <% if (i < field.userInterface.form.dependsOn.length -1) {%>
+                                       &&
+                                  <% }%>         
+                              <% }%>
+                              "    
+                         <% }%> 
+                          <option value="">---Please select---</option>
+                        <% field.userInterface.geral.fieldMaskConfig.params.forEach(function(param) {%>
+                            <option value="<%=param.value%>"><%=param.label%></option>
+                        <% }) %>
+                        </select>
+                    <% }%>    
                 <% }%>            
             <% }) %>
              </div>    

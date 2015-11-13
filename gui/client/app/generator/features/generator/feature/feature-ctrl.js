@@ -47,6 +47,14 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
 
     vm.featureModel.fieldsMask = [
         {
+            id: 'single-select-static', 
+            value: 'Single-select static'
+        },
+        {
+            id: 'single-select-rest', // url de get com parametros de entrada e campo para exibição no option
+            value: 'Single-select by rest'
+        },
+        {
             id: 'multi-radio', // lista de radios, complementado com um key e value
             value: 'Multi-radios'
         },
@@ -68,7 +76,8 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         {
             id: 'multi-select-rest', // url de get com parametros de entrada e campo para exibição no option
             value: 'Multi-selects by rest'
-        }, {
+        }, 
+        {
             id: 'modal',
             value: 'Modal Directive' // diretiva para abertura de modal, complementado com nome da diretiva, parâmetros de entrada e expressão pra formatar valor
         }
