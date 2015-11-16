@@ -43,128 +43,129 @@ Para utilizar o gerador, siga os passos:
 
 	- se preferir, execute a versão do gerador via comando, seguindo os exemplos abaixo:
 
-3.1. Execução do gerador principal
-
-	```bash
-	yo jedi
-	```
-
-	- informe o nome do projeto, título, nome do módulo padrão, linguagem padrão e relação de componentes que deseja gerar.
-	- ao final será criado um projeto v0 na raiz onde o comando for executado, já pronto para execução.
-	- Para executar a aplicação utilizar o comando:
-
-	```bash
-	npm run start
-	```
-
-3.2. Execução do gerador de controller
-
-	```bash
-	yo jedi:controller
-	```
-
-	- informe o título da tela, nome do módulo, nome do submódulo e nome do controlador.
-	- ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
-
-3.3. Execução do gerador de modal
-
-	```bash
-	yo jedi:modal
-	```
-
-	- informe o título da modal, nome do módulo, nome do submódulo e nome do controlador.
-	- ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
-
-3.4. Execução do gerador de módulo
-
-	```bash
-	yo jedi:module
-	```
-
-	- informe o nome do módulo, linguagem padrão e se deve utilizar i18n
-	- ao final será criado um módulo com estrutura base no caminho: app//[nome do módulo]
-
-3.5. Execução do gerador de feature
-
-	```bash
-	yo jedi:feature
-	```
-    - Informe o caminho do arquivo de config.
-    - Exemplo genérico do arquivo de config:
-    
-    
-	```json
-	{
-		  "moduleName": "<nome do módulo>",
-		  "submodule": "<nome do sub módulo (opcional)>",
-		  "featureName": "<nome da funcionalidade>",
-		  "featureTitle": {
-		    "pt": "<título da funcionalidade em português>",
-		    "en": "<título da funcionalidade em inglês>"
-		  },
-		  "APIAddress": "<Endereço da API>",
-		  "feature": {
-		    "type": "<tipo da feature:  crud|modal>",
-		    "filters": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        },
-				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-		        "fieldHint": {
-		          "pt": "<hint para o campo em português (opcional)>",
-		          "en": "<hint para o campo em inglês (opcional)>"
-		        },
-		        "requiredField": true,
-		        "messageRequired": {
-				          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-				          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-		        },
-		        "maxCharacter": 10,
-		        "minCharacter": 0
-		      }
-		    ],
-		    "results": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        }
-		      }
-		    ],
-		    "domains": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        },
-				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-		        "fieldHint": {
-		          "pt": "<hint para o campo em português (opcional)>",
-		          "en": "<hint para o campo em inglês (opcional)>"
-		        },
-		        "requiredField": true,
-		        "messageRequired": {
-		          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-		          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-		        },
-		        "maxCharacter": 10,
-		        "minCharacter": 0,
-		        "fieldEditableFor": [
-		          "create",
-		          "update"
-		        ],
-		        "visibleToTheUser": true,
-		        "key": false
-		      }
-		    ]
-		  }
-	}
-	```
+	3.1. Execução do gerador principal
+		
+		```bash
+		yo jedi
+		```
+		
+		- informe o nome do projeto, título, nome do módulo padrão, linguagem padrão e relação de componentes que deseja gerar.
+		- ao final será criado um projeto v0 na raiz onde o comando for executado, já pronto para execução.
+		- Para executar a aplicação utilizar o comando:
+		
+		```bash
+		npm run start
+		```
+		
+	3.2. Execução do gerador de controller
+		
+		```bash
+		yo jedi:controller
+		```
+		
+		- informe o título da tela, nome do módulo, nome do submódulo e nome do controlador.
+		- ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
+		
+	3.3. Execução do gerador de modal
+		
+		```bash
+		yo jedi:modal
+		```
+		
+		- informe o título da modal, nome do módulo, nome do submódulo e nome do controlador.
+		- ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
+		
+	3.4. Execução do gerador de módulo
+		
+		```bash
+		yo jedi:module
+		```
+		
+		- informe o nome do módulo, linguagem padrão e se deve utilizar i18n
+		- ao final será criado um módulo com estrutura base no caminho: app//[nome do módulo]
+		
+	3.5. Execução do gerador de feature
+		
+		```bash
+		yo jedi:feature
+		```
+		
+		- Informe o caminho do arquivo de config.
+	    - Exemplo genérico do arquivo de config:
+	    
+	    
+		```json
+		{
+			  "moduleName": "<nome do módulo>",
+			  "submodule": "<nome do sub módulo (opcional)>",
+			  "featureName": "<nome da funcionalidade>",
+			  "featureTitle": {
+			    "pt": "<título da funcionalidade em português>",
+			    "en": "<título da funcionalidade em inglês>"
+			  },
+			  "APIAddress": "<Endereço da API>",
+			  "feature": {
+			    "type": "<tipo da feature:  crud|modal>",
+			    "filters": [
+			      {
+			        "fieldName": "<Nome do campo>",
+			        "fieldLabel": {
+			          "pt": "<nome do campo em português>",
+			          "en": "<nome do campo em inglês>"
+			        },
+					        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+			        "fieldHint": {
+			          "pt": "<hint para o campo em português (opcional)>",
+			          "en": "<hint para o campo em inglês (opcional)>"
+			        },
+			        "requiredField": true,
+			        "messageRequired": {
+					          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+					          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+			        },
+			        "maxCharacter": 10,
+			        "minCharacter": 0
+			      }
+			    ],
+			    "results": [
+			      {
+			        "fieldName": "<Nome do campo>",
+			        "fieldLabel": {
+			          "pt": "<nome do campo em português>",
+			          "en": "<nome do campo em inglês>"
+			        }
+			      }
+			    ],
+			    "domains": [
+			      {
+			        "fieldName": "<Nome do campo>",
+			        "fieldLabel": {
+			          "pt": "<nome do campo em português>",
+			          "en": "<nome do campo em inglês>"
+			        },
+					        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+			        "fieldHint": {
+			          "pt": "<hint para o campo em português (opcional)>",
+			          "en": "<hint para o campo em inglês (opcional)>"
+			        },
+			        "requiredField": true,
+			        "messageRequired": {
+			          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
+			          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
+			        },
+			        "maxCharacter": 10,
+			        "minCharacter": 0,
+			        "fieldEditableFor": [
+			          "create",
+			          "update"
+			        ],
+			        "visibleToTheUser": true,
+			        "key": false
+			      }
+			    ]
+			  }
+		}
+		```
 
 
 Para adicionar uma nova dependencia ao projeto basta seguir os seguintes passos:
