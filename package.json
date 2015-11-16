@@ -3,15 +3,6 @@
   "version": "0.0.2",
   "description": "Jedi Project Generator",
   "license": "MIT",
-  "main": [
-    "app/index.js",
-    "controller/index.js",
-    "modal/index.js",
-    "module/index.js",
-    "controller/index.js",
-    "feature/index.js",
-    "test/index.js"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jediproject/generator-jedi"
