@@ -31,7 +31,7 @@ Para utilizar o gerador, siga os passos:
 
 2. Execução do gerador via browser
 
-	- se preferir, execute a versão do gerador via browser, que possui wizards facilitados
+	Se preferir, execute a versão do gerador via browser, que possui wizards facilitados
 
 	```bash
 	jedi
@@ -41,7 +41,7 @@ Para utilizar o gerador, siga os passos:
 
 3. Execução do gerador via comando
 
-	- se preferir, execute a versão do gerador via comando, seguindo os exemplos abaixo:
+	Se preferir, execute a versão do gerador via comando, seguindo os exemplos abaixo:
 
 	3.1. Execução do gerador principal
 		
@@ -92,7 +92,6 @@ Para utilizar o gerador, siga os passos:
 		
 		- Informe o caminho do arquivo de config.
 	    - Exemplo genérico do arquivo de config:
-	    
 	    
 		```json
 		{
@@ -167,7 +166,6 @@ Para utilizar o gerador, siga os passos:
 		}
 		```
 
-
 Para adicionar uma nova dependencia ao projeto basta seguir os seguintes passos:
 
 1. bower install
@@ -207,4 +205,4 @@ Para adicionar uma nova dependencia ao projeto basta seguir os seguintes passos:
 	}
 	```
 
-## Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo)
+### Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo)
