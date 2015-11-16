@@ -7,6 +7,7 @@
     "app/index.js",
     "controller/index.js",
     "modal/index.js",
+    "module/index.js",
     "controller/index.js",
     "feature/index.js",
     "test/index.js"
