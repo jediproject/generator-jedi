@@ -2,4 +2,4 @@
 
 var shell = require("shelljs");
 
-shell.exec("cd "+__dirname+"/gui && npm run start");
+shell.exec("cd "+__dirname+" && npm run develop");

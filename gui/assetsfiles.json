@@ -193,6 +193,10 @@
 			"dest": "client/assets/libs/ng-jedi-dialogs/dialogs.js"
 		},
 		{
+			"src": "client/bower_components/ng-jedi-dialogs/dialogs-ctrls.js",
+			"dest": "client/assets/libs/ng-jedi-dialogs/dialogs-ctrls.js"
+		},
+		{
 			"src": "client/bower_components/ng-jedi-loading/loading.js",
 			"dest": "client/assets/libs/ng-jedi-loading/loading.js"
 		},
