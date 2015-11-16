@@ -1,9 +1,9 @@
 {
-    "name": "generator-jedi",
-    "version": "0.0.1",
-    "description": "Jedi Project Generator",
-    "license": "MIT",
-    "main": [
+  "name": "generator-jedi",
+  "version": "0.0.1",
+  "description": "Jedi Project Generator",
+  "license": "MIT",
+  "main": [
     "app/index.js",
     "controller/index.js",
     "modal/index.js",
@@ -11,25 +11,25 @@
     "feature/index.js",
     "test/index.js"
   ],
-    "repository": {
-        "type":"git",
-        "url":"https://github.com/jediproject/generator-jedi"
-    },
-    "author": {
-        "name": "Fábio Henrique da Silva Viana",
-        "email": "fabioviana.bh@gmail.com",
-        "url": "http://jediproject.github.io"
-    },
-    "scripts": {
-        "start": "node gui/server/app.js",
-        "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
-        "heroku": "npm install && bash gui/run.sh heroku && node gui/server/app.js" ,
-        "test": "mocha"
-    },
-    "files": [
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jediproject/generator-jedi"
+  },
+  "author": {
+    "name": "Fábio Henrique da Silva Viana",
+    "email": "fabioviana.bh@gmail.com",
+    "url": "http://jediproject.github.io"
+  },
+  "scripts": {
+    "start": "node gui/server/app.js",
+    "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
+    "heroku": "npm install && bash gui/run.sh heroku && node gui/server/app.js",
+    "test": "mocha"
+  },
+  "files": [
     "generators"
   ],
-    "keywords": [
+  "keywords": [
     "yeoman-generator",
     "angular",
     "generator",
@@ -38,23 +38,27 @@
     "scaffold",
     "crud-generator"
   ],
-    "dependencies": {
-        "body-parser": "^1.13.3",
-        "chalk": "^1.0.0",
-        "express": "^4.13.3",
-        "fs-json": "^0.1.2",
-        "html-wiring": "1.2.0",
-        "lodash": "^3.10.1",
-        "mkdirp": "^0.5.1",
-        "path": "^0.11.14",
-        "underscore.string": "^3.1.1",
-        "yeoman-generator": "^0.19.0",
-        "yeoman-option-or-prompt": "^1.0.2",
-        "yosay": "^1.0.2"
-    },
-    "devDependencies": {
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "chalk": "^1.0.0",
+    "express": "^4.13.3",
+    "fs-json": "^0.1.2",
+    "html-wiring": "1.2.0",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "path": "^0.11.14",
+    "shelljs": "^0.5.3",
+    "underscore.string": "^3.1.1",
+    "yeoman-generator": "^0.19.0",
+    "yeoman-option-or-prompt": "^1.0.2",
+    "yosay": "^1.0.2"
+  },
+  "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.11.3",
-        "mocha": "*"
-    }
+    "mocha": "*"
+  },
+  "bin": {
+    "jedi": "jedi"
+  }
 }
