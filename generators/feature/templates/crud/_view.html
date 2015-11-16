@@ -21,7 +21,11 @@
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'password'||
-                           field.userInterface.geral.fieldMask === 'decimal' ){%>
+                           field.userInterface.geral.fieldMask === 'date'||
+                           field.userInterface.geral.fieldMask === 'date-time'||
+                           field.userInterface.geral.fieldMask === 'time'||
+                           field.userInterface.geral.fieldMask === 'mask'||
+                           field.userInterface.geral.fieldMask === 'currency' ){%>
                         <input jd-input="<%= field.userInterface.geral.size %>" 
                             <% if (field.userInterface.filter.requiredField) {%>
                               required
@@ -36,12 +40,12 @@
                             else {%>
                               type="text" 
                             <% }%>   
-                            <% if (field.userInterface.geral.fieldMask !== 'decimal' && 
+                            <% if (field.userInterface.geral.fieldMask !== 'currency' && 
                                    field.userInterface.geral.fieldMask !== 'text' &&
                                    field.userInterface.geral.fieldMask !== 'email'){%>
                                mask="<%= field.userInterface.geral.fieldMask %>" 
                             <% }%>
-                            <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                            <% if (field.userInterface.geral.fieldMask === 'currency'){%>
                                ng-currency-mask currency=""
                             <% }%>
                             <% if (field.userInterface.geral.fieldHelp !== undefined){%> 
@@ -62,7 +66,15 @@
                                     <% }%>         
                                 <% }%>
                                 "    
-                            <% }%>                                   
+                            <% }%>  
+                            <% if (field.userInterface.geral.fieldMask === 'date'||
+                                   field.userInterface.geral.fieldMask === 'date-time'||
+                                   field.userInterface.geral.fieldMask === 'time') {%>
+                               jd-datepicker="<%=field.userInterface.geral.fieldMask%>"
+                            <% }%>      
+                            <% if (field.userInterface.geral.fieldMask == 'mask') {%>
+                               mask="<%=field.userInterface.geral.fieldMaskConfig.mask%>"
+                            <% }%>                                
                             ng-model="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.entity.fieldName%>Filter" />        
                     <% }%>
                     <% if(field.userInterface.geral.fieldMask === 'single-select-static' ||
@@ -159,7 +171,11 @@
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'password'||
-                           field.userInterface.geral.fieldMask === 'decimal' ){%>
+                           field.userInterface.geral.fieldMask === 'date'||
+                           field.userInterface.geral.fieldMask === 'date-time'||
+                           field.userInterface.geral.fieldMask === 'time'||
+                           field.userInterface.geral.fieldMask === 'mask'||
+                           field.userInterface.geral.fieldMask === 'currency' ){%>
                        <input jd-input="<%= field.userInterface.geral.size %>" 
                         <% if (field.userInterface.filter.requiredField) {%>
                             required
@@ -174,12 +190,12 @@
                         else {%>
                           type="text" 
                         <% }%>   
-                        <% if (field.userInterface.geral.fieldMask !== 'decimal' && 
+                        <% if (field.userInterface.geral.fieldMask !== 'currency' && 
                                field.userInterface.geral.fieldMask !== 'text' &&
                                field.userInterface.geral.fieldMask !== 'email'){%>
                            mask="<%= field.userInterface.geral.fieldMask %>" 
                         <% }%>      
-                        <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                        <% if (field.userInterface.geral.fieldMask === 'currency'){%>
                              ng-currency-mask currency=""
                         <% }%>
                         <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
@@ -190,7 +206,7 @@
                                 jd-help="<%= field.userInterface.geral.fieldHelp.en%>"
                               <%}%>  
                         <% }%>
-                         <% if (field.userInterface.form.dependsOn) {%>
+                        <% if (field.userInterface.form.dependsOn) {%>
                               jd-depends-on="
                               <% for(var i=0 in field.userInterface.form.dependsOn) { %>
                                   <%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= field.userInterface.form.dependsOn[i]%>Filter 
@@ -199,7 +215,15 @@
                                   <% }%>         
                               <% }%>
                               "    
-                          <% }%>                    
+                        <% }%>  
+                        <% if (field.userInterface.geral.fieldMask === 'date'||
+                               field.userInterface.geral.fieldMask === 'date-time'||
+                               field.userInterface.geral.fieldMask === 'time') {%>
+                           jd-datepicker="<%=field.userInterface.geral.fieldMask%>"
+                        <% }%>      
+                        <% if (field.userInterface.geral.fieldMask == 'mask') {%>
+                            mask="<%=field.userInterface.geral.fieldMaskConfig.mask%>"
+                        <% }%>                 
                         ng-model="<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.<%= config.featureName%>.<%= field.entity.fieldName%>" />   
                     <% }%>   
                    <% if(field.userInterface.geral.fieldMask === 'single-select-static' ||

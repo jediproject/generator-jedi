@@ -48,12 +48,15 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     vm.featureModel.fieldsMask = [
         {
             id: 'single-select-static', 
-            value: 'Single-select static'
+            value: 'Single-select static',
+            type: 'string'
         },
         {
             id: 'single-select-rest', // url de get com parametros de entrada e campo para exibição no option
-            value: 'Single-select by rest'
+            value: 'Single-select by rest',
+            type: 'string'
         },
+        /*
         {
             id: 'multi-radio', // lista de radios, complementado com um key e value
             value: 'Multi-radios'
@@ -84,8 +87,8 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         , {
             id: 'autocomplete', // url para get do autocomplete, parâmetros de entrada, campos de exibição na listagem e expressão pra formatar valor
             value: 'Autocomplete'
-        }
-        , {
+        },*/
+         {
             id: 'password',
             value: 'Password',
             type: 'string'
@@ -133,11 +136,28 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             id: 'decimal',
             value: 'Decimal',
             type: 'dobule'
-        }, {
+        }, 
+        {
             id: 'mask',
             value: 'Mask',
             type: 'string'
-        }];
+        },
+        {
+            id: 'date',
+            value: 'Date',
+            type: 'date'
+        },
+        {
+            id: 'date-time',
+            value: 'Date-Time',
+            type: 'date-time'
+        },
+        {
+            id: 'time',
+            value: 'Time',
+            type: 'time'
+        }
+        ];
 
     vm.featureModel.fiedlsEditableFor = [
         {
