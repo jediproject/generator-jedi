@@ -1,6 +1,6 @@
 {
   "name": "generator-jedi",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Jedi Project Generator",
   "license": "MIT",
   "repository": {
@@ -12,15 +12,11 @@
     "email": "fabioviana.bh@gmail.com",
     "url": "http://jediproject.github.io"
   },
-  "scripts": {
-    "start": "node gui/server/app.js",
-    "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
-    "heroku": "npm install && bash gui/run.sh heroku && node gui/server/app.js",
-    "test": "mocha"
+  "directories": {
+    "bin": "./bin"
   },
-  "files": [
-    "generators"
-  ],
+  "preferGlobal": true,
+  "bin": "./bin/jedi",
   "keywords": [
     "yeoman-generator",
     "angular",
@@ -50,7 +46,10 @@
     "grunt-contrib-jshint": "^0.11.3",
     "mocha": "*"
   },
-  "bin": {
-    "jedi": "jedi"
-  }
+  "scripts": {
+    "start": "node gui/server/app.js",
+    "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
+    "heroku": "npm install && bash gui/run.sh heroku && node gui/server/app.js",
+    "test": "mocha"
+  } 
 }
