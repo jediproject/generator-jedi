@@ -1,6 +1,6 @@
 {
   "name": "generator-jedi",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Jedi Project Generator",
   "license": "MIT",
   "repository": {
@@ -16,7 +16,9 @@
     "bin": "./bin"
   },
   "preferGlobal": true,
-  "bin": "./bin/jedi",
+  "bin": {
+    "jedi": "./bin/jedi"
+  },
   "keywords": [
     "yeoman-generator",
     "angular",
