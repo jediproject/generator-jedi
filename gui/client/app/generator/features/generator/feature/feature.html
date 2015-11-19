@@ -15,8 +15,8 @@
             <input jd-input jd-label="Sub-module name" type="text" ng-model="featureCtrl.featureModel.json.subModule" />
        </div>
        <div class="row">     
-            <input jd-input="6" required jd-label="API address" type="text" ng-model="featureCtrl.featureModel.json.apiAddress" />
-            <input jd-input required jd-label="API resource" type="text" ng-model="featureCtrl.featureModel.json.apiResource" />
+            <input jd-input="6" required jd-label="API address base" type="text" ng-model="featureCtrl.featureModel.json.apiAddress" />
+            <input jd-input required jd-label="API route" type="text" ng-model="featureCtrl.featureModel.json.apiResource" />
             <input jd-input required jd-label="Destination root" type="text" ng-model="featureCtrl.featureModel.json.destinationRoot" />
         </div>
     </form>
@@ -36,9 +36,6 @@
                         <select jd-input required jd-label="Field type" ng-model="featureCtrl.featureModel.param.feature.entity.fieldType" jd-options="item as item for item in featureCtrl.featureModel.fieldstype" ng-change="featureCtrl.changeType()">
                             <option value="">---</option>
                         </select>
-
-                        <!--select jd-input required jd-label="Cardinality" ng-model="featureCtrl.featureModel.param.feature.entity.cardinality" jd-options="item.value as item.value for item in featureCtrl.featureModel.cardinality">
-                        </select-->
                     </div>
                 </form>
 
@@ -55,28 +52,42 @@
                     </div>
 
                     <div class="row">
-                        <input jd-input jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'string'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'string'">
+                            <input jd-input jd-label="Min character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minCharacter" />
 
-                        <input jd-input jd-label="Max character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'string'" />
+                            <input jd-input jd-label="Max character" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxCharacter" />
+                        </div>
 
-                        <input jd-input jd-label="Min range" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'int'" />
-                        <input jd-input jd-label="Max range" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'int'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'int'">
+                            <input jd-input jd-label="Min range" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" />
+                            <input jd-input jd-label="Max range" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" />
+                        </div>
 
-                        <input jd-input jd-label="Min range" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'dobule'" />
-                        <input jd-input jd-label="Max range" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'dobule'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'dobule'">
+                            <input jd-input jd-label="Min range" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" />
+                            <input jd-input jd-label="Max range" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" />
+                        </div>
 
-                        <input jd-input jd-label="Min range" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'date'" />
-                        <input jd-input jd-label="Max range" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'date'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date'">
+                            <input jd-input jd-label="Min range" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" />
+                            <input jd-input jd-label="Max range" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" />
+                        </div>
 
-                        <input jd-input jd-label="Min range" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'date-time'" />
-                        <input jd-input jd-label="Max range" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'date-time'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date-time'">
+                            <input jd-input jd-label="Min range" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" />
+                            <input jd-input jd-label="Max range" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" />
+                        </div>
 
-                        <input jd-input jd-label="Min range" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'time'" />
-                        <input jd-input jd-label="Max range" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" ng-show="featureCtrl.featureModel.param.feature.entity.fieldType == 'time'" />
+                        <div ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'time'">
+                            <input jd-input jd-label="Min range" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.minRange" />
+                            <input jd-input jd-label="Max range" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.validator.maxRange" />
+                        </div>
 
-                        <select ng-show="featureCtrl.hasMasks()" jd-input jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldsMask | maskByType:featureCtrl.featureModel.param.feature.entity.fieldType" ng-change="featureCtrl.changeMask()">
-                            <option value="">---</option>
-                        </select>
+                        <div ng-if="featureCtrl.hasMasks()">
+                            <select jd-input jd-label="Field mask" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask" jd-options="item.id as item.value for item in featureCtrl.featureModel.fieldsMask | maskByType:featureCtrl.featureModel.param.feature.entity.fieldType" ng-change="featureCtrl.changeMask()">
+                                <option value="">---</option>
+                            </select>
+                        </div>
 
                         <!-- mask -->
                         <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'mask'">
@@ -115,14 +126,15 @@
 
                         <!-- multi-radio-rest, multi-ckeck-rest e multi-select-rest, single-select-rest -->
                         <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select-rest' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'single-select-rest'">
-                            <input required jd-input jd-label="API address" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.apiAddress" />
+                            <input required jd-input jd-label="API route" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.apiAddress" />
 
-                            <input required jd-input jd-label="Parameters" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="Field name separated by ','. E.g.: code,name,category" />
-                            
-                            <input required jd-input jd-label="Field value" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" jd-help="Field name to set in model" />
-                            <!--
-                            <input required jd-input jd-label="Field label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" jd-help="Field name to show in form's field" />
-                            -->
+                            <input required jd-input jd-label="Field label for select option" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.params" jd-help="Field label to show in options" />
+
+                            <input required jd-input jd-label="List name" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" jd-help="Name to set the result list in model" />
+
+                            <select multiple jd-input jd-label="Input parameters" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.inputParams" jd-options="item.entity.fieldName as item.entity.fieldName for item in featureCtrl.featureModel.json.feature.fields">
+                                <option value="">---</option>
+                            </select>
                         </div>
 
                         <div class="col-xs-3" ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select'">
@@ -133,40 +145,42 @@
                     </div>
 
                     <!-- multi-radio, multi-ckeck e multi-select -->
-                    <div ng-repeat="item in featureModel.param.feature.userInterface.geral.fieldMaskConfig.items" class="row">
-                        <input jd-input jd-label="Value key" type="text" ng-model="item.fieldValue" />
+                    <div ng-if="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-radio' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-ckeck' || featureCtrl.featureModel.param.feature.userInterface.geral.fieldMask == 'multi-select'">
+                        <div ng-repeat="item in featureModel.param.feature.userInterface.geral.fieldMaskConfig.items" class="row">
+                            <input jd-input jd-label="Value key" type="text" ng-model="item.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="item.fieldLabel" />
-                    </div>
+                            <input required jd-input jd-label="Value label" type="text" ng-model="item.fieldLabel" />
+                        </div>
 
-                    <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'int'">
-                        <input jd-input jd-label="Value key" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
+                        <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'int'">
+                            <input jd-input jd-label="Value key" mask="int" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
-                    </div>
+                            <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                        </div>
 
-                    <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'double'">
-                        <input jd-input jd-label="Value key" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
+                        <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'double'">
+                            <input jd-input jd-label="Value key" ng-currency-mask type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
-                    </div>
+                            <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                        </div>
 
-                    <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date'">
-                        <input jd-input jd-label="Value key" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
+                        <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date'">
+                            <input jd-input jd-label="Value key" jd-datepicker="date" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
-                    </div>
+                            <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                        </div>
 
-                    <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date-time'">
-                        <input jd-input jd-label="Value key" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
+                        <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'date-time'">
+                            <input jd-input jd-label="Value key" jd-datepicker="date-time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
-                    </div>
+                            <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                        </div>
 
-                    <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'time'">
-                        <input jd-input jd-label="Value key" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
+                        <div class="row" ng-if="featureCtrl.featureModel.param.feature.entity.fieldType == 'time'">
+                            <input jd-input jd-label="Value key" jd-datepicker="time" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldValue" />
 
-                        <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                            <input required jd-input jd-label="Value label" type="text" ng-model="featureCtrl.featureModel.param.feature.userInterface.geral.fieldMaskConfig.fieldLabel" />
+                        </div>
                     </div>
                 </form>
 
@@ -176,21 +190,17 @@
 
                         <input jd-input jd-grouplabel="Show in form" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.visibleToTheUser" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
-
                         <input jd-input jd-grouplabel="Include in new line" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.newLine" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
-
-
 
                         <input jd-input jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
+                        <input jd-input jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" jd-repeat="item in featureCtrl.featureModel.fieldsEditableFor" ng-value="item.id" />
 
-                        <input jd-input jd-grouplabel="Field editable for" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.fieldEditableFor[$index]" type="checkbox" jd-repeat="item in featureCtrl.featureModel.fiedlsEditableFor" ng-value="item.id" />
-
-
-
-                        <select ng-show="featureCtrl.featureModel.json.feature.fields.length > 0" multiple jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.dependsOn" jd-options="item.entity.fieldName as item.entity.fieldName for item in featureCtrl.featureModel.json.feature.fields">
-                            <option value="">---</option>
-                        </select>
+                        <div ng-if="featureCtrl.featureModel.json.feature.fields.length > 0">
+                            <select multiple jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.form.dependsOn" jd-options="item.entity.fieldName as item.entity.fieldName for item in featureCtrl.featureModel.json.feature.fields">
+                                <option value="">---</option>
+                            </select>
+                        </div>
                     </div>
                 </form>
 
@@ -202,9 +212,11 @@
 
                         <input jd-input jd-grouplabel="Required field" jd-label="{{item.value}}" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.requiredField" type="radio" required jd-repeat="item in featureCtrl.featureModel.yesNo" ng-value="item.id" />
 
-                        <select ng-show="featureCtrl.featureModel.json.feature.fields.length > 0" multiple jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.entity.fieldName as item.entity.fieldName for item in featureCtrl.featureModel.json.feature.fields">
-                            <option value="">---</option>
-                        </select>
+                        <div ng-if="featureCtrl.featureModel.json.feature.fields.length > 0">
+                            <select multiple jd-input jd-label="Depends on" ng-model="featureCtrl.featureModel.param.feature.userInterface.filter.dependsOn" jd-options="item.entity.fieldName as item.entity.fieldName for item in featureCtrl.featureModel.json.feature.fields">
+                                <option value="">---</option>
+                            </select>
+                        </div>
                     </div>
                 </form>
 

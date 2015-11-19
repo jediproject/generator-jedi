@@ -21,11 +21,12 @@
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'password'||
-                           field.userInterface.geral.fieldMask === 'date'||
-                           field.userInterface.geral.fieldMask === 'date-time'||
-                           field.userInterface.geral.fieldMask === 'time'||
+                           field.entity.fieldType === 'date'||
+                           field.entity.fieldType === 'date-time'||
+                           field.entity.fieldType === 'time'||
                            field.userInterface.geral.fieldMask === 'mask'||
-                           field.userInterface.geral.fieldMask === 'currency' ){%>
+                           field.userInterface.geral.fieldMask === 'currency'||
+                           field.userInterface.geral.fieldMask === 'decimal' ){%>
                         <input jd-input="<%= field.userInterface.geral.size %>" 
                             <% if (field.userInterface.filter.requiredField) {%>
                               required
@@ -42,11 +43,15 @@
                             <% }%>   
                             <% if (field.userInterface.geral.fieldMask !== 'currency' && 
                                    field.userInterface.geral.fieldMask !== 'text' &&
-                                   field.userInterface.geral.fieldMask !== 'email'){%>
+                                   field.userInterface.geral.fieldMask !== 'email' &&
+                                   field.userInterface.geral.fieldMask !== 'decimal'){%>
                                mask="<%= field.userInterface.geral.fieldMask %>" 
                             <% }%>
                             <% if (field.userInterface.geral.fieldMask === 'currency'){%>
-                               ng-currency-mask currency=""
+                               ng-currency-mask
+                            <% }%>
+                            <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                               ng-currency-mask
                             <% }%>
                             <% if (field.userInterface.geral.fieldHelp !== undefined){%> 
                                 <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
@@ -67,10 +72,10 @@
                                 <% }%>
                                 "    
                             <% }%>  
-                            <% if (field.userInterface.geral.fieldMask === 'date'||
-                                   field.userInterface.geral.fieldMask === 'date-time'||
-                                   field.userInterface.geral.fieldMask === 'time') {%>
-                               jd-datepicker="<%=field.userInterface.geral.fieldMask%>"
+                            <% if (field.entity.fieldType === 'date'||
+                                   field.entity.fieldType === 'date-time'||
+                                   field.entity.fieldType === 'time') {%>
+                               jd-datepicker="<%=field.entity.fieldType%>"
                             <% }%>      
                             <% if (field.userInterface.geral.fieldMask == 'mask') {%>
                                mask="<%=field.userInterface.geral.fieldMaskConfig.mask%>"
@@ -115,7 +120,6 @@
             <% }) %>
             </div>    
         <% }%>  
-            
                 
         <div class="row">
             <div class="col-xs-12">
@@ -134,9 +138,25 @@
                     
                     <% config.feature.fields.forEach(function(field){ %>  
                         <% if (field.userInterface.result.showInResult) {%>
+                            <% if (field.entity.fieldType === 'date') { %>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>" jd-filter="date:'shortDate'"></td>
+                            <% } else
+                            if (field.entity.fieldType === 'date-time') { %>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>" jd-filter="date:'short'"></td>
+                            <% } else
+                            if (field.entity.fieldType === 'date-time') { %>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>" jd-filter="date:'shortTime'"></td>
+                            <% } else
+                            if (field.userInterface.geral.fieldMask === 'currency') { %>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>" jd-filter="currency"></td>
+                            <% } else
+                            if (field.userInterface.geral.fieldMask === 'decimal') { %>
+                            <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>" jd-filter="number"></td>
+                            <% } else { %>
                             <td jd-sortable jd-attribute="<%= field.entity.fieldName%>" jd-title="<%= field.userInterface.geral.fieldLabel.pt%>"></td>
-                        <% }%>  
-                     <% }) %>                    
+                            <% }%>
+                        <% }%>
+                     <% }) %>
                     <td jd-title="Ações" class="text-center">
                         <a href="javascript:;" jd-i18n title="Editar" ng-click="<%= config.featureName%>Ctrl.openEditModal(item)"><i class="glyphicon glyphicon-pencil"></i></a>
                         &nbsp;
@@ -149,7 +169,6 @@
 
     <script type="text/ng-template" id="<%= config.featureName%>Edit.html">
         <form jd-modal name="form_<%= config.featureName%>" jd-title="{{<%= config.featureName%>EditCtrl.<%= config.featureName%>EditModel.action == 'edit' ? 'Edição' : 'Inclusão'}}">
-            
             
         <% if(config.feature.fields)  {%>
             <% config.feature.fields.forEach(function(field){ %>
@@ -171,9 +190,9 @@
                            field.userInterface.geral.fieldMask === 'tel'  ||
                            field.userInterface.geral.fieldMask === 'email'||
                            field.userInterface.geral.fieldMask === 'password'||
-                           field.userInterface.geral.fieldMask === 'date'||
-                           field.userInterface.geral.fieldMask === 'date-time'||
-                           field.userInterface.geral.fieldMask === 'time'||
+                           field.entity.fieldType === 'date'||
+                           field.entity.fieldType === 'date-time'||
+                           field.entity.fieldType === 'time'||
                            field.userInterface.geral.fieldMask === 'mask'||
                            field.userInterface.geral.fieldMask === 'currency' ){%>
                        <input jd-input="<%= field.userInterface.geral.size %>" 
@@ -192,11 +211,15 @@
                         <% }%>   
                         <% if (field.userInterface.geral.fieldMask !== 'currency' && 
                                field.userInterface.geral.fieldMask !== 'text' &&
-                               field.userInterface.geral.fieldMask !== 'email'){%>
+                               field.userInterface.geral.fieldMask !== 'email' &&
+                               field.userInterface.geral.fieldMask !== 'decimal'){%>
                            mask="<%= field.userInterface.geral.fieldMask %>" 
                         <% }%>      
                         <% if (field.userInterface.geral.fieldMask === 'currency'){%>
-                             ng-currency-mask currency=""
+                             ng-currency-mask
+                        <% }%>
+                        <% if (field.userInterface.geral.fieldMask === 'decimal'){%>
+                             ng-currency-mask
                         <% }%>
                         <% if (field.userInterface.geral.fieldHelp !== undefined){%>   
                               <% if (field.userInterface.geral.fieldHelp.pt != undefined){%>
@@ -216,10 +239,10 @@
                               <% }%>
                               "    
                         <% }%>  
-                        <% if (field.userInterface.geral.fieldMask === 'date'||
-                               field.userInterface.geral.fieldMask === 'date-time'||
-                               field.userInterface.geral.fieldMask === 'time') {%>
-                           jd-datepicker="<%=field.userInterface.geral.fieldMask%>"
+                        <% if (field.entity.fieldType === 'date'||
+                               field.entity.fieldType === 'date-time'||
+                               field.entity.fieldType === 'time') {%>
+                           jd-datepicker="<%=field.entity.fieldType%>"
                         <% }%>      
                         <% if (field.userInterface.geral.fieldMask == 'mask') {%>
                             mask="<%=field.userInterface.geral.fieldMaskConfig.mask%>"
@@ -263,9 +286,6 @@
             <% }) %>
              </div>    
         <% }%> 
-
-            
-        
 
              <div class="modal-footer">
                 <button class="btn btn-primary" type="button" ng-disabled="!form_<%= config.featureName%>.$valid" ng-click="<%= config.featureName%>EditCtrl.save()" jd-i18n>Salvar</button>

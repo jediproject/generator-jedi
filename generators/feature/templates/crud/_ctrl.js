@@ -28,7 +28,6 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
     vm.loadUsers();
     //#endregion
     
-    
     //#region Events definitions
     function loadUsers(){
         var service = coreRestService.all('users');
@@ -46,9 +45,7 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
                 }
              <% }%>
         <% }) %>
-        
 
-        
         $log.debug('Realizando busca de sistemas com filtros:');
         $log.debug(_filter);
 
@@ -84,7 +81,6 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
             });
         });
     }
-    
 
     function openEditModal(<%= config.featureName%>) {
         $log.debug('Abrindo edição do <%= config.featureName%>: ' + <%= config.featureName%>);

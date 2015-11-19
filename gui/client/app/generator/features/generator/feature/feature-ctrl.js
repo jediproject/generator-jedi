@@ -141,7 +141,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             id: 'mask',
             value: 'Mask',
             type: 'string'
-        },
+        }/*,
         {
             id: 'date',
             value: 'Date',
@@ -156,10 +156,10 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             id: 'time',
             value: 'Time',
             type: 'time'
-        }
+        }*/
         ];
 
-    vm.featureModel.fiedlsEditableFor = [
+    vm.featureModel.fieldsEditableFor = [
         {
             id: 'insert',
             value: 'Insert'
@@ -254,7 +254,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
         var existe = false;
 
         var p = JSON.parse(JSON.stringify(vm.featureModel.param.feature));
-        
+
         if (p.userInterface.geral.fieldMask == undefined || p.userInterface.geral.fieldMask == null){
             p.userInterface.geral.fieldMask = 'text';
         }
@@ -272,7 +272,7 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
             vm.featureModel.json.feature.fields.push(p);        
             vm.featureModel.param.index ++;
         }
-        
+
         vm.featureModel.param.feature = {};
     }
 
@@ -334,9 +334,9 @@ jd.factory.newController(['app/generator/features/generator/feature/feature-filt
     }
 
     function addMultiItem() {
-            if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
-                vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
-            }
+        if (vm.featureModel.param.feature.userInterface && vm.featureModel.param.feature.userInterface.geral) {
+            vm.featureModel.param.feature.userInterface.geral.fieldMaskConfig.items.push({});
+        }
     }
 
     function importFile(){
