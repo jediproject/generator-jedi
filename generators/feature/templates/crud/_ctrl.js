@@ -19,22 +19,28 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
     vm.openCreateModal = openCreateModal;
     vm.filter = filter;
     vm.remove = remove;
-    vm.clear = clear;
-    vm.loadUsers = loadUsers;
+    vm.clear = clear;  
+    <% if(config.feature.fields)  {%><% config.feature.fields.forEach(function(field){ %><% if(field.userInterface.geral.fieldMask === 'single-select-rest'  ) {%>
+    vm.load<%=field.userInterface.geral.fieldMaskConfig.fieldValue%> = load<%=field.userInterface.geral.fieldMaskConfig.fieldValue%>
+    <%} %> <% }) %><% }%>
     //#endregion
 
     //#region Load controller
     vm.filter();
-    vm.loadUsers();
+    <% if(config.feature.fields)  {%><% config.feature.fields.forEach(function(field){ %><% if(field.userInterface.geral.fieldMask === 'single-select-rest'  ) {%>
+    vm.load<%=field.userInterface.geral.fieldMaskConfig.fieldValue%>();
+    <%} %> <% }) %> <% }%>
     //#endregion
     
     //#region Events definitions
-    function loadUsers(){
-        var service = coreRestService.all('users');
+    <% if(config.feature.fields)  {%><% config.feature.fields.forEach(function(field){ %><% if(field.userInterface.geral.fieldMask === 'single-select-rest'  ) {%>
+    function load<%=field.userInterface.geral.fieldMaskConfig.fieldValue%>(){
+        var service = coreRestService.all(<%=field.userInterface.geral.fieldMaskConfig.fieldValue%>);
         service.getList().then(function (data) {
-            vm.<%= config.featureName%>Model.users = data;
+            vm.<%= config.featureName%>Model.<%=field.userInterface.geral.fieldMaskConfig.fieldValue%> = data;
         });
     }
+    <%} %><% }) %><% }%>
 
     function filter() {
         var _filter = {};
