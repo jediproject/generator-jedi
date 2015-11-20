@@ -73,19 +73,19 @@ jd.factory.newController('app.<%= config.moduleName.toLowerCase()%>.<%if (config
     }
 
     function remove(<%= config.featureName%>) {
-        alertHelper.confirm('Deseja realmente excluir o registro ?', function () {
-            $log.debug('Removendo: <%= config.featureName%>');
             <% if(config.feature.fields)  {%> 
                  <% config.feature.fields.forEach(function(field){ %>
                      <% if (field.userInterface.result.usedToDelete) {%>
+        alertHelper.confirm('Deseja realmente excluir o registro ?', function () {
+            $log.debug('Removendo: <%= config.featureName%>');
                         <%= config.featureName%>.remove({ id: <%= config.featureName%>.<%= field.entity.fieldName%> }).then(function () {
                 vm.<%= config.featureName%>Model.<%= config.featureName%>s = _.without(vm.<%= config.featureName%>Model.<%= config.featureName%>s, <%= config.featureName%>);             
+        alertHelper.addInfo('Operação realizada com sucesso!');
+            });
+        });                
                      <% }%>         
                  <% }) %>
             <% }%>
-                alertHelper.addInfo('Operação realizada com sucesso!');
-            });
-        });
     }
 
     function openEditModal(<%= config.featureName%>) {

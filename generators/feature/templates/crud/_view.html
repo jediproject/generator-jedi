@@ -9,8 +9,6 @@
                     <% }%>  
                         
                      <% if(field.index != 0 && field.userInterface.form.newLine)  {%>
-                       </div>
-
                        <div class="row">  
                     <% }%>            
 
@@ -116,7 +114,9 @@
                         <% }%>
                         </select>
                     <% }%>
-                    </div>   
+                    <% if(field.index == config.feature.fields.lengths -1 || field.userInterface.form.newLine)  {%>
+                       </div>   
+                    <% }%>            
                 <% }%>       
             <% }) %>
             </div>    
