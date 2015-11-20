@@ -118,7 +118,7 @@ module.exports = yeoman.generators.Base.extend({
         if (this.config.subModule) {
             insert = insert + this.config.subModule + '/';
         }
-        insert = insert + this.config.featureName + '" jd-i18n>' + this.config.featureName + '</a></li>';
+        insert = insert + this.config.featureName + '" jd-i18n>' + (this.config.featureTitle.pt || this.config.featureTitle.en) + '</a></li>';
 
         if (file.indexOf(hook) != -1) {
             this.write(filepath, file.replace(hook, insert + '\n' + hook));

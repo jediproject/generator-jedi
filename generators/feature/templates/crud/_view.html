@@ -1,7 +1,6 @@
 <form jd-panel jd-title="<%= config.featureName%>" ng-controller="app.<%= config.moduleName.toLowerCase()%>.<%if (config.subModule) {%><%= config.subModule.toLowerCase()%>.<%}%><%= config.featureName.toLowerCase()%>.<%= config.featureName.capitalize()%>Ctrl as <%= config.featureName%>Ctrl">
     
     <div jd-panel jd-title="Filtros" jd-toggle>
-         
         <% if(config.feature.fields)  {%>
             <% config.feature.fields.forEach(function(field){ %>
                 <% if (field.userInterface.filter.showInFilter){%>
@@ -10,6 +9,8 @@
                     <% }%>  
                         
                      <% if(field.index != 0 && field.userInterface.form.newLine)  {%>
+                       </div>
+
                        <div class="row">  
                     <% }%>            
 
@@ -135,7 +136,6 @@
         <table jd-table="<%= config.featureName%>Ctrl.<%= config.featureName%>Model.<%= config.featureName%>s" jd-paginated>    
             <tbody>
                 <tr>
-                    
                     <% config.feature.fields.forEach(function(field){ %>  
                         <% if (field.userInterface.result.showInResult) {%>
                             <% if (field.entity.fieldType === 'date') { %>
@@ -286,7 +286,6 @@
             <% }) %>
              </div>    
         <% }%> 
-
              <div class="modal-footer">
                 <button class="btn btn-primary" type="button" ng-disabled="!form_<%= config.featureName%>.$valid" ng-click="<%= config.featureName%>EditCtrl.save()" jd-i18n>Salvar</button>
                 <button class="btn btn-primary" type="button" jd-dismiss-modal jd-i18n>Cancelar</button>
