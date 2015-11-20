@@ -1,0 +1,35 @@
+{
+  "name": "ng-jedi-layout",
+  "version": "0.0.1",
+  "description": "AngularJs UI jedi component",
+  "repository": "https://github.com/jediproject/ng-jedi-layout",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.4"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt": "~0.4.1"
+  },
+  "main": [
+    "layout.js"
+  ],
+  "author": {
+	"name": "Fábio Henrique da Silva Viana",
+	"email": "fabioviana.bh@gmail.com",
+	"url": "http://jediproject.github.io"
+  },
+  "keywords": [
+	  "angular",
+    "datepicker",
+    "input",
+    "modal",
+    "panel",
+    "treeview",
+    "layout"
+  ]
+}

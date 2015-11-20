@@ -1,0 +1,77 @@
+<div class="masthead" nav-menu></div>
+
+<div class="jumbotron">
+    <h1>{{title}}</h1>
+    <p class="lead">
+        AngularJS + RequireJS: The Proper and Easier Way
+    </p>
+</div>
+
+<div class="main-content">
+    <p class="lead text-justify">
+        Integrating AngularJS and RequireJS shouldn't be complicated, and it isn't with angularAMD.
+        To see it in action, checkout this website that show case key features.  Make sure to
+        load your favorite Developer Tools to see the on-demand loading of <code>*.js</code> files
+        as you switch tabs.
+    </p>
+    
+    <hr>
+    
+    <h3>A quick AngularJS + RequireJS how-to using angularAMD:</h3>
+    
+    <h4>Step 1:</h4>
+    Define components and dependencies in <code>main.js</code>:
+    
+<pre class="prettyprint">require.config({
+    baseUrl: "js",    
+    paths: {
+        'angular': '.../angular.min',
+        'angular-route': '.../angular-route.min',
+        'angularAMD': '.../angularAMD.min'
+    },
+    shim: { 'angularAMD': ['angular'], 'angular-route': ['angular'] },
+    deps: ['app']
+});</pre>
+    
+    and load RequireJS, and only RequireJS, in <code>index.html</code>:
+    
+<pre class="prettyprint">&lt;head&gt;
+    &lt;script data-main="js/main.js" src=".../require.js">&lt;/script&gt;
+&lt;/head&gt;</pre>
+    
+    <h4>Step 2:</h4>
+    Create <code>app.js</code> using RequireJS's <code>define</code> statement:
+<pre class="prettyprint">define(['angularAMD', 'angular-route'], function (angularAMD) {
+    var app = angular.module("webapp", ['ngRoute']);
+    app.config(function ($routeProvider) {
+        $routeProvider.when("/home", angularAMD.route({
+            templateUrl: 'views/home.html', controller: 'HomeCtrl',
+            controllerUrl: 'ctrl/home'
+        }))
+    });
+    return angularAMD.bootstrap(app);
+});</pre>
+
+    <h4>Step 3:</h4>
+    Create controller using <code>app.register</code> method:   
+<pre class="prettyprint">define(['app'], function (app) {
+    app.controller('HomeCtrl', function ($scope) {
+        $scope.message = "Message from HomeCtrl"; 
+    });
+});</pre>
+
+    <p  class="lead text-justify">
+        Check out this <a href="http://bl.ocks.org/marcoslin/df4b741e92b2829eeae8" target="_blank">Gist</a>
+        for a simple implementation.  Then, head over to github for detail documentation.
+    </p>
+</div>
+
+<hr>
+
+<div class="text-center">
+    <a id="view-on-github" class="btn btn-large" ng-click="openGitHubPage()">
+        <i class="icon-github-sign"></i>
+        View on GitHub
+    </a>
+</div>
+

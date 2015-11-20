@@ -1,0 +1,34 @@
+{
+  "name": "ng-jedi-loading",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jediproject/ng-jedi-loading",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
+  ],
+  "description": "Loading component written in angularjs",
+  "main": [
+    "loading.js",
+    "loading.css",
+    "loading.html"
+  ],
+  "dependencies": {
+    "ng-jedi-dialogs": "*"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "loading"
+  ],
+  "license": "MIT",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "c6f6b03937514ece0e656ef2677b401b99fcb3f6"
+  },
+  "_source": "git://github.com/jediproject/ng-jedi-loading.git",
+  "_target": ">=0.0.1",
+  "_originalSource": "ng-jedi-loading"
+}

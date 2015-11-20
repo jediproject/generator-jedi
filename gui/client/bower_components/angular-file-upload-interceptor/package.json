@@ -1,0 +1,18 @@
+{
+    "name": "angular-file-upload-interceptor",
+    "version": "1.0.0",
+    "homepage": "https://github.com/mateusmcg/angular-file-upload-interceptor",
+    "description": "Angular File Upload é um módulo para o framework AngularJS",
+    "author": {
+        "name": "mateusmcg",
+        "url": "https://github.com/mateusmcg"
+    },
+    "dependencies": {
+        "coffee-script": "~1.6.2",
+        "grunt-contrib-copy": "~0.4.1",
+        "grunt-contrib-clean": "~0.4.0",
+        "grunt-contrib-concat": "~0.3.0",
+        "grunt-contrib-uglify": "~0.2.1",
+        "grunt": "~0.4.1"
+    }
+}

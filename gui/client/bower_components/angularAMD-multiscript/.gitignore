@@ -1,0 +1,13 @@
+# Ignore Directory created by tools
+node_modules/
+bower_components/
+www/js/lib/
+build/
+
+# Ignore css sourced from bower
+www/css/prettify.css
+
+# Other
+phantomjsdriver.log
+
+

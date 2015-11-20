@@ -1,0 +1,25 @@
+{
+    "name": "ng-mask-currency",
+    "version": "1.0.0",
+    "authors": [
+        "Mateus Cerqueira <mateus_mcg@icloud.com>"
+    ],
+    "description": "Format an entire input as a currency.",
+    "moduleType": [
+        "node"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "~1.2.23"
+    },
+    "devDependencies": {
+        "angular-mocks": "~1.2.23"
+    }
+}

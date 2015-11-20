@@ -1,0 +1,30 @@
+{
+  "name": "ng-jedi-loading",
+  "version": "0.0.1",
+  "description": "Loading component written in angularjs",
+  "repository": "https://github.com/jediproject/ng-jedi-loading",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.4"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt": "~0.4.1"
+  },
+  "main": [
+    "loading.js", "loading.css", "loading.html"
+  ],
+  "author": {
+	"name": "Fábio Henrique da Silva Viana",
+	"email": "fabioviana.bh@gmail.com",
+	"url": "http://jediproject.github.io"
+  },
+  "keywords": [
+	  "angular",
+    "loading"
+  ]
+}

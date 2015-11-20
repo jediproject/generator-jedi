@@ -1,9 +1,6 @@
-node_modules/
 tmp
 build/
 node_modules/
-gui/node_modules/
-gui/client/bower_components/
 gui/client/assets/fonts/
 gui/client/assets/libs/
 gui/client/assets/css/bootstrap.css

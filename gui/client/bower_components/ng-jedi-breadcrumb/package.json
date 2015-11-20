@@ -1,0 +1,22 @@
+{
+  "name": "ng-jedi-breadcrumb",
+  "version": "0.0.1",
+  "description": "Breadcrumb component written in angularjs",
+  "repository": "https://github.com/jediproject/ng-jedi-breadcrumb",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.4"
+  },
+  "main": [
+    "breadcrumb.js"
+  ],
+  "author": {
+	"name": "Fábio Henrique da Silva Viana",
+	"email": "fabioviana.bh@gmail.com",
+	"url": "http://jediproject.github.io"
+  },
+  "keywords": [
+	"angular",
+	"breadcrumb"
+  ]
+}

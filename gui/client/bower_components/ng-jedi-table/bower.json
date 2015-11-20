@@ -1,0 +1,28 @@
+{
+  "name": "ng-jedi-table",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jediproject/ng-jedi-table",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>",
+    "Mateus Cerqueira <mateus_mcg@icloud.com>",
+    "Henrique Silva Brighenti <henriqueb@ciandt.com>",
+    "Bruno Camodeco dos Santos <brunocs@ciandt.com>",
+    "Tanato Cartaxo <tanatopc@gmail.com>"
+  ],
+  "description": "Angular Table with support for API Pagination.",
+  "main": ["ng-jedi-table.js", "ng-jedi-table.css"],    
+  "dependencies": {
+    "angular": "~1.2.11",
+    "jquery": "~2.1.4",
+    "lodash": "~3.10.1"
+  },
+  "keywords": [
+    "angular",
+    "table",
+    "restful",
+    "module",
+    "api",
+    "pagination"
+  ],
+  "license": "MIT"
+}

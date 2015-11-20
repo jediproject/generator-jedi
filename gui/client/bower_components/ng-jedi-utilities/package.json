@@ -1,0 +1,55 @@
+{
+  "name": "ng-jedi-utilities",
+  "version": "0.0.1",
+  "description": "Utilities to make life easier on settings and other needs during development with angularjs",
+  "repository": "https://github.com/jediproject/ng-jedi-utilities",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.4.4",
+    "ng-jedi-dialogs": "^0.0.1"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.1",
+    "grunt": "~0.4.1"
+  },
+  "main": [
+    "utilities.js"
+  ],
+  "author": {
+	"name": "Fábio Henrique da Silva Viana",
+	"email": "fabioviana.bh@gmail.com",
+	"url": "http://jediproject.github.io"
+  },
+  "keywords": [
+	  "angular",
+    "utilities",
+    "cors",
+    "cpf",
+    "cnpj",
+    "IIS",
+    "exceptionhandler",
+    "exception handler",
+    "modelstate",
+    "model state",
+    "translate",
+    "boolean to text",
+    "capitalize",
+    "validateequals",
+    "validate equals",
+    "fullscreen",
+    "full screen",
+    "dynamicdirective",
+    "dynamic directive",
+    "interpolate",
+    "interpolate directive",
+    "asyncvalidate",
+    "async validate",
+    "async validate directive",
+    "enter",
+    "If-Modified-Since"
+  ]
+}

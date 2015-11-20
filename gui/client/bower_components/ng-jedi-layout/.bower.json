@@ -1,0 +1,41 @@
+{
+  "name": "ng-jedi-layout",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jediproject/ng-jedi-layout",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
+  ],
+  "description": "AngularJs UI jedi component",
+  "main": [
+    "layout.js"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "datepicker",
+    "input",
+    "modal",
+    "panel",
+    "treeview",
+    "layout"
+  ],
+  "dependencies": {
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
+    "bootstrap": "~3.3.4",
+    "moment": "~2.9.0",
+    "angular-ngMask-alias": "*",
+    "ng-jedi-utilities": "*"
+  },
+  "license": "MIT",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "790d27f107511282c2bbedc371a97088423d39ea"
+  },
+  "_source": "git://github.com/jediproject/ng-jedi-layout.git",
+  "_target": ">=0.0.1",
+  "_originalSource": "ng-jedi-layout"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "ng-jedi-factory",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jediproject/ng-jedi-factory",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
+  ],
+  "description": "Factory helper to create with facility angularjs components (controllers, directives, filters...)",
+  "main": [
+    "factory.js"
+  ],
+  "dependencies": {
+    "ng-jedi-dialogs": "*"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "factory",
+    "controller",
+    "filter",
+    "directive",
+    "module",
+    "modal",
+    "service",
+    "resource",
+    "requirejs"
+  ],
+  "license": "MIT",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "c6eea4b19c804570383acada1debd1811b695d60"
+  },
+  "_source": "git://github.com/jediproject/ng-jedi-factory.git",
+  "_target": ">=0.0.1",
+  "_originalSource": "ng-jedi-factory"
+}

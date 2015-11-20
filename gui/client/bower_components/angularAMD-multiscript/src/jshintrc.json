@@ -1,0 +1,29 @@
+{
+    "nonew": true,
+    "plusplus": true,
+    "curly": true,
+    "noarg": true,
+    "trailing": true,
+    "forin": true,
+    "noempty": true,
+    "eqeqeq": true,
+    "undef": true,
+    "bitwise": true,
+    "browser": true,
+    "node": true,
+    "globals": {
+        /* AngularJS */
+        "angular": false,
+        /* RequireJS */
+        "define": false,
+        "require": false,
+        /* Jasmine */
+        "describe"   : false,
+        "it"         : false,
+        "before"     : false,
+        "beforeEach" : false,
+        "after"      : false,
+        "afterEach"  : false,
+        "expect"     : false
+    }
+}

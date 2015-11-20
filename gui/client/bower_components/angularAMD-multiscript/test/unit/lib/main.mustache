@@ -1,0 +1,77 @@
+/*jslint browser: true, node: true, nomen: true */
+
+!function () {
+    // Create basic requirejs config
+    var rconfig = {
+        // The baseUrl depends on what is defined in karma.unit.js:basePath
+        baseUrl: "/base",
+
+        // alias libraries paths
+        paths: {
+            'angular': 'bower_components/angular/angular',
+            'angular-route': 'bower_components/angular-route/angular-route',
+            'angular-animate': 'bower_components/angular-animate/angular-animate',
+            'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
+            'angularAMD': '{{{angularAMD-js-file}}}',
+            'ngload': '{{{ngload-js-file}}}',
+            'app': 'test/unit/lib/app',
+            'app_no_ngload': 'test/unit/lib/app_no_ngload',
+            'services': 'test/unit/lib/services',
+            'regServices': 'test/unit/lib/regServices',
+            'controller': 'test/unit/lib/controller',
+            'regController': 'test/unit/lib/regController',
+            'decoServices': 'test/unit/lib/decoServices'
+        },
+
+        shim: {
+            'app': ['angular'],
+            'angularAMD': ['angular'],
+            'angular-route': ['angular'],
+            'angular-animate': ['angular'],
+            'angular-mocks': ['angular'],
+
+            /*
+            'services' in this case is a regular angular.js module which calls moduleFactory using
+            requirejs' sync method.  As result, test/unit/factory/module must be called first.
+            */
+            'services': ['test/unit/factory/module']
+        },
+
+        // start test run, once Require.js is done
+        callback: window.__karma__.start
+    };
+
+
+    // Look for .spec.js files and created linked dependencies starting with app.spec to one spec at a time
+    var prevSpec = "test/unit/app.spec",
+        reSkip = new RegExp("app\\.spec\\.js|app_no_ngload\\.spec\\.js"),
+        reSpec = new RegExp("^\\/base\\/(\\S+\\.spec)\\.js$");
+
+    console.log("* Setting unit test sequence:");
+    for (var file in window.__karma__.files) {
+        // Ignore the app and app_no_ngload files
+        if (reSkip.test(file)) {
+            continue;
+        }
+
+        // Find the *.spec.js files and extract just the name without initial "/base/" and ending ".js"
+        if (window.__karma__.files.hasOwnProperty(file)) {
+            var matches = reSpec.exec(file);
+            if(matches && matches.length > 1) {
+                var curSpec = matches[1];
+                rconfig.shim[curSpec] = [prevSpec];
+                console.log(" - " + curSpec + ": " + prevSpec);
+                prevSpec = curSpec;
+            }
+        }
+    }
+
+    // Kick off the test from the last spec.js file
+    rconfig.deps = [prevSpec];
+    console.log(" - " + prevSpec + " [KICK-OFF]");
+
+    // Update requirejs config
+    require.config(rconfig);
+}();
+
+

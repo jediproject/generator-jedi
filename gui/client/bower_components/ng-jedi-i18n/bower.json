@@ -1,0 +1,24 @@
+{
+  "name": "ng-jedi-i18n",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jediproject/ng-jedi-i18n",
+  "authors": [
+    "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
+  ],
+  "description": "i18n component written in angularjs",
+  "main": ["i18n.js"],
+  "dependencies": {
+	"ng-jedi-dialogs": "*"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "i18n",
+	"locale",
+	"localization",
+	"internacionalization"
+  ],
+  "license": "MIT"
+}
