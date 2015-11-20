@@ -24,17 +24,14 @@
     "http-server": "^0.8.0",
     "json-server": "^0.7.20",
     "load-grunt-tasks": "^3.2.0",
-    "lodash": "^3.10.0"
-  },
-  "scripts": {
-    "develop": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt develop",
-    "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt release",
-    "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt master",
-    "start": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt develop && node node_modules/http-server/bin/http-server -a localhost -p 8181",
-    "heroku": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt master"
-  },
-  "dependencies": {
+    "lodash": "^3.10.0",
     "body-parser": "^1.13.3",
     "mkdirp": "^0.5.1"
+  },
+  "scripts": {
+    "develop": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt develop",
+    "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt release",
+    "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt master",
+    "heroku": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt master"
   }
 }
