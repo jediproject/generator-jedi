@@ -5,7 +5,7 @@
   "description": "Jedi Generator",
   "repository": "",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "bower": "^1.4.1",
     "chalk": "^1.1.0",
     "express": "3.x",
@@ -25,13 +25,15 @@
     "json-server": "^0.7.20",
     "load-grunt-tasks": "^3.2.0",
     "lodash": "^3.10.0",
+  },
+  "dependencies":{
     "body-parser": "^1.13.3",
     "mkdirp": "^0.5.1"
   },
+  }
   "scripts": {
     "develop": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt develop",
     "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt release",
     "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt master",
-    "heroku": "npm install && node node_modules/grunt-cli/bin/grunt master"
   }
 }
