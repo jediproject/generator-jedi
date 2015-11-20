@@ -53,7 +53,7 @@
   "scripts": {
     "start": "node gui/server/app.js",
     "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
-    "heroku": "node gui/server/app.js && npm link generator-jedi",
+    "heroku": "node gui/server/app.js && npm install -g generator-jedi",
     "test": "mocha"
   }
 }
