@@ -31,7 +31,7 @@
     "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt release",
     "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt master",
     "start": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && node node_modules/grunt-cli/bin/grunt develop && node node_modules/http-server/bin/http-server -a localhost -p 8181",
-    "heroku": "bower update && grunt master"
+    "heroku": "npm install && bower update && grunt master"
   },
   "dependencies": {
     "body-parser": "^1.13.3",
