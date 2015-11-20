@@ -32,6 +32,6 @@
     "develop": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt develop",
     "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt release",
     "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/grunt-cli/bin/grunt master",
-    "heroku": "npm install && install && node node_modules/grunt-cli/bin/grunt master"
+    "heroku": "npm install && node node_modules/grunt-cli/bin/grunt master"
   }
 }
