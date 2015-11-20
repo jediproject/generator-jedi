@@ -34,6 +34,7 @@
     "express": "^4.13.3",
     "fs-json": "^0.1.2",
     "html-wiring": "1.2.0",
+    "js-beautify": "^1.5.10",
     "lodash": "^3.10.1",
     "mkdirp": "^0.5.1",
     "path": "^0.11.14",
@@ -53,5 +54,5 @@
     "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
     "heroku": "npm install && bash gui/run.sh heroku && node gui/server/app.js",
     "test": "mocha"
-  } 
+  }
 }

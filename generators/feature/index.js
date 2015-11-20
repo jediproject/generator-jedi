@@ -17,6 +17,9 @@ String.prototype.capitalize = function () {
 String.prototype.decapitalize = function () {
     return s(this).decapitalize().value();
 }
+
+var _filePath;
+
 module.exports = yeoman.generators.Base.extend({
 
     _optionOrPrompt: optionOrPrompt,
@@ -89,13 +92,14 @@ module.exports = yeoman.generators.Base.extend({
 
         // Verifica se é para gerar código baseado em crud
         if (this.config.feature.type === 'crud') {
+            _filePath = dest + '/' + this.config.featureName;
 
             this.fs.copyTpl(
                 this.templatePath('crud/_ctrl.js'),
                 this.destinationPath(dest + '/' + this.config.featureName + '-ctrl.js'),
                 this
             );
-
+            
             this.fs.copyTpl(
                 this.templatePath('crud/_view.html'),
                 this.destinationPath(dest + '/' + this.config.featureName + '.html'),
@@ -164,5 +168,10 @@ module.exports = yeoman.generators.Base.extend({
         var filepath = this.config.destinationRoot + 'app/' + this.config.moduleName.toLowerCase()+'/env/'+this.config.moduleName.toLowerCase()+'-env.develop.json';
         var insert = '{\n   "apiUrlBase": "' + this.config.apiAddress +'"\n}';
         this.write(filepath, insert);
+    },
+
+    end: function() {
+        baseutil.identJs(_filePath + '-ctrl.js', 2);
+        baseutil.identHtml(_filePath + '.html', 1);
     }
 });
