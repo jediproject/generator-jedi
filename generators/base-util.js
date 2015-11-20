@@ -30,10 +30,10 @@ function ident(fileName, beautify, lines) {
 	});
 }
 
-function identJs(fileName, lines) {
-	ident(fileName, beautifyJs, lines);
+function identJs(fileName) {
+	ident(fileName, beautifyJs, 2);
 }
 
-function identHtml(fileName, lines) {
-	ident(fileName, beautifyHtml, lines);
+function identHtml(fileName) {
+	ident(fileName, beautifyHtml, 0);
 }

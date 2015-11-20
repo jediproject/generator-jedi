@@ -171,7 +171,7 @@ module.exports = yeoman.generators.Base.extend({
     },
 
     end: function() {
-        baseutil.identJs(_filePath + '-ctrl.js', 2);
-        baseutil.identHtml(_filePath + '.html', 1);
+        baseutil.identJs(_filePath + '-ctrl.js');
+        baseutil.identHtml(_filePath + '.html');
     }
 });
