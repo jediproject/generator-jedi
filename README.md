@@ -1,206 +1,210 @@
 # [generator-jedi](https://github.com/jediproject/generator-jedi)
 
-O objetivo deste gerador é trazer maior facilidade na criação de projetos AngularJs, seguindo a [Arquitetura de Referência AngularJs](http://jediproject.github.io).
+The main purpose of this generator is providing an easy way to create AngularJs projects, following this [AngularJs Reference Architecture](http://jediproject.github.io). 
 
-O gerador é composto por um rotina de geração principal, que gera toda estruturação v0 de um projeto, e sub geradores para criação de controllers, modais, módulos e funcionalidades.
+It has the main routine where it builds all the v0 ("version zero") structure of a project and sub routines to build controllers, modals, modules and features.
 
-A rotina de geração principal é uma composição de várias ferramentas e frameworks de mercado e alguns componentes criados no Jedi Project.
+The v0 generating routine uses a set of tools and frameworks well consolidated and some Jedi Project Components.
 
-O projeto v0 criado pelo gerador vem com toda configuração do npm, bower, grunt, mocks e testes (karma + protractor).
+Inside the v0 generated project it has already configured: npm, bower, grunt, mocks e tests (karma + protractor).
 
-As rotinas grunt são destinada para execução de build do projeto, com opções de build para ambiente "develop", "release" e "master". Segue abaixo as tasks que cada opção de build realiza:
+### Grunt tasks generated
 
-- **develop**: responsável por gerar a versão da aplicação para execução local, copiando todos os componentes baixados pelo bower e configurados no arquivo assetsfiles.json, gerando o main.js para esta versão de build e gerando o arquivo de ambiente para cada módulo do projeto (app/MODULO/env/MODULO-env.json), deixando a aplicação pronta para inicialização local.
+The grunt tasks are meant to execute the build process of the project, having options to build targeting "develop", "release" and "master" environments. Below the tasks each build option execute:
 
-- **release**: responsável por gerar a versão da aplicação para execução em ambiente de testes, realizando os mesmos passos do ambiente develop, porém, copiando todo o projeto para a pasta build/ e gerando hash para cache bust de cada arquivo.
+- **develop**: meant to run locally, copy all bower components that are listed in **assetsfiles.json**, generate **main.js** and the environment file to each module of the project (*app/[module]/env/[module]-env.json*).
 
-- **master**: responsável por gerar a versão da aplicação para execução em ambiente de produção, realizando os mesmos passos do ambiente release, porém, minificando os js e css da pasta build/.
+- **release**: meant to run on a testing environment, executes all the tasks of develop plus it copies all the files to the *build/* folder e generates a hash of each file to be used as cache bust.
 
-As rotinas de build "release" e "master" utilizam estratégia de cache bust, adicionando aos arquivos finais o hash da versão, modificnado os apontamentos fixos em código para a versão do arquivo final e gerando o arquivo version.json com o mapeamento dos arquivos originais e as versões atuais em cache, para carregamento de scripts dinâmicos, em tempo de execução, através do mecanismo factory.getFileVersion do componente [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory).
+- **master**: meant to run on production environment, executes all the tasks of release plus it minifies every js and css file on the build folder.
 
-Cada módulo, por padrão, possui um arquivo json template (app/MODULO/env/MODULO-env.tpl.json) com variáveis de ambiente e uma versão deste arquivo para cada opção de build (app/MODULO/env/MODULO-env.AMBIENTE.json), durante execução da build o template é parseado com o conteúdo do json do ambiente selecionado (app/MODULO/env/MODULO-env.json).
+### Cache Busting
 
-Para utilizar o gerador, siga os passos:
+The *release* and *master* build routines run a cache busting task. It adds to each file a hash on its name, and updates every fixed reference to those files so they point to the right version. After that it creates the file **version.json** that maps every original filename and their "hashed" version, so it's possible to load dynamic scripts while running the application using the *factory.getFileVersion* metho from the [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory) component.
 
-1. Instalação do gerador
+### Environinnt files
+
+Eache module has a json file tinplate (*app/[module]/env/[module]-env.tpl.json*) with the environment variables or settings for the module, and a version of this file for each build environment (*app/[module]/env/[module]-env.[environment].json*) that should contain the right values for that environment. During build process the tinplate is parsed and the final file *[module]-env.json* is created having the values equals to the values on the corresponding environment file. 
+
+### Using the generator
+
+To use the generator just follow these steps:
+
+#### Installing
 
 	```bash
 	npm install -g yo
 	npm install -g generator-jedi
 	```
+#### Executing it on a web browser
 
-2. Execução do gerador via browser
-
-	Se preferir, execute a versão do gerador via browser, que possui wizards facilitados
+    You can execute the generator on your browser and follow it's easy to use wizards:
 
 	```bash
 	jedi
 	```
 
-	- o comando acima subirá um site local com os wizards no seguinte enderço: http://localhost:8181/
+    - This command will run a local site with all the wizards in http://localhost:8181/
 
-3. Execução do gerador via comando
+#### Executing it on command line
 
-	Se preferir, execute a versão do gerador via comando, seguindo os exemplos abaixo:
+You can follow the examples below:
 
-	3.1. Execução do gerador principal
-	```bash
-	yo jedi
-	```
+1. The main generator:
+    ```bash
+        yo jedi
+    ```
 
-	* informe o nome do projeto, título, nome do módulo padrão, linguagem padrão e relação de componentes que deseja gerar.
-	* ao final será criado um projeto v0 na raiz onde o comando for executado, já pronto para execução.
-	* Para executar a aplicação utilizar o comando:
-	```bash
-	npm run start
-	```
+    * Inform project title, name, main module name, standard language and components
+    * This will create a v0 application on the folder where the command was executed. The application is ready to run.
+    * You can start it with:
+        ```bash
+            npm run start
+        ```
 
-	3.2. Execução do gerador de controller
-	
-	```bash
-	yo jedi:controller
-	```
-	
-	* informe o título da tela, nome do módulo, nome do submódulo e nome do controlador.
-	* ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
-		
-	3.3. Execução do gerador de modal
-		
-	```bash
-	yo jedi:modal
-	```
-	
-	* informe o título da modal, nome do módulo, nome do submódulo e nome do controlador.
-	* ao final será criado um controller e uma tela no caminho: app//[nome do módulo]//[nome do submódulo]//[nome do controlador]
-		
-	3.4. Execução do gerador de módulo
-		
-	```bash
-	yo jedi:module
-	```
-	
-	* informe o nome do módulo, linguagem padrão e se deve utilizar i18n
-	* ao final será criado um módulo com estrutura base no caminho: app//[nome do módulo]
-		
-	3.5. Execução do gerador de feature
-		
-	```bash
-	yo jedi:feature
-	```
-	
-	* Informe o caminho do arquivo de config.
-	    * Exemplo genérico do arquivo de config:
+1. Controller generator
+    ```bash
+        yo jedi:controller
+    ```
+
+    * You will be asked the page title, module name, submodule name and controller name.
+    * By the end the controller will be created at the path: *app/[module name]/[submodule name]/[controller name]*.
     
-	```json
-	{
-		  "moduleName": "<nome do módulo>",
-		  "submodule": "<nome do sub módulo (opcional)>",
-		  "featureName": "<nome da funcionalidade>",
-		  "featureTitle": {
-		    "pt": "<título da funcionalidade em português>",
-		    "en": "<título da funcionalidade em inglês>"
-		  },
-		  "APIAddress": "<Endereço da API>",
-		  "feature": {
-		    "type": "<tipo da feature:  crud|modal>",
-		    "filters": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        },
-				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-		        "fieldHint": {
-		          "pt": "<hint para o campo em português (opcional)>",
-		          "en": "<hint para o campo em inglês (opcional)>"
-		        },
-		        "requiredField": true,
-		        "messageRequired": {
-				          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-				          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-		        },
-		        "maxCharacter": 10,
-		        "minCharacter": 0
-		      }
-		    ],
-		    "results": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        }
-		      }
-		    ],
-		    "domains": [
-		      {
-		        "fieldName": "<Nome do campo>",
-		        "fieldLabel": {
-		          "pt": "<nome do campo em português>",
-		          "en": "<nome do campo em inglês>"
-		        },
-				        "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
-		        "fieldHint": {
-		          "pt": "<hint para o campo em português (opcional)>",
-		          "en": "<hint para o campo em inglês (opcional)>"
-		        },
-		        "requiredField": true,
-		        "messageRequired": {
-		          "pt": "<mensagem para o campo obrigatório em português (obrigatório se required:true)>",
-		          "en": "<mensagem para o campo obrigatório em inglês (obrigatório se required:true)>"
-		        },
-		        "maxCharacter": 10,
-		        "minCharacter": 0,
-		        "fieldEditableFor": [
-		          "create",
-		          "update"
-		        ],
-		        "visibleToTheUser": true,
-		        "key": false
-		      }
-		    ]
-		  }
-	}
-	```
+1. Modal generator
+    ```bash
+        yo jedi:modal
+    ```
 
-Para adicionar uma nova dependencia ao projeto basta seguir os seguintes passos:
+    * Needs modal title, module name, submodule name and controller name
+    * By the end the controller will be created at the path: *app/[module name]/[submodule name]/[controller name]*.
+    
+1. Module generator
+    ```bash
+        yo jedi:module
+    ```
+
+    * Inform module name, default language and if it should use i18n.
+    * You will have a module structure at : *app/[module name]*.
+    
+1. Feature generator
+    ```bash
+        yo jedi:feature
+    ```
+
+    * Type the config file path:
+        * Config file example:
+            ```json
+            {
+                    "moduleName": "<name module>",
+                    "submodule": "<name submodule (optional)>",
+                    "featureName": "<name da feature>",
+                    "featureTitle": {
+                    "pt": "<título feature in portuguese>",
+                    "en": "<título feature in english>"
+                    },
+                    "APIAddress": "<API address>",
+                    "feature": {
+                    "type": "<feature type:  crud|modal>",
+                    "filters": [
+                        {
+                        "fieldName": "<Field Name>",
+                        "fieldLabel": {
+                            "pt": "<Field Name in portuguese>",
+                            "en": "<Field Name in english>"
+                        },
+                                "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+                        "fieldHint": {
+                            "pt": "<hint in portuguese (optional)>",
+                            "en": "<hint in english (optional)>"
+                        },
+                        "requiredField": true,
+                        "messageRequired": {
+                                    "pt": "<message for required field in portuguese (mandatory if required:true)>",
+                                    "en": "<message for required field in english (mandatory if required:true)>"
+                        },
+                        "maxCharacter": 10,
+                        "minCharacter": 0
+                        }
+                    ],
+                    "results": [
+                        {
+                        "fieldName": "<Name>",
+                        "fieldLabel": {
+                            "pt": "<name in portuguese>",
+                            "en": "<name in english>"
+                        }
+                        }
+                    ],
+                    "domains": [
+                        {
+                        "fieldName": "<Name>",
+                        "fieldLabel": {
+                            "pt": "<name in portuguese>",
+                            "en": "<name in english>"
+                        },
+                                "fieldType": "<text|multi-select|single-select|text-multi-value|date|date-time|password|cpf|cnpj|tel|cep|int|currency|boolean >",
+                        "fieldHint": {
+                            "pt": "<hint in portuguese (optional)>",
+                            "en": "<hint in english (optional)>"
+                        },
+                        "requiredField": true,
+                        "messageRequired": {
+                            "pt": "<message for required field in portuguese (mandatory if required:true)>",
+                            "en": "<message for required field in english (mandatory if required:true)>"
+                        },
+                        "maxCharacter": 10,
+                        "minCharacter": 0,
+                        "fieldEditableFor": [
+                            "create",
+                            "update"
+                        ],
+                        "visibleToTheUser": true,
+                        "key": false
+                        }
+                    ]
+                    }
+            }
+            ```
+
+#### Adding new Dependencies
+
+To add a new dependencie in the project you need to change the following files:
 
 1. bower install
 
 	```bash
-	bower install [componente] --save
+	bower install [component] --save
 	```
 
 2. assetsfiles.json
 
-	- Inclusão dos arquivos para cópia a partir da pasta bower_components/ para assets/
+    - Include the files to be copied from bower_components/ to assets/
 	```json
 	{
 	"files": [
 		{
-			"src": "bower_components/[componente]/[arquivo]",
-			"dest": "assets/[tipo: css|libs|img]/[componente]/[arquivo]"
+			"src": "bower_components/[component]/[file]",
+			"dest": "assets/[type: css|libs|img]/[component]/[file]"
 		}
 		...
 	]}
 	```
 
 3. main.tpl.js
-	- Caso seja algum javascript, é necessário adiciona-lo na configuração base do requirejs, editando o arquivo main.tpl.js.
-	- Deve-se criar um alias na sessão "paths" que aponte para o arquivo na pasta assets e na sessão shim deve ser adicionado a ordem em que o arquivo deverá ser carregado pela aplicação (quais suas dependências).
+    - If there is a js file you'll need to add it on the requirejs base configuration by editing the **main.tpl.js** file.
+    - You should create an alias on the "*paths*" section and point it to the corresponding js file in the assets folder. And in the section named "*shim*" you must set its dependencies.
 
 	```json
 	{
 		"paths": {
-			"[componente]": "assets/[tipo: css|libs|img]/[componente]/[arquivo].js"
+			"[component]": "assets/[type: css|libs|img]/[component]/[file].js"
 			...
 		},
 		"shim": {
-			"[componente]": ["angular"]
+			"[component]": ["angular"]
 			...
 		}
 	}
 	```
 
-#### Aprecie o [demo](https://github.com/jediproject/ng-jedi-demo)
+#### Check out our [demo](https://github.com/jediproject/ng-jedi-dino)
