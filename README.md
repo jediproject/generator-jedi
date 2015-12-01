@@ -8,11 +8,20 @@ The v0 generating routine uses a set of tools and frameworks well consolidated a
 
 Inside the v0 generated project it has already configured: npm, bower, grunt, mocks e tests (karma + protractor).
 
-### Grunt tasks generated
+1. [Generated Grunt tasks](#generated-grunt-tasks)
+2. [Cache Busting](#cache-busting)
+3. [Environment Files](#environment-files)
+4. [Using the Generator](#using-the-generator)
+  1. [Installing](#installing)
+  2. [Executing it on a web browser](#executing-it-on-a-web-browser)
+  3. [Executing it on command line](#executing-it-on-command-line)
+  4. [Adding new Dependencies](#adding-new-dependencies)
 
-The grunt tasks are meant to execute the build process of the project, having options to build targeting "develop", "release" and "master" environments. Below the tasks each build option execute:
+### Generated Grunt tasks
 
-- **develop**: meant to run locally, copy all bower components that are listed in **assetsfiles.json**, generate **main.js** and the environment file to each module of the project (*app/[module]/env/[module]-env.json*).
+The grunt tasks are meant to execute the build process of the project, having options to build targeting "develop", "release" and "master" environments. The tasks that each build option execute:
+
+- **develop**: meant to run locally, it copies all bower components that are listed in **assetsfiles.json** and generates **main.js** and the environment file to each module of the project (*app/[module]/env/[module]-env.json*).
 
 - **release**: meant to run on a testing environment, executes all the tasks of develop plus it copies all the files to the *build/* folder e generates a hash of each file to be used as cache bust.
 
@@ -20,11 +29,11 @@ The grunt tasks are meant to execute the build process of the project, having op
 
 ### Cache Busting
 
-The *release* and *master* build routines run a cache busting task. It adds to each file a hash on its name, and updates every fixed reference to those files so they point to the right version. After that it creates the file **version.json** that maps every original filename and their "hashed" version, so it's possible to load dynamic scripts while running the application using the *factory.getFileVersion* metho from the [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory) component.
+The *release* and *master* build routines run a cache busting task. It adds to each file a hash on its name, and updates every fixed reference to those files so they point to the right version. After that it creates the file **version.json** that maps every original filename and their "hashed" version, so it's possible to load dynamic scripts while running the application using the *factory.getFileVersion* method from the [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory) component.
 
-### Environinnt files
+### Environment files
 
-Eache module has a json file tinplate (*app/[module]/env/[module]-env.tpl.json*) with the environment variables or settings for the module, and a version of this file for each build environment (*app/[module]/env/[module]-env.[environment].json*) that should contain the right values for that environment. During build process the tinplate is parsed and the final file *[module]-env.json* is created having the values equals to the values on the corresponding environment file. 
+Eache module has a json file template (*app/[module]/env/[module]-env.tpl.json*) with the environment variables or settings for the module, and a version of this file for each build environment (*app/[module]/env/[module]-env.[environment].json*) that should contain the right values for that environment. During build process the template is parsed and the final file *[module]-env.json* is created having the values equals to the values on the corresponding environment file. 
 
 ### Using the generator
 
@@ -91,8 +100,9 @@ You can follow the examples below:
         yo jedi:feature
     ```
 
-    * Type the config file path:
+    * Inform the config file path:
         * Config file example:
+        
             ```json
             {
                     "moduleName": "<name module>",
@@ -168,7 +178,7 @@ You can follow the examples below:
 
 #### Adding new Dependencies
 
-To add a new dependencie in the project you need to change the following files:
+To add a new dependency in the project you need to do the following:
 
 1. bower install
 
@@ -176,7 +186,7 @@ To add a new dependencie in the project you need to change the following files:
 	bower install [component] --save
 	```
 
-2. assetsfiles.json
+2. change **assetsfiles.json**
 
     - Include the files to be copied from bower_components/ to assets/
 	```json
@@ -186,11 +196,10 @@ To add a new dependencie in the project you need to change the following files:
 			"src": "bower_components/[component]/[file]",
 			"dest": "assets/[type: css|libs|img]/[component]/[file]"
 		}
-		...
 	]}
 	```
 
-3. main.tpl.js
+3. change **main.tpl.js**
     - If there is a js file you'll need to add it on the requirejs base configuration by editing the **main.tpl.js** file.
     - You should create an alias on the "*paths*" section and point it to the corresponding js file in the assets folder. And in the section named "*shim*" you must set its dependencies.
 
@@ -207,4 +216,4 @@ To add a new dependencie in the project you need to change the following files:
 	}
 	```
 
-#### Check out our [demo](https://github.com/jediproject/ng-jedi-dino)
+#### [Check out our demo!](https://github.com/jediproject/ng-jedi-demo)
