@@ -7,9 +7,7 @@
   "dependencies": {
     "angular": "^1.4.4"
   },
-  "main": [
-    "breadcrumb.js"
-  ],
+  "main": "breadcrumb.js",
   "author": {
 	"name": "Fábio Henrique da Silva Viana",
 	"email": "fabioviana.bh@gmail.com",

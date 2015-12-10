@@ -3,10 +3,7 @@
     "version": "0.0.1",
     "homepage": "https://github.com/jediproject/ng-jedi-table",
     "description": "Angular Table with support for API Pagination",
-    "main": [
-        "ng-jedi-table.js",
-        "ng-jedi-table.css"    
-    ],
+    "main": "ng-jedi-table.js",
     "author": {
         "name": "mateusmcg",
         "email": "mateus_mcg@icloud.com",
