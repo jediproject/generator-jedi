@@ -12,13 +12,6 @@
     "email": "fabioviana.bh@gmail.com",
     "url": "http://jediproject.github.io"
   },
-  "directories": {
-    "bin": "./bin"
-  },
-  "preferGlobal": true,
-  "bin": {
-    "jedi": "./bin/jedi"
-  },
   "keywords": [
     "yeoman-generator",
     "angular",
@@ -55,5 +48,14 @@
     "develop": "npm install && bash gui/run.sh develop && node gui/server/app.js",
     "heroku": "node gui/server/app.js && npm install -g generator-jedi",
     "test": "mocha"
-  }
+  },
+  "preferGlobal": true,
+  "bin": {
+    "jedi": "bin/jedi"
+  },
+  "files": [
+    "bin",
+    "generators",
+    "gui"
+  ]
 }
