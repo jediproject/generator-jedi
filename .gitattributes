@@ -1,1 +1,13 @@
+# Leave text=auto so it won't mess up with binary or unespecified files to come
 * text=auto
+
+# force code file types to have end of line character as lf
+*.json text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+
+# Force script to have lf end-of-line as well for compatibility
+bin/jedi text eol=lf
+*.sh text eol=lf
