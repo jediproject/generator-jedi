@@ -274,6 +274,9 @@
                 var dateFormatter = function dateFormatter(value) {
                     var date;
                     if (!value) {
+                        if (dateWrap.data('DateTimePicker').date()) {
+                            dateWrap.data('DateTimePicker').clear();
+                        }
                         return value;
                     } else if (moment.isMoment(value) && value.isValid()) {
                         return value.format(format);

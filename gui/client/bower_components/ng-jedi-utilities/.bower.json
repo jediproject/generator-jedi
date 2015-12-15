@@ -1,6 +1,6 @@
 {
   "name": "ng-jedi-utilities",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/jediproject/ng-jedi-utilities",
   "authors": [
     "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
@@ -46,11 +46,11 @@
     "If-Modified-Since"
   ],
   "license": "MIT",
-  "_release": "0.0.1",
+  "_release": "0.0.2",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "2c0307102c5f1e11d6e2e47e5439163aaf8cf584"
+    "tag": "0.0.2",
+    "commit": "186af3f4fd22eb287cb13f84445ab6d190efaf1c"
   },
   "_source": "git://github.com/jediproject/ng-jedi-utilities.git",
   "_target": ">=0.0.1",

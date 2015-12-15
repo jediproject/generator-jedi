@@ -41,6 +41,6 @@
     "commit": "d004434a5ff76e7b97c8b07c01f34ca69e635d97"
   },
   "_source": "git://github.com/Eonasdan/bootstrap-datetimepicker.git",
-  "_target": "~4.7.14",
+  "_target": "=4.7.14",
   "_originalSource": "eonasdan-bootstrap-datetimepicker"
 }

@@ -45,6 +45,7 @@ To use the generator just follow these steps:
 	npm install -g yo
 	npm install -g generator-jedi
 	```
+
 #### Executing it on a web browser
 
     You can execute the generator on your browser and follow it's easy to use wizards:
@@ -53,7 +54,7 @@ To use the generator just follow these steps:
 	jedi
 	```
 
-    - This command will run a local site with all the wizards in http://localhost:8181/
+    - This command will run a local site with all the wizards in http://localhost:5000/
 
 #### Executing it on command line
 

@@ -1,6 +1,6 @@
 {
   "name": "ng-jedi-factory",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "homepage": "https://github.com/jediproject/ng-jedi-factory",
   "authors": [
     "Fábio Henrique da Silva Viana <fabioviana.bh@gmail.com>"
@@ -28,11 +28,11 @@
     "requirejs"
   ],
   "license": "MIT",
-  "_release": "0.0.1",
+  "_release": "0.0.3",
   "_resolution": {
     "type": "version",
-    "tag": "0.0.1",
-    "commit": "c6eea4b19c804570383acada1debd1811b695d60"
+    "tag": "0.0.3",
+    "commit": "f7c707cf8396e61a2e457e51c4cbb0ffebb154cf"
   },
   "_source": "git://github.com/jediproject/ng-jedi-factory.git",
   "_target": ">=0.0.1",

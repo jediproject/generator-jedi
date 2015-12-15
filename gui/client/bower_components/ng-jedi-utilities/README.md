@@ -1,4 +1,4 @@
-# ng-jedi-utilities
+# [ng-jedi-utilities](https://github.com/jediproject/ng-jedi-utilities)
 Utilities to make life easier on settings and other needs during development with [AngularJs](https://angularjs.org/).
 
 ## Install

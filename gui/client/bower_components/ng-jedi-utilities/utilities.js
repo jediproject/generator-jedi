@@ -478,7 +478,13 @@
 
             // adiciona um interceptor para o response de consultas paginadas
             RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response, deferred) {
-                var extractedData = data;
+                var extractedData = {};
+
+                if (typeof data === 'object')
+                    extractedData = data;
+                else
+                    extractedData.result = data;
+
                 if ((operation === "getList" || operation === "post") && data.pageItems && data.totalCount >= 0) {
                     extractedData = data.pageItems;
                     extractedData.totalCount = data.totalCount;

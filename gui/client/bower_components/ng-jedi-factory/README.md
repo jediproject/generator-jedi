@@ -1,4 +1,4 @@
-# ng-jedi-factory
+# [ng-jedi-factory](https://github.com/jediproject/ng-jedi-factory)
 Factory helper to easily create [AngularJs](https://angularjs.org/) components (controllers, directives, filters...) and ensure that all dependencies are loaded before it, using [RequireJS](http://requirejs.org/). In other words, the factory easily integrates requirejs and angular. The factory should be used on a javascript file to declare same angularjs components types. Each component type has a factory function. See more below.
 
   1. [Install](#install)

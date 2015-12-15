@@ -1,4 +1,4 @@
-# ng-jedi-layout
+# [ng-jedi-layout](https://github.com/jediproject/ng-jedi-layout)
 Layout components for your application.
 ###### Written in [AngularJs](https://angularjs.org/)
 

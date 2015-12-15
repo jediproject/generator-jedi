@@ -28,6 +28,7 @@
     "ember-cli-bootstrap": "0.0.15"
   },
   "devDependencies": {<% if (props.generateAuth) {%>
+    "angular-mocks": "^1.4.8",
     "apimocker": "^0.4.4",<%}%>
     "http-server": "^0.8.0",
     "json-server": "^0.7.20",
