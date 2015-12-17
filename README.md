@@ -6,9 +6,9 @@ It has the main routine where it builds all the v0 ("version zero") structure of
 
 The v0 generating routine uses a set of tools and frameworks well consolidated and some Jedi Project Components.
 
-Inside the v0 generated project it has already configured: npm, bower, grunt, mocks e tests (karma + protractor).
+Inside the v0 generated project it has already configured: npm, bower, gulp, mocks e tests (karma + protractor).
 
-1. [Generated Grunt tasks](#generated-grunt-tasks)
+1. [Generated Gulp tasks](#generated-gulp-tasks)
 2. [Cache Busting](#cache-busting)
 3. [Environment Files](#environment-files)
 4. [Using the Generator](#using-the-generator)
@@ -17,11 +17,11 @@ Inside the v0 generated project it has already configured: npm, bower, grunt, mo
   3. [Executing it on command line](#executing-it-on-command-line)
   4. [Adding new Dependencies](#adding-new-dependencies)
 
-### Generated Grunt tasks
+### Generated Gulp tasks
 
-The grunt tasks are meant to execute the build process of the project, having options to build targeting "develop", "release" and "master" environments. The tasks that each build option execute:
+The gulp tasks are meant to execute the build process of the project, having options to build targeting "develop", "release" and "master" environments. The tasks that each build option execute:
 
-- **develop**: meant to run locally, it copies all bower components that are listed in **assetsfiles.json** and generates **main.js** and the environment file to each module of the project (*app/[module]/env/[module]-env.json*).
+- **develop**: meant to run locally, it copies all bower components that are listed in **assetsfiles.json** and generates the environment file to each module of the project (*app/[module]/env/[module]-env.json*).
 
 - **release**: meant to run on a testing environment, executes all the tasks of develop plus it copies all the files to the *build/* folder e generates a hash of each file to be used as cache bust.
 
