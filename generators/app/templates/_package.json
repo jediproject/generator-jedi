@@ -58,8 +58,8 @@
     },
     "scripts": {
         "develop": "npm install && node node_modules/bower/bin/bower install && gulp",
-        "release": "npm install && node node_modules/bower/bin/bower install && gulp build --end=release",
-        "master": "npm install && node node_modules/bower/bin/bower install && gulp build --end=master",
+        "release": "npm install && node node_modules/bower/bin/bower install && gulp build --env=release",
+        "master": "npm install && node node_modules/bower/bin/bower install && gulp build --env=master",
         "start": "npm install && node node_modules/bower/bin/bower install && node node_modules/bower/bin/bower update && gulp && <% if (props.generateAuth) {%>start node node_modules/apimocker/bin/apimocker.js -c mocks/config.json && <%}%>node node_modules/http-server/bin/http-server -a localhost -p 8080"
     },
     "jshintConfig": {
