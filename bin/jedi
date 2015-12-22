@@ -1,4 +1,6 @@
 #!/usr/bin/env node
 var shell = require("shelljs");
 
-shell.exec("cd "+__dirname+" && npm run develop");
+shell.cd(__dirname);
+shell.cd('..');
+shell.exec('npm run develop');
