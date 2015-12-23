@@ -2,5 +2,6 @@ tmp
 build/
 node_modules/
 bower_components
+gui/version.json
 tmp
 *.log

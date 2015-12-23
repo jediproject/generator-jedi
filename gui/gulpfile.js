@@ -31,6 +31,7 @@ var assets = require('./assetsfiles.json');
 var packageJSON = require('./package');
 var jshintConfig = packageJSON.jshintConfig;
 
+var appFolder = './client/app/';
 var version = { version: '0.0.1', files: {} };
 var isProduction = argv.env === 'master' || argv.env === 'mirror';
 argv.env = argv.env ? argv.env : 'develop'
@@ -76,13 +77,13 @@ gulp.task('setEnvironment', function () {
     var modules = getModules();
     for (var i = 0; i < Object.keys(modules).length; i++) {
         // Read environment specific settings
-        var jsonEnv = require('./app/' + modules[i] + '/env/' + modules[i] + '-env.' + argv.env + '.json');
+        var jsonEnv = require(appFolder + modules[i] + '/env/' + modules[i] + '-env.' + argv.env + '.json');
 
         // Replace settings in template
-        gulp.src('app/' + modules[i] + '/env/' + modules[i] + '-env.tpl.json')
+        gulp.src(appFolder + modules[i] + '/env/' + modules[i] + '-env.tpl.json')
             .pipe(replaceTask({ patterns: [{ json: jsonEnv }] }))
             .pipe(rename(modules[i] + '-env.json'))
-            .pipe(gulp.dest('app/' + modules[i] + '/env/'));
+            .pipe(gulp.dest(appFolder + modules[i] + '/env/'));
     }
 });
 
@@ -132,8 +133,8 @@ gulp.task('protractor', function () {
 
 // Get modules from directories inside ./app/ folder
 function getModules() {
-    return fs.readdirSync('./app').filter(function (file) {
-        return fs.statSync(path.join('./app', file)).isDirectory();
+    return fs.readdirSync(appFolder).filter(function (file) {
+        return fs.statSync(path.join(appFolder, file)).isDirectory();
     });
 }
 
