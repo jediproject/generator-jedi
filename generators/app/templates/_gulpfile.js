@@ -4,18 +4,14 @@ var argv = require('yargs').argv;
 var change = require('gulp-change');
 var clean = require('gulp-clean');
 var file = require('gulp-file');
-var filter = require('gulp-filter');
 var flatten = require('gulp-flatten');
 var fs = require('fs');
 var glob = require("glob");
 var gulpif = require('gulp-if');
-var gutil = require('gulp-util');
 var jshint = require('gulp-jshint');
-var lazypipe = require('lazypipe');
 var merge = require('merge-stream');
 var minifyCss = require('gulp-minify-css');
 var path = require('path');
-var print = require('gulp-print');
 var rename = require('gulp-rename');
 var replace = require('gulp-replace');
 var replaceTask = require('gulp-replace-task');
@@ -25,15 +21,16 @@ var sass = require('gulp-sass');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
-var protractor = require("gulp-protractor").protractor
 
 var assets = require('./assetsfiles.json');
 var packageJSON = require('./package');
 var jshintConfig = packageJSON.jshintConfig;
 
+var appFolder = './app/';
+var buildFolder = './build/';
 var version = { version: '0.0.1', files: {} };
 var isProduction = argv.env === 'master' || argv.env === 'mirror';
-argv.env = argv.env ? argv.env : 'develop'
+argv.env = argv.env ? argv.env : 'develop';
 
 gulp.task('default', ['clean', 'assets', 'setEnvironment'], function () { });
 
@@ -45,7 +42,7 @@ gulp.task('clean', function () {
 
 // Clean Build
 gulp.task('cleanBuild', function () {
-    return gulp.src(['build/*'])
+    return gulp.src([buildFolder + '*'])
         .pipe(clean());
 });
 
@@ -76,13 +73,13 @@ gulp.task('setEnvironment', function () {
     var modules = getModules();
     for (var i = 0; i < Object.keys(modules).length; i++) {
         // Read environment specific settings
-        var jsonEnv = require('./app/' + modules[i] + '/env/' + modules[i] + '-env.' + argv.env + '.json');
+        var jsonEnv = require(appFolder + modules[i] + '/env/' + modules[i] + '-env.' + argv.env + '.json');
 
         // Replace settings in template
-        gulp.src('app/' + modules[i] + '/env/' + modules[i] + '-env.tpl.json')
+        gulp.src(appFolder + modules[i] + '/env/' + modules[i] + '-env.tpl.json')
             .pipe(replaceTask({ patterns: [{ json: jsonEnv }] }))
             .pipe(rename(modules[i] + '-env.json'))
-            .pipe(gulp.dest('app/' + modules[i] + '/env/'));
+            .pipe(gulp.dest(appFolder + modules[i] + '/env/'));
     }
 });
 
@@ -90,50 +87,57 @@ gulp.task('setEnvironment', function () {
 gulp.task('build', ['clean', 'cleanBuild', 'assets', 'setEnvironment'], function () {
     // Random version file for each build
     var versionName = 'version-' + Math.random().toString(36).substring(8) + '.json';
-    var regx = new RegExp(versionName, "g");
+    var versionFileRegx = new RegExp(versionName, "g");
 
-    return gulp.src(['**/*.*', '!**/*.tpl.*', '!**/env/*.*'], { cwd: 'app/', base: './' })
+    return gulp.src(['**/*.*', '!**/*.tpl.*', '!**/env/*.*'], { cwd: appFolder, base: './' })
         .pipe(gulpif(/\.js$/, jshint(jshintConfig)))                                                // JSHint only JS files from project
         .pipe(jshint.reporter(stylish))                                                             // Better output for lint errors
         .pipe(jshint.reporter('fail'))                                                              // Raise exception on lint error
         .pipe(addsrc(['favicon.ico', 'main.js', '**/env/*-env.json']))                              // Add root project folder files
-        .pipe(addsrc(['**/*.*', '!sass/**/*.*', '!img/dogs/*.*'], { cwd: 'assets/', base: './' }))  // Add assets files
+        .pipe(addsrc(['**/*.*', '!**/*.scss', '!img/dogs/*.*'], { cwd: 'assets/', base: './' }))    // Add assets files
         .pipe(gulpif(/\.js$/, gulpif(isProduction, uglify())))                                      // Uglify all JS files
         .pipe(gulpif(/\.css$/, gulpif(isProduction, minifyCss())))                                  // Minify all CSS files
         .pipe(rev())                                                                                // Versioning for cache bust
         .pipe(addsrc(['index.html', '**/img/dogs/*.*']))                                            // Add files that can't be reved.
         .pipe(revReplace({ modifyUnreved: modifyToReplace, modifyReved: modifyToReplace }))         // Replace rev references
         .pipe(gulpif(/main\-[0-9a-z]+\.js$/, replace('version.json', versionName)))                 // Replace version reference in main-*.js
-        .pipe(gulp.dest('build/'))                                                                  // Build output
+        .pipe(gulp.dest(buildFolder))                                                               // Build output
         .pipe(rev.manifest(versionName, { merge: true }))                                           // Create manifest file
-        .pipe(gulpif(regx, change(modifyManifest)))                                                 // Change manifest structure to mach previous version.
-        .pipe(gulp.dest('build/'));                                                                 // Manifest output
+        .pipe(gulpif(versionFileRegx, change(modifyManifest)))                                      // Change manifest structure to mach previous version.
+        .pipe(gulp.dest(buildFolder));                                                              // Manifest output
 });
 
-gulp.task('jshint:watch', function () {
-    return gulp.src('app/**/*.js')
-        .pipe(watch('app/**/*.js'))
-        .pipe(jshint(jshintConfig))
-        .pipe(jshint.reporter(stylish));
+gulp.task('watch', ['sass:watch', 'build:watch', 'assets:watch'], function () { });
+
+// Watch task to build app/
+gulp.task('build:watch', function () {
+    return watch(['**/*.*', '!**/*.tpl.*', '!**/env/*.*'], { cwd: appFolder, base: './' })
+        .pipe(gulpif(/\.js$/, jshint(jshintConfig)))
+        .pipe(jshint.reporter(stylish))
+        .pipe(gulpif(/\.js$/, gulpif(isProduction, uglify())))
+        .pipe(gulpif(/\.css$/, gulpif(isProduction, minifyCss())))
+        .pipe(rename(setVersionFileName))
+        .pipe(gulp.dest(buildFolder));
 });
 
+gulp.task('assets:watch', function () {
+    return watch(['**/*.css'], { cwd: 'assets/', base: './' })
+        .pipe(gulpif(/\.css$/, gulpif(isProduction, minifyCss())))
+        .pipe(rename(setVersionFileName))
+        .pipe(gulp.dest(buildFolder));
+});
+
+// Watch Sass files to compile Css
 gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
-});
-
-// ToDo: program tests tasks
-gulp.task('protractor', function () {
-    gulp.src('files')
-        .pipe(protractor({
-            configFile: 'test/e2e/protractor-conf.js'
-        }))
-        .on('error', function (e) { throw e })
+    return watch('./assets/sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('./assets/css'));
 });
 
 // Get modules from directories inside ./app/ folder
 function getModules() {
-    return fs.readdirSync('./app').filter(function (file) {
-        return fs.statSync(path.join('./app', file)).isDirectory();
+    return fs.readdirSync(appFolder).filter(function (file) {
+        return fs.statSync(path.join(appFolder, file)).isDirectory();
     });
 }
 
@@ -148,4 +152,11 @@ function modifyManifest(content) {
 function modifyToReplace(filename) {
     if (filename.indexOf('/') > -1) filename = filename.replace(/\.js$/, '');
     return filename.replace('assets', '').replace(/^\/+/g, '');
+}
+
+// Rename file to versioned name
+function setVersionFileName(file) {
+    var version = require(glob.sync(buildFolder + 'version*.json')[0]);
+    var versionedFileName = version.files[path.posix.join(file.dirname.replace('\\', '/'), file.basename + file.extname)];
+    return file.basename = path.basename(versionedFileName, path.extname(versionedFileName));
 }
