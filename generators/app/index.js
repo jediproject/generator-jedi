@@ -87,17 +87,11 @@ module.exports = yeoman.generators.Base.extend({
 
     writing: function () {
 
-        console.log('destinationRoot index antes: ' + this.props.destinationRoot);
-        
         // Froce / in the end. 
         this.props.destinationRoot = this.props.destinationRoot.replace(/\/?$/, '/');
 
-
-        console.log('destinationRoot index depois: ' + this.props.destinationRoot);
-        
         // set destination root path
         this.destinationRoot(this.props.destinationRoot);
-        console.log('destinationRoot ' + this.destinationRoot());
         
         // Force to boolean
         this.props.generateAuth = JSON.parse(this.props.generateAuth);
