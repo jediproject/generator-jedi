@@ -45,14 +45,13 @@
             "bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
             "bower_components/angular-cookie/angular-cookie.js",
             "bower_components/angular-file-upload-interceptor/angular-file-upload-interceptor.js",
-            <% if (props.useI18n && props.defaultLang == 'en') {%>
+            <% if (props.useI18n) {%>
             "bower_components/angular-i18n/angular-locale_en.js",
-            <%} else if (props.useI18n) {%>
             "bower_components/angular-i18n/angular-locale_pt.js",
-            <%}%>
-            "bower_components/angular-i18n/angular-locale_<%= props.defaultLang%>.js"
-            ,<% if (props.useI18n) {%>
             "bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js",
+            <%}%>
+            <% if (props.useI18n && props.defaultLang != 'en' && props.defaultLang != 'pt') {%>
+            "bower_components/angular-i18n/angular-locale_<%= props.defaultLang%>.js",
             <%}%>
             "bower_components/angular-loading-bar/build/loading-bar.js",
             "bower_components/angular-ngMask-alias/dist/ngMask.js",
