@@ -7,12 +7,14 @@
     if (typeof define === 'function') {
         define(['moment', 'ng-jedi-utilities', 'angular-ngMask', 'bootstrap-datetimepicker'], factory);
     } else {
+        var _moment = moment;
         if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
             module.exports = 'jedi.layout';
+            _moment = require('moment');
         }
-        return factory();
+        return factory(_moment);
     }
-}(function() {
+}(function(moment) {
 	"use strict";
 
     angular.module('jedi.layout.datepicker', ['jedi.utilities', 'ngMask']).constant('jedi.layout.datepicker.DatepickerConfig', {
@@ -274,9 +276,6 @@
                 var dateFormatter = function dateFormatter(value) {
                     var date;
                     if (!value) {
-                        if (dateWrap.data('DateTimePicker').date()) {
-                            dateWrap.data('DateTimePicker').clear();
-                        }
                         return value;
                     } else if (moment.isMoment(value) && value.isValid()) {
                         return value.format(format);

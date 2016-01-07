@@ -1,0 +1,110 @@
+.animate-slide {
+    background: #ffffff;
+    position: fixed;
+    width: 500px;
+    height: 180px;
+    bottom: 0;
+    right: 0;
+    z-index: 1001 !important;
+    box-shadow: -2px -2px 2px #808080;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+    .animate-slide.minimizeMe {
+        height: 30px;
+        width: 310px;
+    }
+
+    .animate-slide.hideMe {
+        height: 0;
+        width: 0;
+    }
+
+    .animate-slide .activities-header {
+        width: 100%;
+        background: #3975B9;
+        height: 30px;
+        padding: 8px 10px 5px 0px;
+        border-radius: 0;
+        color: #ffffff;
+    }
+
+.panel-heading .activities-header-content {
+    background: none !important;
+}
+
+.activities-scroll {
+    overflow: auto;
+    max-height: 148px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+}
+
+.activities-scroll-inner {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.activities-divider {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.activities-content {
+    line-height: 30px;
+}
+
+.activities-done {
+    padding-top: 8px;
+    font-size: 15px;
+    color: rgb(38, 146, 107);
+}
+
+.activities-error {
+    padding-top: 8px;
+    font-size: 15px;
+    color: rgb(233, 66, 46);
+}
+
+.activities-inactive {
+    padding-top: 8px;
+    font-size: 15px !important;
+    color: rgb(0, 0, 0);
+    opacity: 0.25;
+}
+
+.fa-cog::before {
+    font-size: 18px;
+}
+
+.activities-active {
+    cursor: pointer;
+    opacity: 1;
+}
+
+@-webkit-keyframes sk-circleFadeDelay {
+    0%, 39%, 100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+@keyframes sk-circleFadeDelay {
+    0%, 39%, 100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}

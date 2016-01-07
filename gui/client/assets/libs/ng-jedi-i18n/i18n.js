@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 (function (factory) {
     if (typeof define === 'function') {
@@ -62,7 +62,7 @@
                 // atualiza cache com lang escolhida
                 utilities.setLocalStorage('i18n_lang', lang);
 
-                if (moment) {
+                if (typeof moment != 'undefined') {
                     // atribui ao moment a linguagem corrente
                     moment.locale(lang);
                 }
