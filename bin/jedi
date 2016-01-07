@@ -3,4 +3,4 @@ var shell = require("shelljs");
 
 shell.cd(__dirname);
 shell.cd('..');
-shell.exec('npm run develop');
+shell.exec('npm run start');

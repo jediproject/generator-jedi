@@ -1,6 +1,6 @@
 {
   "name": "generator-jedi",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "Jedi Project Generator",
   "license": "MIT",
   "repository": {
@@ -43,9 +43,7 @@
   },
   "scripts": {
     "start": "node gui/server/app.js",
-    "develop": "npm install && cd gui/ && npm run develop && node server/app.js",
-    "heroku": "node gui/server/app.js && npm install -g generator-jedi",
-    "test": "mocha"
+    "heroku": "node gui/server/app.js && npm install -g generator-jedi"
   },
   "preferGlobal": true,
   "bin": {
