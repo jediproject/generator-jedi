@@ -62,7 +62,7 @@
         "release": "npm install && node node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js build --env=release",
         "master": "npm install && node node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js build --env=master",
         "start": "npm install && node node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js && <% if (props.generateAuth) {%>start node node_modules/apimocker/bin/apimocker.js -c mocks/config.json && <%}%>node node_modules/http-server/bin/http-server -a localhost -p 8080",
-        "start-nix": "npm install && node node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js && (node node_modules/apimocker/bin/apimocker.js -c mocks/config.json & node node_modules/json-server/bin/index.js mocks/animals/animals.json -p 3001 & node node_modules/http-server/bin/http-server -a localhost -p 8080)"
+        "start-nix": "npm install && node node_modules/bower/bin/bower install && node node_modules/gulp/bin/gulp.js && (<% if (props.generateAuth) {%>node node_modules/apimocker/bin/apimocker.js -c mocks/config.json & <%}%>node node_modules/http-server/bin/http-server -a localhost -p 8080)"
     },
     "jshintConfig": {
         "globalstrict": true,
