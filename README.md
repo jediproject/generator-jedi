@@ -41,20 +41,20 @@ To use the generator just follow these steps:
 
 #### Installing
 
-	```bash
-	npm install -g yo
-	npm install -g generator-jedi
-	```
+```bash
+npm install -g yo
+npm install -g generator-jedi
+```
 
 #### Executing it on a web browser
 
-    You can execute the generator on your browser and follow it's easy to use wizards:
+You can execute the generator on your browser and follow it's easy to use wizards:
 
-	```bash
-	jedi
-	```
+```bash
+jedi
+```
 
-    - This command will run a local site with all the wizards in http://localhost:5000/
+- This command will run a local site with all the wizards in http://localhost:5000/
 
 #### Executing it on command line
 
@@ -183,38 +183,38 @@ To add a new dependency in the project you need to do the following:
 
 1. bower install
 
-	```bash
-	bower install [component] --save
-	```
+```bash
+bower install [component] --save
+```
 
 2. change **assetsfiles.json**
 
     - Include the files to be copied from bower_components/ to assets/
-	```json
-	{
-	"files": [
-		{
-			"src": "bower_components/[component]/[file]",
-			"dest": "assets/[type: css|libs|img]/[component]/[file]"
-		}
-	]}
-	```
+```json
+{
+"files": [
+    {
+        "src": "bower_components/[component]/[file]",
+        "dest": "assets/[type: css|libs|img]/[component]/[file]"
+    }
+]}
+```
 
 3. change **main.tpl.js**
     - If there is a js file you'll need to add it on the requirejs base configuration by editing the **main.tpl.js** file.
     - You should create an alias on the "*paths*" section and point it to the corresponding js file in the assets folder. And in the section named "*shim*" you must set its dependencies.
 
-	```json
-	{
-		"paths": {
-			"[component]": "assets/[type: css|libs|img]/[component]/[file].js"
-			...
-		},
-		"shim": {
-			"[component]": ["angular"]
-			...
-		}
-	}
-	```
+```json
+{
+    "paths": {
+        "[component]": "assets/[type: css|libs|img]/[component]/[file].js"
+        ...
+    },
+    "shim": {
+        "[component]": ["angular"]
+        ...
+    }
+}
+```
 
 #### [Check out our demo!](https://github.com/jediproject/ng-jedi-demo)
