@@ -209,7 +209,7 @@ bower install [component] --save
 ```json
 {
     "paths": {
-        "[component]": "assets/[type: css|libs|img]/[component]/[file].js"
+        "[component]": "assets/[type: css|libs|img]/[component]/[file]"
         ...
     },
     "shim": {
