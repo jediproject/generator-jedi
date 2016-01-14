@@ -191,13 +191,15 @@ bower install [component] --save
 
     - Include the files to be copied from bower_components/ to assets/
 ```json
-{
-"files": [
     {
-        "src": "bower_components/[component]/[file]",
-        "dest": "assets/[type: css|libs|img]/[component]/[file]"
+          "libs": {
+              "dest": "assets/libs/",
+              "src": [
+                  "bower_components/[component-foo]/[foo.js]",
+                  "bower_components/[component-bar]/[bar.js]"
+              ]
+          }
     }
-]}
 ```
 
 3. change **main.tpl.js**
