@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var addsrc = require('gulp-add-src');
 var argv = require('yargs').argv;
 var autoprefixer = require('gulp-autoprefixer');
+var browserSync = require('browser-sync').create();
 var change = require('gulp-change');
 var clean = require('gulp-clean');
 var file = require('gulp-file');
@@ -19,6 +20,7 @@ var replaceTask = require('gulp-replace-task');
 var revReplace = require('gulp-rev-replace');
 var rev = require('gulp-rev');
 var sass = require('gulp-sass');
+var sprity = require('sprity');
 var stylish = require('jshint-stylish');
 var uglify = require('gulp-uglify');
 var watch = require('gulp-watch');
@@ -68,6 +70,21 @@ gulp.task('assets', ['clean'], function () {
         .pipe(gulp.dest('./'));
 
     return merge(libs, css, fonts, scss, versionFile);
+});
+
+gulp.task('sprite', function () {
+    return sprity.src({ src: ['./assets/img/*.png'], 
+                        style: './assets/css/sprite.css',
+                        cssPath: './assets/img/sprite/' })
+        .pipe(gulpif('*.png', gulp.dest('./assets/img/sprite/'), gulp.dest('./assets/css/')));
+});
+
+gulp.task('sass', function () {
+    return gulp.src('./assets/sass/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./assets/css'))
+        .pipe(browserSync.stream());
 });
 
 gulp.task('setEnvironment', function () {
@@ -135,6 +152,19 @@ gulp.task('sass:watch', function () {
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer())
         .pipe(gulp.dest('./assets/css'));
+});
+
+// Static server
+gulp.task('serve', ['build'], function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        },
+        port: 8080
+    });
+    
+    gulp.watch('app/**/*').on('change', browserSync.reload);
+    gulp.watch('assets/sass/**/*', ['sass']);
 });
 
 // Get modules from directories inside ./app/ folder

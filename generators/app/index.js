@@ -107,6 +107,7 @@ module.exports = yeoman.generators.Base.extend({
         mkdirp(this.props.destinationRoot + 'assets/css');
         mkdirp(this.props.destinationRoot + 'assets/js');
         mkdirp(this.props.destinationRoot + 'assets/img');
+        mkdirp(this.props.destinationRoot + 'assets/img/sprite');
 
         mkdirp(this.props.destinationRoot + 'app');
         mkdirp(this.props.destinationRoot + 'app/common');
@@ -262,6 +263,11 @@ module.exports = yeoman.generators.Base.extend({
             this.templatePath('assets/sass/app.scss'),
             this.destinationPath('assets/sass/app.scss')
             );
+            
+        this.fs.copy(
+            this.templatePath('assets/css/sprite.css'),
+            this.destinationPath('assets/css/sprite.css')
+            );
 
         this.fs.copy(
             this.templatePath('assets/img/en-US.png'),
@@ -271,6 +277,11 @@ module.exports = yeoman.generators.Base.extend({
         this.fs.copy(
             this.templatePath('assets/img/pt-BR.png'),
             this.destinationPath('assets/img/pt-BR.png')
+            );
+
+        this.fs.copy(
+            this.templatePath('assets/img/sprite/sprite.png'),
+            this.destinationPath('assets/img/sprite/sprite.png')
             );
 
         this.fs.copy(
