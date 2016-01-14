@@ -202,8 +202,8 @@ bower install [component] --save
 }
 ```
 
-3. change **main.tpl.js**
-    - If there is a js file you'll need to add it on the requirejs base configuration by editing the **main.tpl.js** file.
+3. change **main.js**
+    - If there is a js file you'll need to add it on the requirejs base configuration by editing the **main.js** file.
     - You should create an alias on the "*paths*" section and point it to the corresponding js file in the assets folder. And in the section named "*shim*" you must set its dependencies.
 
 ```json
