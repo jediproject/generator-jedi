@@ -25,7 +25,6 @@ require.config({
         'ng-jedi-table': 'assets/libs/ng-jedi-table/table',
         'ng-jedi-activities': 'assets/libs/ng-jedi-activities/activities',<% if (props.generateAuth) {%>
         'ng-jedi-security': 'assets/libs/ng-jedi-security/security',<%}%>
-        'ng-jedi-table': 'assets/libs/ng-jedi-table/table',
 
         // ## common components
         'app-common': 'app/common/common-app',
