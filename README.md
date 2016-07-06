@@ -9,13 +9,15 @@ The v0 generating routine uses a set of tools and frameworks well consolidated a
 Inside the v0 generated project it has already configured: npm, bower, gulp, mocks e tests (karma + protractor).
 
 1. [Generated Gulp tasks](#generated-gulp-tasks)
-2. [Cache Busting](#cache-busting)
-3. [Environment Files](#environment-files)
-4. [Using the Generator](#using-the-generator)
+1. [Cache Busting](#cache-busting)
+1. [Environment Files](#environment-files)
+1. [Using the Generator](#using-the-generator)
   1. [Installing](#installing)
-  2. [Executing it on a web browser](#executing-it-on-a-web-browser)
-  3. [Executing it on command line](#executing-it-on-command-line)
-  4. [Adding new Dependencies](#adding-new-dependencies)
+  1. [Executing it on a web browser](#executing-it-on-a-web-browser)
+  1. [Executing it on command line](#executing-it-on-command-line)
+  1. [Adding new Dependencies](#adding-new-dependencies)
+1. [Troubleshoots](#troubleshoots)
+  1. [Bower components troubleshoot](#bower-components-troubleshoot)
 
 ### Generated Gulp tasks
 
@@ -220,3 +222,12 @@ bower install [component] --save
 ```
 
 #### [Check out our demo!](https://github.com/jediproject/ng-jedi-demo)
+
+### Troubleshoots
+
+#### Bower components troubleshoot:
+    
+* If you have any problems when cloning bower components from git you can try the command below:
+```bash
+git config --global url."https://".insteadOf "git://"
+```
